@@ -1,0 +1,23 @@
+/*Cargador*/
+#contenedorcargando{
+	position:fixed;
+	top:0px;
+	left:45%;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	padding:2px;
+	margin:0px;
+	background-color:#FFF;
+	/*box-shadow:#CCC    0px 0px 2px inset;*/
+	display:none;
+	z-index:9999;
+}
+.der{
+	text-align:right;	
+}
+.centrar{
+	text-align:center;	
+}
+
+/*Fin de Cargador*/
