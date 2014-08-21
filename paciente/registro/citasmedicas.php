@@ -45,7 +45,7 @@ $(document).on("ready",function(){
                         <td><?php echo fecha2Str($pac['FechaNac'])?></td>
                     </tr>
                 </table>
-                <a onClick="javascript:history.back();" class="btn btn-xs"><?php echo $idioma['VolverSeleccionar']?></a>
+                <a onClick="javascript:history.back();" class="btn btn-xs"><?php echo $idioma['VolverSeleccionarPaciente']?></a>
             </div>
         </div>
         

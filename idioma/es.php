@@ -128,6 +128,8 @@ $idioma['Descripcion']="Descripción";
 $idioma['FechaRegistro']="Fecha de Registro";
 $idioma['Si']="Si";
 $idioma['No']="No";
+
+$idioma['VolverSeleccionarPaciente']="Volver a Seleccionar Paciente";
 //Reporte
 $idioma['Especialidad']="Especialidad";
 $idioma['DatosEspecialidad']="Datos de Especialidad Médica";
