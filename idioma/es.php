@@ -129,6 +129,10 @@ $idioma['FechaRegistro']="Fecha de Registro";
 $idioma['Si']="Si";
 $idioma['No']="No";
 
+
+//Validaciones
+$idioma['SoloNumeros']="Solo Números";
+
 $idioma['VolverSeleccionarPaciente']="Volver a Seleccionar Paciente";
 //Reporte
 $idioma['Especialidad']="Especialidad";
