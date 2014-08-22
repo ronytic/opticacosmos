@@ -6,7 +6,7 @@ $medico=new medico;
 $med=$medico->mostrarTodoRegistro("CodEspecialidad=$CodEspecialidad",1,"Paterno,Materno,Nombres");
 $data='';
 foreach($med as $m){
-	$data.="<option>".$m['Paterno']." ".$m['Materno']." ".$m['Nombres']."</option>";
+	$data.="<option value=\"".$m['CodMedico']."\">".$m['Paterno']." ".$m['Materno']." ".$m['Nombres']."</option>";
 }
 echo $data;
 ?>
