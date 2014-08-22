@@ -64,6 +64,7 @@ $idioma['NModificarDatosProducto']="Modificar Datos del Producto";
 $idioma['NVerDatosProducto']="Ver Datos del Producto";
 $idioma['NRecargaInventario']="Recarga de Inventario";
 $idioma['NBusquedaInventario']="Búsqueda de Inventario";
+$idioma['NVerBoletaOrdenTrabajo']="Ver Boleta de Orden de Trabajo";
 //General
 $idioma['Menu']="Menú";
 $idioma['Inicio']="Inicio";
@@ -132,7 +133,13 @@ $idioma['No']="No";
 
 //Paciente
 $idioma['Pago']="Pago";
-
+$idioma['Cobrar']="Cobrar";
+$idioma['Cristales']="Cristales";
+$idioma['TipoProducto']="Tipo de Producto";
+$idioma['ArmLejos']="Arm. Lejos";
+$idioma['ArmCerca']="Arm. Cerca";
+$idioma['Vitrina']="Vitrina";
+$idioma['ImprimirBoleta']="Imprimir Boleta";
 //Validaciones
 $idioma['SoloNumeros']="Solo Números";
 
@@ -168,4 +175,5 @@ $idioma['Cantidad']="Cantidad";
 $idioma['Producto']="Producto";
 $idioma['Aumentar']="Aumentar";
 $idioma['EnExistencia']="En Existencia";
+
 ?>
