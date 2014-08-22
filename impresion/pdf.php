@@ -30,7 +30,7 @@ include_once("fpdf_protection.php");
 			$fecha=capitalizar(strftime("%A, %d ")).$idioma['De'].capitalizar(strftime(" %B ")).$idioma['De'].strftime(" %Y");
 			
 			$this->Image("../../imagenes/logos/".$logo,10,10,20,20);
-			$this->Fuente("",$tam);
+			$this->Fuente("",10);
 			$this->SetXY(34,12);
 			$this->Cell(70,4,utf8_decode($title),0,0,"L");
 			$this->Fuente("B",8);
