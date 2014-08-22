@@ -35,10 +35,10 @@ $(document).on("click",".aumentar",aumentarregistro)
 	})
 	$(document).on("change",".CodProducto",function(){
 		var CodProducto=$(this).val()
-		alert(CodProducto);
+		//alert(CodProducto);
 		var Linea=$(this).attr("rel");
 		$.post("unidad.php",{"CodProducto":CodProducto},function(data){
-			alert(data);
+			//alert(data);
 			$(".Unidad[rel="+Linea+"]").html(data);	
 		});
 	})

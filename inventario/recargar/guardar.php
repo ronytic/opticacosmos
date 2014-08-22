@@ -24,7 +24,7 @@ foreach($p as $pro){
 	$pr=$producto->mostrarRegistro($CodProducto);
 	$pr=array_shift($pr);
 	$Mensajes[]=$pr['Nombre']." - Cantidad: ".$Cantidad;
-	//$inventario->insertarRegistro($Valores);
+	$inventario->insertarRegistro($Valores);
 }
 
 
