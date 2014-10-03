@@ -79,8 +79,13 @@ $(document).on("ready",function(){
                             <span class="input-group-addon"></span>
                             <label><?php echo $idioma['Hasta']?></label>
                             <input type="text" class="input-sm form-control" name="Hasta" value="<?php echo fecha2Str(); ?>"/>
+                  			
                         </div>
                     </div>
+                    <div class="col-sm-2">
+                    <label><?php echo $idioma['NumeroBoleta']?></label>
+                            <input type="text" class="input-sm form-control" name="NumeroBoleta" value=""/>        
+                    </div>  
                     <div class="col-sm-2">
                     	<label ><?php echo $idioma['Area']?></label><br>
                     	<?php campo("Area","select",$areas,"",0)?>
