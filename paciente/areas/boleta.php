@@ -2,6 +2,9 @@
 include_once("../../login/check.php");
 $folder="../../";
 $Cod=$_GET['CodOptica'];
+if($Cod==""){
+	$Cod=$_GET['Cod'];	
+}
 $titulo="NVerBoletaOrdenTrabajo";
 $url="../../impresion/areas/ordentrabajo.php?Cod=".$Cod;
 include_once($folder."cabecerahtml.php");
