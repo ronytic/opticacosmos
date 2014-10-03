@@ -8,22 +8,26 @@ $optica=new optica;
 switch($Area){
 	case 'Optica':{
 		$titulos=array("NumeroBoleta"=>$idioma["NumeroBoleta"],
-						"Fecha"=>$idioma['FechaPedido'],
+						"FechaRegistro"=>$idioma['FechaRegistro'],
 						"FechaEntrega"=>$idioma['FechaEntrega'],
 						"HoraEntrega"=>$idioma['HoraEntrega'],
 						
-						"Armazon"=>$idioma['Armazon'],
+						//"Armazon"=>$idioma['Armazon'],
 						"Recepcion"=>$idioma['Recepcion'],
-						"Doctor"=>$idioma['Doctor'],
-						"Total"=>$idioma['Total'],
-						"ACuenta"=>$idioma['ACuenta'],
-						"Saldo"=>$idioma['Saldo']
+						//"Doctor"=>$idioma['Doctor'],
+						"TotalBs"=>$idioma['Total'],
+						"ACuentaBs"=>$idioma['ACuenta'],
+						"ACuentaSus"=>$idioma['ACuenta']." $",
+						"SaldoBs"=>$idioma['Saldo']
 						);
-		
-		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and Fecha BETWEEN '".fecha2Str($Desde,0)."' and '".fecha2Str($Hasta,0)."' ",1,"Fecha,NumeroBoleta");
+		if($NumeroBoleta==""){
+			//echo "Hola";
+			$NumeroBoleta="%";
+		}
+		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta' and FechaRegistro BETWEEN '".fecha2Str($Desde,0)."' and '".fecha2Str($Hasta,0)."' ",1,"FechaRegistro,NumeroBoleta");
 		//print_r($opt);
 		echo "<h2>Optica</h2>";
-		listadoTabla($titulos,$opt);
+		listadoTabla($titulos,$opt,1,"../areas/boleta.php","","","",array("CodOptica"=>"asd"));
 	}break;
 		
 	default:{

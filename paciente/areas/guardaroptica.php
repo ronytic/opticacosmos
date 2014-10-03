@@ -3,9 +3,9 @@ include_once("../../login/check.php");
 include_once("../../class/optica.php");
 $optica=new optica;
 extract($_POST);
-echo "<pre>";
+/*echo "<pre>";
 print_r($_POST);
-echo "</pre>";
+echo "</pre>";*/
 $Valores=array("CodPaciente"=>"'$CodPaciente'",
 				
 				//"Fecha"=>"'".fecha2Str($Fecha,0)."'",
