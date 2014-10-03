@@ -33,6 +33,7 @@ $idioma['NuevoProducto']="Nuevo Producto";
 $idioma['ListadoProductos']="Listado de Productos";
 $idioma['RecargarInventario']="Recargar Inventario";
 $idioma['ListadoInventario']="Listado de Inventario";
+$idioma['EntregaTrabajos']="Entrega de Trabajos";
 
 
 
@@ -176,4 +177,5 @@ $idioma['Producto']="Producto";
 $idioma['Aumentar']="Aumentar";
 $idioma['EnExistencia']="En Existencia";
 
+$idioma['FechaPedido']="FechaPedido";
 ?>
