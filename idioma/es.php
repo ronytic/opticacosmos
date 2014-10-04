@@ -20,6 +20,7 @@ $idioma['Paciente']="Paciente";
 $idioma['Medico']="Médico";
 $idioma['Productos']="Productos";
 $idioma['Inventario']="Inventario";
+$idioma['Usuarios']="Usuarios";
 //Submenu
 $idioma['RegistrarNuevoPaciente']="Registrar Nuevo Paciente";
 $idioma['ListadoPacientes']="Listado de Pacientes";
@@ -35,7 +36,8 @@ $idioma['RecargarInventario']="Recargar Inventario";
 $idioma['ListadoInventario']="Listado de Inventario";
 $idioma['EntregaTrabajos']="Entrega de Trabajos";
 $idioma['ReporteIngreso']="Reporte del Día";
-
+$idioma['NuevoUsuario']="Nuevo Usuario";
+$idioma['ListarUsuarios']="Listar Usuarios";
 
 
 
@@ -69,7 +71,12 @@ $idioma['NBusquedaInventario']="Búsqueda de Inventario";
 $idioma['NVerBoletaOrdenTrabajo']="Ver Boleta de Orden de Trabajo";
 $idioma['NEntregaTrabajos']="Entrega de Trabajos";
 $idioma['NReporteIngreso']="Reporte de Ingresos";
+$idioma['NRegistroNuevoUsuario']="Registro de Nuevo Usuario";
+$idioma['NModificarDatosUsuario']="Modificar Datos de Usuario";
+
 //General
+$idioma['Pagina']="Página";
+$idioma['De']="de";
 $idioma['Menu']="Menú";
 $idioma['Inicio']="Inicio";
 $idioma['Nuevo']="Nuevo";
@@ -144,6 +151,7 @@ $idioma['ArmLejos']="Arm. Lejos";
 $idioma['ArmCerca']="Arm. Cerca";
 $idioma['Vitrina']="Vitrina";
 $idioma['ImprimirBoleta']="Imprimir Boleta";
+
 //Validaciones
 $idioma['SoloNumeros']="Solo Números";
 
@@ -186,4 +194,11 @@ $idioma['EntregasTrabajo']="Registro de las Entregas de los Trabajo";
 $idioma['DetallesBoleta']="Detalles del Valor de la Boleta";
 $idioma['DatosEntregaTrabajo']="Datos Finales para la Entrega del Trabajo";
 $idioma['BoletaNoEncontrada']="Boleta No Encontrada";
+$idioma['FechaInicio']="Fecha Inicio";
+$idioma['FechaFin']="Fecha Fin";
+$idioma['TipoReporte']="Tipo de Reporte";
+$idioma['Contrasena']="Contraseña";
+$idioma['NivelUsuario']="Nivel de Usuario";
+
+$idioma['DatosUsuario']="Datos de Usuario";
 ?>
