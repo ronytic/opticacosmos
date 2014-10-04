@@ -88,7 +88,7 @@ $(document).on("ready",function(){
                     </div>  
                     <div class="col-sm-2">
                     	<label ><?php echo $idioma['Area']?></label><br>
-                    	<?php campo("Area","select",$areas,"",0)?>
+                    	<?php campo("Area","select",$areas,"",0,0,"","","Optica")?>
                     </div>
                     <div class="col-sm-4"><br>	
                     	<?php campo("","submit",$idioma['Buscar'],"btn btn-success")?>

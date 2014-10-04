@@ -34,6 +34,7 @@ $idioma['ListadoProductos']="Listado de Productos";
 $idioma['RecargarInventario']="Recargar Inventario";
 $idioma['ListadoInventario']="Listado de Inventario";
 $idioma['EntregaTrabajos']="Entrega de Trabajos";
+$idioma['ReporteIngreso']="Reporte del Día";
 
 
 
@@ -66,6 +67,8 @@ $idioma['NVerDatosProducto']="Ver Datos del Producto";
 $idioma['NRecargaInventario']="Recarga de Inventario";
 $idioma['NBusquedaInventario']="Búsqueda de Inventario";
 $idioma['NVerBoletaOrdenTrabajo']="Ver Boleta de Orden de Trabajo";
+$idioma['NEntregaTrabajos']="Entrega de Trabajos";
+$idioma['NReporteIngreso']="Reporte de Ingresos";
 //General
 $idioma['Menu']="Menú";
 $idioma['Inicio']="Inicio";
@@ -178,4 +181,9 @@ $idioma['Aumentar']="Aumentar";
 $idioma['EnExistencia']="En Existencia";
 
 $idioma['FechaPedido']="FechaPedido";
+$idioma['Datos']="Datos";
+$idioma['EntregasTrabajo']="Registro de las Entregas de los Trabajo";
+$idioma['DetallesBoleta']="Detalles del Valor de la Boleta";
+$idioma['DatosEntregaTrabajo']="Datos Finales para la Entrega del Trabajo";
+$idioma['BoletaNoEncontrada']="Boleta No Encontrada";
 ?>
