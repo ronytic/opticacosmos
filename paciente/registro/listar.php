@@ -31,7 +31,7 @@ include_once($folder."cabecerahtml.php");
                     <div class="col-sm-3">
                         <label><?php echo $idioma['Ci'] ?></label>
                         <br>
-                        <?php campo("Ci","text","","col-xs-12")?>
+                        <?php campo("Ci","text","","col-xs-12",0,"",1)?>
                     </div>
                     <div class="col-sm-3">
                     	<br>
