@@ -201,4 +201,5 @@ $idioma['Contrasena']="Contraseña";
 $idioma['NivelUsuario']="Nivel de Usuario";
 
 $idioma['DatosUsuario']="Datos de Usuario";
+$idioma['PorcentajePago']="Porcentaje de Pago";
 ?>
