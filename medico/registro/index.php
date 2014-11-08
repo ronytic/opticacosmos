@@ -28,7 +28,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     </tr>
     <tr>
     	<td class="der"><?php echo $idioma['Ci'] ?></td>
-        <td><?php campo("Ci","text","","",1)?></td>
+        <td><?php campo("Ci","number","","",0)?></td>
     </tr>
     <tr>
     	<td class="der"><?php echo $idioma['Telefono'] ?></td>
@@ -39,13 +39,20 @@ configuracion={todayBtn: false, endDate: "'0d'"};
         <td><?php campo("Celular","text","","",1)?></td>
     </tr>
     <tr>
-    	<td class="der"><?php echo $idioma['FechaNacimiento'] ?></td>
-        <td><?php campo("FechaNac","text","","fecha")?></td>
+    	<td class="der"><?php echo $idioma['Direccion'] ?></td>
+        <td><?php campo("Direccion","text","","",0,"",0,array("size"=>"25"))?></td>
     </tr>
+
     <tr>
     	<td class="der"><?php echo $idioma['Especialidad'] ?></td>
         <td><?php campo("CodEspecialidad","select",$esp,"",1)?></td>
     </tr>
+    <?php if(in_array($_SESSION['Nivel'],array(1,2,3,4))){?>
+    <tr>
+    	<td class="der"><?php echo $idioma['PorcentajePago'] ?></td>
+        <td><?php campo("Porcentaje","number","0","der",0,"",0,array("min"=>"0"))?>%</td>
+    </tr>
+    <?php }?>
     <tr>
     	<td class="der"><?php echo $idioma['Observaciones'] ?></td>
         <td><?php campo("Observaciones","textarea")?></td>

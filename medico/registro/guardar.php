@@ -9,10 +9,13 @@ $Valores=array("Paterno"=>"'$Paterno'",
 				"Ci"=>"'$Ci'",
 				"Telefono"=>"'$Telefono'",
 				"Celular"=>"'$Celular'",
-				"FechaNac"=>"'".fecha2Str($FechaNac,0)."'",
+				"Direccion"=>"'$Direccion'",
 				"CodEspecialidad"=>"'$CodEspecialidad'",
 				"Observaciones"=>"'$Observaciones'",
 );
+if(in_array($_SESSION['Nivel'],array(1,2,3,4))){
+	$Valores["Porcentaje"]="'$Porcentaje'";
+}
 $medico->insertarRegistro($Valores);
 
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
