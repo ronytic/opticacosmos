@@ -92,6 +92,7 @@ $Gestion=$config->mostrarConfig("Gestion",1);
 
 		<link href="<?php echo $folder;?>css/core/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="<?php echo $folder;?>css/core/font-awesome.min.css" />
+        <link rel="stylesheet" href="<?php echo $folder;?>css/core/chosen.css" />
 
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="<?php echo $folder;?>css/core/font-awesome-ie7.min.css" />
