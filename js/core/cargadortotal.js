@@ -61,6 +61,7 @@ function inicio(){
 	/*Fin Gestionar Tabla*/
 	
 	//Al INICIO
+	$("select").attr("data-placeholder","Seleccione...").chosen({width: "100%",no_results_text: "Datos No encontrados"});
 	$("table").stickyTableHeaders();
 	$("table.inicio").stickyTableHeaders('destroy');
 	$('ul.r-listado li a').tooltip();
@@ -103,6 +104,7 @@ function inicio(){
     }).ajaxStop(function() {
 	
     }).ajaxSuccess(function(event, XMLHttpRequest, ajaxOptions) {
+		$("select").attr("data-placeholder","Seleccione...").trigger("chosen:updated");
 		$("#contenedorcargando").fadeOut('slow');
 		/*Redirigir por falta de Login*/
 		if(RedirigirLogin){
