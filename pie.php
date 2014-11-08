@@ -102,6 +102,7 @@
 <script src="<?php echo $folder;?>js/core/plugins/date-time/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $folder;?>js/core/plugins/date-time/moment.min.js"></script>
 <script src="<?php echo $folder;?>js/core/plugins/date-time/daterangepicker.min.js"></script>
+<script src="<?php echo $folder;?>js/core/plugins/jquery.chosen.min.js"></script>
 
 <script src="<?php echo $folder;?>js/core/cargadortotal.js?<?php echo rand()?>" language="javascript"></script>
 
