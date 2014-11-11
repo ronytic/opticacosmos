@@ -81,6 +81,7 @@
 	var mensajeg=Array();
 	mensajeg['EliminarRegistro']="<?php echo $idioma['EliminarRegistro']?>";
 	var DispositivoMovil=0;
+	var FechaHoy="<?php echo fecha2Str();?>"
 
 </script>
 <script type="text/javascript">
