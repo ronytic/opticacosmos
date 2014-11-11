@@ -61,7 +61,8 @@ function inicio(){
 	/*Fin Gestionar Tabla*/
 	
 	//Al INICIO
-	$("select").attr("data-placeholder","Seleccione...").chosen({width: "100%",no_results_text: "Datos No encontrados"});
+	$("input[required][type=text],input[required][type=number],select[required],input[required][type=date],input[required][type=time]").after('<i class="ace-icon red icon-warning-sign"></i>');
+	$("select").attr("data-placeholder","Seleccione...").chosen({keyboard:true,width: "100%",no_results_text: "Datos No encontrados"});
 	$("table").stickyTableHeaders();
 	$("table.inicio").stickyTableHeaders('destroy');
 	$('ul.r-listado li a').tooltip();
@@ -74,12 +75,17 @@ function inicio(){
 	//FIN de INICIO
 	
 	if (typeof configuracion != "undefined"){
+		
 		var config = $.extend({}, {autoclose:true,format: "dd-mm-yyyy",todayBtn: "linked"}, configuracion);
+		
 	}else{
+		//alert("asd");
 		var config={autoclose:true,format: "dd-mm-yyyy",todayBtn: "linked"};
 	}
 	//$('.hora').timepicker('setTime', '12:48 AM');
-	$('.fecha').datepicker(config).mask('99-99-9999');	
+	$('.fecha').datepicker($.extend({},config)).mask('99-99-9999');	
+	$('.fechali').datepicker($.extend({startDate:FechaHoy},config)).mask('99-99-9999');	
+	$('.fechalf').datepicker($.extend({endDate:FechaHoy},config)).mask('99-99-9999');	
 	$('.FechaRangoIdependiente').datepicker({
     	todayBtn: "linked"
 	}).find("input").mask('99-99-9999');
@@ -112,6 +118,10 @@ function inicio(){
 		}
 		/*Fin de Redirigir*/
         //$("input[type=date]").datepicker({changeMonth: true,changeYear: true,yearRange:"c-100:c+10"});
+		//alert("qwe");
+		$('.fecha').datepicker($.extend({},config)).mask('99-99-9999');	
+		$('.fechali').datepicker($.extend({startDate:FechaHoy},config)).mask('99-99-9999');	
+		$('.fechalf').datepicker($.extend({endDate:FechaHoy},config)).mask('99-99-9999');	
 		$('.fecha').datepicker({autoclose:true})
 		
 
