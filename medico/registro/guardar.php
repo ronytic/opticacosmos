@@ -17,7 +17,11 @@ if(in_array($_SESSION['Nivel'],array(1,2,3,4))){
 	$Valores["Porcentaje"]="'$Porcentaje'";
 }
 $medico->insertarRegistro($Valores);
-
+if($modal==1){
+echo $medico->ultimo();
+//echo "5";
+exit();
+}
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
 $folder="../../";
 include_once("../../resultado.php");
