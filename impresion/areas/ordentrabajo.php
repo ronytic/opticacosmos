@@ -14,10 +14,26 @@ $paciente=new paciente;
 $pac=$paciente->mostrarPaciente($opt['CodPaciente']);
 $pac=array_shift($pac);
 
+include_once("../../class/producto.php");
+$producto=new producto;
+
+$prod1=$producto->mostrarTodoRegistro("CodProducto=".$opt['CodProducto1']);
+$prod1=array_shift($prod1);
+
+$prod2=$producto->mostrarTodoRegistro("CodProducto=".$opt['CodProducto2']);
+$prod2=array_shift($prod2);
+
+$prod3=$producto->mostrarTodoRegistro("CodProducto=".$opt['CodProducto3']);
+$prod3=array_shift($prod3);
+
+$prod4=$producto->mostrarTodoRegistro("CodProducto=".$opt['CodProducto4']);
+$prod4=array_shift($prod4);
+
 include_once("../../class/usuario.php");
 $usuario=new usuario;
 $datosUsuario=$usuario->mostrarDatos($opt['CodUsuario']);
 $datosUsuario=array_shift($datosUsuario);
+
 class PDF extends PPDF{
 	function CuadroCuerpo($txtAncho,$txt,$relleno=0,$align="L",$borde=1,$tam=9,$tipo=""){
 		$this->Fuente($tipo,$tam);
@@ -34,7 +50,7 @@ $pdf->Fuente("");
 $pdf->AddPage();
 $x=0;
 $pdf->SetXY($x+110,43);
-$pdf->CuadroCuerpo(30,$opt['FechaRegistro'],0,"C");
+$pdf->CuadroCuerpo(30,fecha2Str($opt['FechaRegistro']),0,"C");
 
 $pdf->SetXY($x+25,51);
 $pdf->CuadroCuerpo(110,$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],0,"C",1,11);
@@ -113,19 +129,19 @@ $pdf->CuadroCuerpo(19,$opt['COIDPCerca'],0,"C",1,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,104);
-$pdf->CuadroCuerpo(100,($opt['Detalle1']),0,"L",1,11);
+$pdf->CuadroCuerpo(100,$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",1,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,112);
-$pdf->CuadroCuerpo(100,($opt['Detalle2']),0,"L",1,11);
+$pdf->CuadroCuerpo(100,$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",1,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,120);
-$pdf->CuadroCuerpo(85,($opt['Detalle3']),0,"L",1,11);
+$pdf->CuadroCuerpo(85,$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",1,11);
 $pdf->SetXY($x+122,120);
 $pdf->CuadroCuerpo(12,($opt['Vitrina3']),0,"R",1,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,129);
-$pdf->CuadroCuerpo(85,($opt['Detalle4']),0,"L",1,11);
+$pdf->CuadroCuerpo(85,$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",1,11);
 
 $pdf->SetXY($x+122,129);
 $pdf->CuadroCuerpo(12,($opt['Vitrina4']),0,"R",1,11);
@@ -166,13 +182,14 @@ $pdf->CuadroCuerpo(30,($pac['Celular']),0,"C",1,11);
 
 $x=148;
 $pdf->SetXY($x+110,43);
-$pdf->CuadroCuerpo(30,$opt['FechaRegistro'],0,"C");
+$pdf->CuadroCuerpo(30,fecha2Str($opt['FechaRegistro']),0,"C");
 
 $pdf->SetXY($x+25,51);
 $pdf->CuadroCuerpo(110,$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],0,"C",1,11);
 
 $pdf->SetXY($x+25,60);
 $pdf->CuadroCuerpo(110,$datosUsuario['Paterno']." ".$datosUsuario['Materno']." ".$datosUsuario['Nombres'],0,"C",1,11);
+
 //Lejos OD
 $pdf->SetXY($x+24,79);
 $pdf->CuadroCuerpo(19,$opt['LODEsferico'],0,"C",1,11);
@@ -243,21 +260,21 @@ $pdf->CuadroCuerpo(19,$opt['COIDPLejos'],0,"C",1,11);
 $pdf->SetXY($x+119,97);
 $pdf->CuadroCuerpo(19,$opt['COIDPCerca'],0,"C",1,11);
 
-//Armazon Lejos
+//Cristales Lejos
 $pdf->SetXY($x+35,104);
-$pdf->CuadroCuerpo(100,($opt['Detalle1']),0,"L",1,11);
-//Armazon Cerca
+$pdf->CuadroCuerpo(100,$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",1,11);
+//Cristales Cerca
 $pdf->SetXY($x+35,112);
-$pdf->CuadroCuerpo(100,($opt['Detalle2']),0,"L",1,11);
+$pdf->CuadroCuerpo(100,$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",1,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,120);
-$pdf->CuadroCuerpo(85,($opt['Detalle3']),0,"L",1,11);
+$pdf->CuadroCuerpo(85,$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",1,11);
 $pdf->SetXY($x+122,120);
 $pdf->CuadroCuerpo(12,($opt['Vitrina3']),0,"R",1,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,129);
-$pdf->CuadroCuerpo(85,($opt['Detalle4']),0,"L",1,11);
+$pdf->CuadroCuerpo(85,$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",1,11);
 
 $pdf->SetXY($x+122,129);
 $pdf->CuadroCuerpo(12,($opt['Vitrina4']),0,"R",1,11);
