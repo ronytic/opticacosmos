@@ -238,7 +238,7 @@ function fecha2Str($fecha="",$t=1){
 	return $fecha;}
 	if(!empty($fecha) && $fecha!="0000-00-00"){
 		if($t==1){
-			return date("d-m-Y",strtotime($fecha));	
+			return date("d-m-Y",strtotime($fecha)."+5day");	
 		}else{
 			return date("Y-m-d",strtotime($fecha));	
 		}
