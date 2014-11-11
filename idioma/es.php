@@ -73,7 +73,7 @@ $idioma['NEntregaTrabajos']="Entrega de Trabajos";
 $idioma['NReporteIngreso']="Reporte de Ingresos";
 $idioma['NRegistroNuevoUsuario']="Registro de Nuevo Usuario";
 $idioma['NModificarDatosUsuario']="Modificar Datos de Usuario";
-
+$idioma['NConfiguracionSistema']="Configuración del Sistema";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
@@ -141,7 +141,7 @@ $idioma['Descripcion']="Descripción";
 $idioma['FechaRegistro']="Fecha de Registro";
 $idioma['Si']="Si";
 $idioma['No']="No";
-
+$idioma['Cerrar']="Cerrar";
 //Paciente
 $idioma['Pago']="Pago";
 $idioma['Cobrar']="Cobrar";
@@ -202,4 +202,8 @@ $idioma['NivelUsuario']="Nivel de Usuario";
 
 $idioma['DatosUsuario']="Datos de Usuario";
 $idioma['PorcentajePago']="Porcentaje de Pago";
+$idioma['SaldoCobrar']="Saldo a Cobrar";
+$idioma['General']="General";
+$idioma['TasaCambio']="Tasa de Cambio";
+$idioma['Lema']="Lema";
 ?>
