@@ -9,6 +9,8 @@ configuracion={todayBtn: false, endDate: "'0d'"};
 </script>
 <?php include_once($folder."cabecera.php");?>
 <form action="guardar.php" method="post">
+<?php campo("RedirigirListado","hidden",$_GET['redirigirlistado'],"",1)?>
+
 <table class="table table-hover">
 	<tr>
     	<td class="der"><?php echo $idioma['ApellidoPaterno'] ?></td>

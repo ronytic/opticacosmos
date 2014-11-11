@@ -14,7 +14,10 @@ $Valores=array("Paterno"=>"'$Paterno'",
 				"Observaciones"=>"'$Observaciones'",
 );
 $paciente->insertarRegistro($Valores);
-
+if($RedirigirListado==1){
+	$id=$paciente->ultimo();
+	header("Location:citasmedicas.php?Cod=".$id);
+}
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
 $folder="../../";
 include_once("../../resultado.php");

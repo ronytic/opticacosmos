@@ -48,6 +48,7 @@ include_once($folder."cabecerahtml.php");
         	<div class="widget-main">
             	<div class="main" id="respuestaformulario">
                 </div>
+                <a href="index.php?redirigirlistado=1" class="btn btn-xs btn-info"><?php echo $idioma['RegistrarNuevoPaciente']?></a>
             </div>
         </div>
     </div>
