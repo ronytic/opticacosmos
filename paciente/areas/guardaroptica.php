@@ -65,8 +65,9 @@ $Valores=array("CodPaciente"=>"'$CodPaciente'",
 				"ACuentaBs"=>"'$ACuentaBs'",
 				"ACuentaSus"=>"'$ACuentaSus'",
 				"SaldoBs"=>"'$SaldoBs'",
-				"DescuentoBs"=>"'$DescuentoBs'",
-				"CobrarBs"=>"'$CobrarBs'",
+				"TC"=>"'$TC'"
+				//"DescuentoBs"=>"'$DescuentoBs'",
+				//"CobrarBs"=>"'$CobrarBs'",
 				
 );
 $optica->insertarRegistro($Valores);
