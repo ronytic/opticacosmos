@@ -19,7 +19,13 @@ if(!isset($config)){
 $TC=$config->mostrarConfig("TC",1);
 include_once("../../class/usuario.php");
 $usuario=new usuario;
-$idusuario=$_SESSION['idusuario'];
+if($_GET['CodUsuarioAsignado']==""){
+	$idusuario=$_SESSION['idusuario'];
+}else{
+	$idusuario=$_GET['CodUsuarioAsignado'];
+}
+//print_r($_GET);
+//echo $idusuario;
 $datosUsuario=$usuario->mostrarDatos($idusuario);
 $datosUsuario=array_shift($datosUsuario);
 $Apodo=$datosUsuario['Nick'];
@@ -50,9 +56,7 @@ class PDF extends PPDF{
 		$this->TituloCabecera(15,"Monto Bs",8);
 		$this->TituloCabecera(15,"ACta Bs",8);
 		$this->TituloCabecera(15,"ACta \$us",8);
-		$this->TituloCabecera(15,"Saldo",8);
-		$this->TituloCabecera(15,"Descuento",8);
-		$this->TituloCabecera(15,"Cobrar",8);
+		$this->TituloCabecera(20,"SaldoCobrar",8);
 		$this->TituloCabecera(35,"Observación",8);
 	}
 }
@@ -62,7 +66,7 @@ $pdf->AddPage();
 
 
 
-$pdf->SetWidths(array(15,20,35,25,35,25,35,15,15,15,15,15,15,35));
+$pdf->SetWidths(array(15,20,35,25,35,25,35,15,15,15,20,35));
 $pdf->Fuente("",9);
 $pdf->SetAligns(array("R","R","","","","","","R","R","R","R","R","R"));
 $TTotalBs=0;
@@ -85,15 +89,15 @@ foreach($opt as $o){
 	$prodtipo=array_shift($prodtipo);
 	
 	$TotalBs=number_format($o['TotalBs'],2,".","");
-	$AcuentaBs=number_format($o['ACuentaBs'],2,".","");
-	$AcuentaSus=number_format($o['ACuentaSus'],2,".","");
+	$ACuentaBs=number_format($o['ACuentaBs'],2,".","");
+	$ACuentaSus=number_format($o['ACuentaSus'],2,".","");
 	$SaldoBs=number_format($o['SaldoBs'],2,".","");
 	$DescuentoBs=number_format($o['DescuentoBs'],2,".","");
 	$CobrarBs=number_format($o['CobrarBs'],2,".","");
 	
 	$TTotalBs+=$TotalBs;
-	$TACuentaBs+=$AcuentaBs;
-	$TAcuentaSus+=$AcuentaSus;
+	$TACuentaBs+=$ACuentaBs;
+	$TACuentaSus+=$ACuentaSus;
 	$TSaldoBs+=$SaldoBs;
 	$TDescuentoBs+=$DescuentoBs;
 	$TCobrarBs+=$CobrarBs;
@@ -106,28 +110,25 @@ foreach($opt as $o){
 			$prod3['Nombre']." - ".$o['Detalle3'],
 			$prod4['Nombre']." - ".$o['Detalle4'],
 			$TotalBs,
-			$AcuentaBs,
-			$AcuentaSus,
+			$ACuentaBs,
+			$ACuentaSus,
 			$SaldoBs,
-			$DescuentoBs,
-			$CobrarBs,
 			$o['Observaciones']
 	);
 	$pdf->Row($datos);	
 }
 	$TTotalBs=number_format($TTotalBs,2,".","");
-	$TAcuentaBs=number_format($TACuentaBs,2,".","");
-	$TAcuentaSus=number_format($TACuentaSus,2,".","");
+	$TACuentaBs=number_format($TACuentaBs,2,".","");
+	$TACuentaSus=number_format($TACuentaSus,2,".","");
 	$TSaldoBs=number_format($TSaldoBs,2,".","");
 	$TDescuentoBs=number_format($TDescuentoBs,2,".","");
 	$TCobrarBs=number_format($TCobrarBs,2,".","");
 	$pdf->Fuente("B",9);
 	$pdf->CuadroCuerpo(190,"Total",0,"R",0,9,"B");
 	$pdf->CuadroCuerpo(15,$TTotalBs,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(15,$TAcuentaBs,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(15,$TAcuentaSus,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(15,$TSaldoBs,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(15,$TDescuentoBs,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(15,$TCobrarBs,1,"R",1,9,"B");
+	$pdf->CuadroCuerpo(15,$TACuentaBs,1,"R",1,9,"B");
+	$pdf->CuadroCuerpo(15,$TACuentaSus,1,"R",1,9,"B");
+	$pdf->CuadroCuerpo(20,$TSaldoBs,1,"R",1,9,"B");
+
 $pdf->Output("Reporte.pdf","I");
 ?>
