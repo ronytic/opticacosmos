@@ -3,6 +3,7 @@ include_once("../../login/check.php");
 include_once("../../class/talonario.php");
 $talonario=new talonario;
 extract($_POST);
+print_r($_POST);
 $CodUsuarioAsignado=$CodUsuarioAsignado!=""?"CodUsuarioAsignado LIKE '$CodUsuarioAsignado'":"CodUsuarioAsignado LIKE '%'";
 
 $condicion="$CodUsuarioAsignado";
@@ -11,6 +12,7 @@ $titulo=array(
 				"Minimo"=>$idioma['Minimo'],
 				"Maximo"=>$idioma['Maximo'],
 				"Descripcion"=>$idioma['Descripcion'],
+				"FechaRegistro"=>$idioma['FechaRegistro'],
 );
 listadotabla($titulo,$tal,1,"","","eliminar.php");
 ?>
