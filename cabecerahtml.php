@@ -64,7 +64,10 @@ include_once("class/config.php");
 include_once("class/usuario.php");
 
 $config=new config;
-$usuario=new usuario;
+if(!isset($usuario)){
+	$usuario=new usuario;
+}
+
 $Titulo=$config->mostrarConfig("Titulo",1);
 $LogoInicio=$config->mostrarConfig("LogoInicio",1);
 $LogoIcono=$config->mostrarConfig("LogoIcono",1);
