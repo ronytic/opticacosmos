@@ -3,6 +3,13 @@ include_once("../../login/check.php");
 $folder="../../";
 $titulo="NReporteIngreso";
 $tiporeporte=array("Ventas"=>"Ventas","EntregaTrabajos"=>"Entrega de Trabajos");
+if(in_array($_SESSION['Nivel'],array(1,2,3,4))){
+	$tiporeporte['NoEntregados']="No Entregados";
+}
+include_once("../../class/usuario.php");
+$usuario=new usuario;
+$us2=todolista($usuario->mostrarUsuarios("Nivel!=1"),"CodUsuario","Paterno,Materno,Nombres"," ");
+
 include_once($folder."cabecerahtml.php");
 ?>
 <script language="javascript">
@@ -22,12 +29,17 @@ $(document).on("ready",function(){
 <form action="verarchivo.php" method="post" class="formulario">
 <table class="table table-hover table-bordered">
 	<tr>
+    	<?php if(in_array($_SESSION['Nivel'],array(1,2,3,4))){?>
+    	<th><?php echo $idioma['Usuario'] ?></th>
+        <?php }?>
     	<th><?php echo $idioma['Desde'] ?></th>
         <th><?php echo $idioma['Hasta'] ?></th>
         <th><?php echo $idioma['TipoReporte'] ?></th>
     </tr>
 	<tr>
-    	
+    	<?php if(in_array($_SESSION['Nivel'],array(1,2,3,4))){?>
+        <td><?php campo("CodUsuarioAsignado","select",$us2,"",1)?></td>
+        <?php }?>
         <td><?php campo("Desde","text",fecha2Str(),"fecha",1,"",1)?></td>
         <td><?php campo("Hasta","text",fecha2Str(),"fecha",1,"",1)?></td>
         <td><?php campo("TipoReporte","select",$tiporeporte,"",1,"",1)?></td>
