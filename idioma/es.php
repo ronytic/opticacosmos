@@ -38,7 +38,8 @@ $idioma['EntregaTrabajos']="Entrega de Trabajos";
 $idioma['ReporteIngreso']="Reporte del Día";
 $idioma['NuevoUsuario']="Nuevo Usuario";
 $idioma['ListarUsuarios']="Listar Usuarios";
-
+$idioma['RegistrarTalonarios']="Registrar Talonarios";
+$idioma['ListarTalonarios']="Listar Talonarios";
 
 
 
@@ -74,6 +75,9 @@ $idioma['NReporteIngreso']="Reporte de Ingresos";
 $idioma['NRegistroNuevoUsuario']="Registro de Nuevo Usuario";
 $idioma['NModificarDatosUsuario']="Modificar Datos de Usuario";
 $idioma['NConfiguracionSistema']="Configuración del Sistema";
+$idioma['NRegistroNuevoTalonario']="Registro de Nuevo Talonario";
+$idioma['NRegistroNuevoTalonario']="Registro de Nuevo Talonario";
+$idioma['NBusquedaTalonarios']="Búsqueda de Talonarios";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
@@ -206,4 +210,6 @@ $idioma['SaldoCobrar']="Saldo a Cobrar";
 $idioma['General']="General";
 $idioma['TasaCambio']="Tasa de Cambio";
 $idioma['Lema']="Lema";
+$idioma['Maximo']="Máximo";
+$idioma['Minimo']="Mínimo";
 ?>
