@@ -61,7 +61,7 @@ function inicio(){
 	/*Fin Gestionar Tabla*/
 	
 	//Al INICIO
-	$("input[required][type=text],input[required][type=number],select[required],input[required][type=date],input[required][type=time]").after('<i class="ace-icon red icon-warning-sign"></i>');
+	$("textarea[required],input[required][type=text],input[required][type=number],select[required],input[required][type=date],input[required][type=time]").after('<i class="ace-icon red icon-warning-sign"></i>');
 	$("select").attr("data-placeholder","Seleccione...").chosen({keyboard:true,width: "100%",no_results_text: "Datos No encontrados"});
 	$("table").stickyTableHeaders();
 	$("table.inicio").stickyTableHeaders('destroy');
