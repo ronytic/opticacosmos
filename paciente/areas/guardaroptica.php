@@ -6,6 +6,14 @@ extract($_POST);
 /*echo "<pre>";
 print_r($_POST);
 echo "</pre>";*/
+$opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta'");
+if(count($opt)>0)
+{
+	
+}else{
+//$opt=array_shift($opt);
+print_r($opt);
+exit();
 $Valores=array("CodPaciente"=>"'$CodPaciente'",
 				
 				//"Fecha"=>"'".fecha2Str($Fecha,0)."'",
@@ -73,6 +81,8 @@ $Valores=array("CodPaciente"=>"'$CodPaciente'",
 $optica->insertarRegistro($Valores);
 $id=$optica->ultimo();
 $Botones=array("boleta.php?CodOptica=$id"=>$idioma["ImprimirBoleta"]);
+}
+
 $ArchivoNuevo="../registro/listar.php";
 $Listar=0;
 $Nuevo=0;
