@@ -64,7 +64,7 @@ class PDF extends PPDF{
 		$this->TituloCabecera(35,"Observación",8);
 	}
 }
-$pdf=new PDF("L","mm","legal");
+$pdf=new PDF("L","mm","letter");
 $pdf->AddPage();
 
 
