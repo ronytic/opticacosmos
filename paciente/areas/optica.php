@@ -12,7 +12,12 @@ $esp=todolista($especialidad->mostrarTodoRegistro("",1,"Nombre"),"CodEspecialida
 
 include_once("../../class/productotipo.php");
 $productotipo=new productotipo;
-$protipo=todolista($productotipo->mostrarTodoRegistro("",1,"Nombre"),"CodProductoTipo","Nombre","",1);
+$protipoc=todolista($productotipo->mostrarTodoRegistro("CodProductoTipo=1",1,"Nombre"),"CodProductoTipo","Nombre","",1);
+
+
+$protipoa=todolista($productotipo->mostrarTodoRegistro("CodProductoTipo=2",1,"Nombre"),"CodProductoTipo","Nombre","",1);
+
+//print_r($protipoa);
 
 include_once("../../class/config.php");
 $config=new config;
@@ -24,19 +29,35 @@ $NoRevisar=1;
 ?>
 <?php include_once($folder."cabecerahtml.php");?>
 <script language="javascript">
-var TC=<?php echo $TC?>;
+var TC=parseFloat(<?php echo $TC?>);
+var Habilitado=0;
 $(document).on("ready",function(){
 	$("#TotalBs,#ACuentaBs,#ACuentaSus,#DescuentoBs").change(function(e) {
+		if($("#TotalBs").val()==""){
+			$("#TotalBs").val('0')	
+		}
+		if($("#ACuentaBs").val()==""){
+			$("#ACuentaBs").val('0')	
+		}
+		if($("#ACuentaSus").val()==""){
+			$("#ACuentaSus").val('0')	
+		}
        var TotalBs=parseFloat($("#TotalBs").val()); 
 	   var ACuentaBs=parseFloat($("#ACuentaBs").val()); 
 	   var ACuentaSus=parseFloat($("#ACuentaSus").val()); 
-	   var DescuentoBs=parseFloat($("#DescuentoBs").val()); 
+	   
 	   //alert(TotalBs);
-	   var SaldoBs=TotalBs-(ACuentaBs+(ACuentaSus*TC));
-	   SaldosBs=SaldoBs.toFixed(2);
-	   var CobrarBs=SaldoBs-DescuentoBs;
-	   $("#SaldoBs").val(SaldoBs);
-	   $("#CobrarBs").val(CobrarBs);
+	   //alert(ACuentaSus*TC);
+	   TotalAcuentaSus=parseFloat(ACuentaSus*TC);
+	   var SaldoBs=parseFloat(TotalBs-(ACuentaBs+TotalAcuentaSus));
+	   /*alert(TotalBs);
+	   alert(ACuentaBs);
+	   alert(TotalAcuentaSus);
+	   alert(SaldoBs)*/
+	   SaldosCobrarBs=SaldoBs.toFixed(2);
+	   $("#TotalAcuentaSus").val(TotalAcuentaSus);
+	   $("#SaldoBs").val(SaldosCobrarBs);
+	   
     });
 	$("#CodEspecialidad").change(function(e) {
         obtenerMedico();
@@ -58,11 +79,67 @@ $(document).on("ready",function(){
 	obtenerProducto2();
 	obtenerProducto3();
 	obtenerProducto4();
+	
+	$("a[rel=popupmodal]").click(function(e) {
+		
+        e.preventDefault();
+		
+		$("#registromedico").modal();
+		$("#Paterno").focus();
+    });
+	$("#GuardarMedico").click(function(e) {
+		e.preventDefault();
+		var tablaformulario= $("#tablaformulario").serialize();
+		//alert(tablaformulario);
+		$.ajax({
+		  url: '../../medico/registro/guardar.php',
+		  type: 'POST',
+		  async: true,
+		  data: tablaformulario+"&modal=1",
+		  success: procesaRespuesta,
+		});
+        
+    });
+	$("#formularioguardar").on("submit",function(e){
+		if(Habilitado==1){
+			if(!confirm("¿Esta Seguro de Guardar esta Boleta?")){
+				e.preventDefault();	
+			}
+		}else{
+			e.preventDefault();		
+		}
+	});
+	$("#NumeroBoleta").change(function(e){
+		e.preventDefault();
+		var NumeroBoleta=$("#NumeroBoleta").val();
+		$.post("verificarboleta.php",{'NumeroBoleta':NumeroBoleta},procesaNumeroBoleta);
+	});
 });
-function obtenerMedico(){
+function procesaNumeroBoleta(data){
+	if(data!=""){
+		$("#mensajeboleta").html("<ul>"+data+"</ul>");
+		$("#NumeroBoleta").focus();	
+		Habilitado=0;
+	}else{
+		$("#mensajeboleta").html("");
+		Habilitado=1;
+	}
+	
+}
+function procesaRespuesta(data){
+	obtenerMedico(data)
+	$("#tablaformulario").reset();
+	$("#registromedico").modal('hide');
+}
+function obtenerMedico(datos){
+	
 	var CodEspecialidad=$("#CodEspecialidad").val();
 	$.post("obtenermedico.php",{'CodEspecialidad':CodEspecialidad},function(data){
 		$("#CodMedico").html(data)	
+		if(typeof(datos) != "undefined"){
+			//alert(datos);
+			$("#CodMedico").val(datos)
+		}
 	});
 }
 function obtenerProducto1(){
@@ -89,6 +166,7 @@ function obtenerProducto4(){
 		$("#CodProducto4").html(data)	
 	});
 }
+
 </script>
 <?php include_once($folder."cabecera.php");?>
 <div class="col-sm-12">
@@ -96,7 +174,7 @@ function obtenerProducto4(){
     	<div class="widget-header widget-header-flat"><h4><?php echo $idioma['DatosPaciente'] ?></h4></div>
         <div class="widget-body">
         	<div class="widget-main">
-            	<table class="table table-bordered">
+            	<table class="table table-bordered ">
                 	<thead>
                     	<tr>
                         	<th><?php echo $idioma['ApellidoPaterno'] ?></th>
@@ -127,13 +205,14 @@ function obtenerProducto4(){
         
         <div class="widget-header widget-header-flat"><h4><?php echo $idioma['OrdenTrabajo']?></h4></div>
         <div class="widget-body widget-main">
-        	<form action="guardaroptica.php" method="post">
+        	<form action="guardaroptica.php" method="post" id="formularioguardar">
             <?php campo("CodPaciente","hidden",$CodPaciente,"",1)?>
+            <?php campo("TC","hidden",$TC,"",1)?>
             <table class="table table-bordered table-striped">
             	<tr>
                 	<td><?php echo $idioma['FechaPedido']?><br><?php campo("Fecha","text",fecha2Str(),"fecha",1,"",0,array("readonly"=>"readonly","disabled"=>"disabled"))?></td>
-                    <td><?php echo $idioma['FechaEntrega']?><br><?php campo("FechaEntrega","text",fecha2Str(),"fecha",1)?></td>
-                    <td><?php echo $idioma['HoraEntrega']?><br><?php campo("HoraEntrega","time","","hora",1)?></td>
+                    <td><?php echo $idioma['FechaEntrega']?><br><?php campo("FechaEntrega","text",fecha2Str(),"fechali",1,"",0)?></td>
+                    <td><?php echo $idioma['HoraEntrega']?><br><?php campo("HoraEntrega","time",date("H:i"),"hora",1)?></td>
                     <td colspan="2"><?php echo $idioma['Recepcion']?><br><?php campo("Recepcion","text",$NombresSis." ".$ApellidoPSis." ".$ApellidoMSis,"col-sm-12",1,"",0,array("readonly"=>"readonly"))?></td>
                     
                 </tr>
@@ -146,8 +225,8 @@ function obtenerProducto4(){
                     	
                     </td>
                     <td>
-                    	<?php echo $idioma['Medico']?><br><?php campo("CodMedico","select","","col-sm-12",1)?>
-                    	
+                    	<?php echo $idioma['Medico']?><br><?php campo("CodMedico","select",array(),"col-sm-12",1,"",0,array("data-placeholder"=>"Seleccione..."))?>
+                    	<a class="btn btn-xs btn-danger" href="#" rel="popupmodal"><?php echo $idioma['RegistrarNuevoMedico']?></a>
                     </td>
                 </tr>
             </table>
@@ -156,7 +235,10 @@ function obtenerProducto4(){
             	<thead>
                 </thead>
                 <tr>
-                	<td colspan="2"><?php echo $idioma['NumeroBoleta']?><br><?php campo("NumeroBoleta","text","","col-sm-12",1,0,1,array("pattern"=>"[0-9]*","title"=>$idioma['SoloNumeros']))?></td>
+                	<td colspan="3"><?php echo $idioma['NumeroBoleta']?>
+                    <br><?php campo("NumeroBoleta","number","","col-sm-12 der",1,0,1,array("pattern"=>"[0-9]*","title"=>$idioma['SoloNumeros']))?>
+                    <div class="alert alert-danger" id="mensajeboleta"></div>
+                    </td>
                 </tr>
             	
                 <tr>
@@ -164,103 +246,103 @@ function obtenerProducto4(){
                 </tr>
                 <tr>
                 	<td><strong>O.D.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("LODEsferico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Cilíndrico'?><br><?php campo("LODCilindrico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("LODEje","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Prisma'?><br><?php campo("LODPrisma","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Base'?><br><?php campo("LODBase","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'ADD'?><br><?php campo("LODAdd","text","","col-sm-12",1)?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("LODEsferico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Cilíndrico'?><br><?php campo("LODCilindrico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("LODEje","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Prisma'?><br><?php campo("LODPrisma","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Base'?><br><?php campo("LODBase","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'ADD'?><br><?php campo("LODAdd","text","","col-sm-12",0)?></td>
                 </tr>
                 <tr>
                 	<td><strong>O.I.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("LOIEsferico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Cilíndrico'?><br><?php campo("LOICilindrico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("LOIEje","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Prisma'?><br><?php campo("LOIPrisma","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Base'?><br><?php campo("LOIBase","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'ADD'?><br><?php campo("LOIAdd","text","","col-sm-12",1)?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("LOIEsferico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Cilíndrico'?><br><?php campo("LOICilindrico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("LOIEje","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Prisma'?><br><?php campo("LOIPrisma","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Base'?><br><?php campo("LOIBase","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'ADD'?><br><?php campo("LOIAdd","text","","col-sm-12",0)?></td>
                 </tr>
                 <tr>
                 	<td colspan="7"><strong><?php echo $idioma['Cerca'] ?></strong></td>
                 </tr>
                 <tr>
                 	<td><strong>O.D.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("CODEsferico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Cilíndrico'?><br><?php campo("CODCilindrico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("CODEje","text","","col-sm-12",1)?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("CODEsferico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Cilíndrico'?><br><?php campo("CODCilindrico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("CODEje","text","","col-sm-12",0)?></td>
                     
                 </tr>
                 <tr>
                 	<td><strong>O.I.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("COIEsferico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Cilíndrico.'?><br><?php campo("COICilindrico","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("COIEje","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'Altura'?><br><?php campo("COIAltura","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'DP Lejos'?><br><?php campo("COIDPLejos","text","","col-sm-12",1)?></td>
-                    <td><?php echo 'DP Cerca'?><br><?php campo("COIDPCerca","text","","col-sm-12",1)?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("COIEsferico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Cilíndrico.'?><br><?php campo("COICilindrico","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("COIEje","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'Altura'?><br><?php campo("COIAltura","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'DP Lejos'?><br><?php campo("COIDPLejos","text","","col-sm-12",0)?></td>
+                    <td><?php echo 'DP Cerca'?><br><?php campo("COIDPCerca","text","","col-sm-12",0)?></td>
                 </tr>
                 <tr>
                 	<td colspan="2">
 						<strong><?php echo $idioma['Cristales']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo1","select",$protipo,"col-sm-12",1,"",0,array("rel"=>1))?>
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo1","select",$protipoc,"col-sm-12",1,"",0,array("rel"=>1))?>
                     </td>
                     <td colspan="2"><br>
                         <?php echo $idioma['Producto']?><br><?php campo("CodProducto1","select","","col-sm-12",1,"",0,array("rel"=>1))?>
                     </td>
                     <td colspan="3"><br>
-                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle1","text","","col-sm-12",1)?>
+                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle1","text","","col-sm-12",0)?>
                     	
                     </td>
                 </tr>
                 <tr>
                 	<td colspan="2">
 						<strong><?php echo $idioma['Cristales']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo2","select",$protipo,"col-sm-12",1,"",0,array("rel"=>2))?>
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo2","select",$protipoc,"col-sm-12",1,"",0,array("rel"=>2))?>
                     </td>
                     <td colspan="2"><br>
                         <?php echo $idioma['Producto']?><br><?php campo("CodProducto2","select","","col-sm-12",1,"",0,array("rel"=>2))?>
                     </td>
                     <td colspan="3"><br>
-                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle2","text","","col-sm-12",1)?>
+                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle2","text","","col-sm-12",0)?>
                     	
                     </td>
                 </tr>
                 <tr>
                 	<td colspan="2">
 						<strong><?php echo $idioma['ArmLejos']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo3","select",$protipo,"col-sm-12",1,"",0,array("rel"=>3))?>
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo3","select",$protipoa,"col-sm-12",1,"",0,array("rel"=>3))?>
                     </td>
                     <td colspan="2"><br>
                         <?php echo $idioma['Producto']?><br><?php campo("CodProducto3","select","","col-sm-12",1,"",0,array("rel"=>3))?>
                     </td>
                     <td colspan="2"><br>
-                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle3","text","","col-sm-12",1)?>
+                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle3","text","","col-sm-12",0)?>
                     	
                     </td>
                     <td colspan="1"><br>
-                    	<?php echo $idioma['Vitrina']?><br><?php campo("Vitrina3","text","","col-sm-12",1)?>
+                    	<?php echo $idioma['Vitrina']?><br><?php campo("Vitrina3","text","","col-sm-12",0)?>
                     	
                     </td>
                 </tr>
                 <tr>
                 	<td colspan="2">
 						<strong><?php echo $idioma['ArmCerca']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo4","select",$protipo,"col-sm-12",1,"",0,array("rel"=>4))?>
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo4","select",$protipoa,"col-sm-12",1,"",0,array("rel"=>4))?>
                     </td>
                     <td colspan="2"><br>
                         <?php echo $idioma['Producto']?><br><?php campo("CodProducto4","select","","col-sm-12 cp4",1,"",0,array("rel"=>4))?>
                     </td>
                     <td colspan="2"><br>
-                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle4","text","","col-sm-12",1)?>
+                    	<?php echo $idioma['Detalle']?><br><?php campo("Detalle4","text","","col-sm-12",0)?>
                     	
                     </td>
                     <td colspan="1"><br>
-                    	<?php echo $idioma['Vitrina']?><br><?php campo("Vitrina4","text","","col-sm-12",1)?>
+                    	<?php echo $idioma['Vitrina']?><br><?php campo("Vitrina4","text","","col-sm-12",0)?>
                     	
                     </td>
                 </tr>
                 <tr>
-                	<td colspan="7"><?php echo $idioma['Observaciones']?><br><?php campo("Observaciones","textarea","","col-sm-12",1)?></td>
+                	<td colspan="7"><?php echo $idioma['Observaciones']?><br><?php campo("Observaciones","textarea","","col-sm-12",0)?></td>
                 </tr>
             </table>
             
@@ -269,11 +351,9 @@ function obtenerProducto4(){
             	<tr class="danger">
                 	<td colspan="1"><?php echo $idioma['PrecioTotal']?><br><?php campo("TotalBs","text","0","col-sm-12 der",1)?></td>
                     <td colspan="1"><?php echo $idioma['ACuenta']?> Bs<br><?php campo("ACuentaBs","text","0","col-sm-12 der",1)?></td>
-                    <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","0","col-sm-12 der",1)?></td>
+                    <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","0","col-sm-12 der",1)?><br><?php campo("TotalAcuentaSus","text","0","col-sm-12 der",0,"",0,array("readonly"=>"readonly"))?>Bs</td>
                     
-                    <td colspan="1"><?php echo $idioma['Saldo']?> Bs<br><?php campo("SaldoBs","text","0","col-sm-12 der",1,"",0,array("readonly"=>"readonly"))?></td>
-                    <td colspan="1"><?php echo $idioma['Descuento']?> Bs<br><?php campo("DescuentoBs","text","0","col-sm-12 der",1)?></td>
-                    <td colspan="1" class=""><?php echo $idioma['Cobrar']?> Bs<br><?php campo("CobrarBs","text","0","col-sm-12 der",1,"",0,array("readonly"=>"readonly"))?></td>
+                    <td colspan="1"><?php echo $idioma['SaldoCobrar']?> Bs<br><?php campo("SaldoBs","text","0","col-sm-12 der",1,"",0,array("readonly"=>"readonly"))?></td>
                 </tr>
                 
                 <tr>
@@ -283,5 +363,68 @@ function obtenerProducto4(){
 			</form>
         </div>
     </div>
+</div>
+<div id="registromedico" class="modal fade">
+<div class="modal-dialog">
+    <div class="modal-content">
+    	<div class="modal-header">
+        	<button type="button" class="close btn btn-xs btn-danger" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        	<h4 class="modal-title" id="myModalLabel"><?php echo $idioma['RegistrarNuevoMedico']?></h4>
+     	</div>
+    	<div class="modal-body">
+        	<form id="tablaformulario">
+			<table class="table table-hover" id="">
+                <tr>
+                    <td class="der"><?php echo $idioma['ApellidoPaterno'] ?></td>
+                    <td><?php campo("Paterno","text","","",1,"",1)?></td>
+                </tr>
+                <tr>
+                    <td class="der"><?php echo $idioma['ApellidoMaterno'] ?></td>
+                    <td><?php campo("Materno","text","","",1)?></td>
+                </tr>
+                <tr>
+                    <td class="der"><?php echo $idioma['Nombres'] ?></td>
+                    <td><?php campo("Nombres","text","","",1)?></td>
+                </tr>
+                <tr>
+                    <td class="der"><?php echo $idioma['Ci'] ?></td>
+                    <td><?php campo("Ci","number","","",0)?></td>
+                </tr>
+                <tr>
+                    <td class="der"><?php echo $idioma['Telefono'] ?></td>
+                    <td class=""><?php campo("Telefono","text","")?></td>
+                </tr>
+                <tr>
+                    <td class="der"><?php echo $idioma['Celular'] ?></td>
+                    <td><?php campo("Celular","text","","",1)?></td>
+                </tr>
+                <tr>
+                    <td class="der"><?php echo $idioma['Direccion'] ?></td>
+                    <td><?php campo("Direccion","text","","",0,"",0,array("size"=>"25"))?></td>
+                </tr>
+            
+                <tr>
+                    <td class="der"><?php echo $idioma['Especialidad'] ?></td>
+                    <td><?php campo("CodEspecialidad","select",$esp,"",1)?></td>
+                </tr>
+                <?php if(in_array($_SESSION['Nivel'],array(1,2,3,4))){?>
+                <tr>
+                    <td class="der"><?php echo $idioma['PorcentajePago'] ?></td>
+                    <td><?php campo("Porcentaje","number","0","der",0,"",0,array("min"=>"0"))?>%</td>
+                </tr>
+                <?php }?>
+                <tr>
+                    <td class="der"><?php echo $idioma['Observaciones'] ?></td>
+                    <td><?php campo("Observaciones","textarea")?></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $idioma['Cerrar']?></button>
+        	<button type="button" class="btn btn-primary" id="GuardarMedico"><?php echo $idioma['Guardar']?></button>
+        </div>
+	</div>
+  </div>
 </div>
 <?php include_once($folder."pie.php");?>
