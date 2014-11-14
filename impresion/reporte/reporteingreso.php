@@ -46,27 +46,27 @@ class PDF extends PPDF{
 		$this->CuadroCabecera(10,"T/C:",60,$TC);
 		$this->Pagina();
 		$this->Ln();
-		$this->TituloCabecera(15,"N Orden",8);
+		$this->TituloCabecera(10,"N Orden",7);
 		$this->TituloCabecera(20,"FechaIngreso",8);
-		$this->TituloCabecera(35,"Cliente",8);
+		$this->TituloCabecera(30,"Cliente",8);
 		$this->TituloCabecera(25,"Tipo Cristal",8);
-		$this->TituloCabecera(35,"Armazon",8);
+		$this->TituloCabecera(25,"Armazon",8);
 		$this->TituloCabecera(25,"Tipo Cristal",8);
-		$this->TituloCabecera(35,"Armazon",8);
+		$this->TituloCabecera(25,"Armazon",8);
 		$this->TituloCabecera(15,"Monto Bs",8);
 		$this->TituloCabecera(15,"ACta Bs",8);
 		$this->TituloCabecera(15,"ACta \$us",8);
-		$this->TituloCabecera(20,"SaldoCobrar",8);
-		$this->TituloCabecera(35,"Observación",8);
+		$this->TituloCabecera(15,"SaldoCobrar",7);
+		$this->TituloCabecera(30,"Observación",8);
 	}
 }
-$pdf=new PDF("L","mm","legal");
+$pdf=new PDF("L","mm","letter");
 $pdf->AddPage();
 
 
 
 
-$pdf->SetWidths(array(15,20,35,25,35,25,35,15,15,15,20,35));
+$pdf->SetWidths(array(10,20,30,25,25,25,25,15,15,15,15,30));
 $pdf->Fuente("",9);
 $pdf->SetAligns(array("R","R","","","","","","R","R","R","R","R","R"));
 $TTotalBs=0;
@@ -124,11 +124,11 @@ foreach($opt as $o){
 	$TDescuentoBs=number_format($TDescuentoBs,2,".","");
 	$TCobrarBs=number_format($TCobrarBs,2,".","");
 	$pdf->Fuente("B",9);
-	$pdf->CuadroCuerpo(190,"Total",0,"R",0,9,"B");
+	$pdf->CuadroCuerpo(160,"Total",0,"R",0,9,"B");
 	$pdf->CuadroCuerpo(15,$TTotalBs,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(15,$TACuentaBs,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(15,$TACuentaSus,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(20,$TSaldoBs,1,"R",1,9,"B");
+	$pdf->CuadroCuerpo(15,$TSaldoBs,1,"R",1,9,"B");
 
 $pdf->Output("Reporte.pdf","I");
 ?>
