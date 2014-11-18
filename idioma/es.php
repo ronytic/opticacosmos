@@ -193,7 +193,7 @@ $idioma['Producto']="Producto";
 $idioma['Aumentar']="Aumentar";
 $idioma['EnExistencia']="En Existencia";
 
-$idioma['FechaPedido']="FechaPedido";
+$idioma['FechaPedido']="Fecha de Pedido";
 $idioma['Datos']="Datos";
 $idioma['EntregasTrabajo']="Registro de las Entregas de los Trabajo";
 $idioma['DetallesBoleta']="Detalles del Valor de la Boleta";
