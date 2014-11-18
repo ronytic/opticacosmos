@@ -14,7 +14,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
 <table class="table table-hover">
 	<tr>
     	<td class="der"><?php echo $idioma['ApellidoPaterno'] ?></td>
-        <td><?php campo("Paterno","text","","",1)?></td>
+        <td><?php campo("Paterno","text","","",1,"",1)?></td>
     </tr>
     <tr>
     	<td class="der"><?php echo $idioma['ApellidoMaterno'] ?></td>
@@ -42,7 +42,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     </tr>
     <tr>
     	<td class="der"><?php echo $idioma['Direccion'] ?></td>
-        <td><?php campo("Direccion","text","","col-xs-12",1,"","",array("maxlength"=>250))?></td>
+        <td><?php campo("Direccion","text","","col-xs-12",0,"","",array("maxlength"=>250))?></td>
     </tr>
     <tr>
     	<td class="der"><?php echo $idioma['Observaciones'] ?></td>
