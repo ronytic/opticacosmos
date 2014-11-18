@@ -15,7 +15,9 @@ $(document).on("ready",function(){
 	});
 });
 </script>
-<?php include_once($folder."cabecera.php");?>
+<?php include_once($folder."cabecera.php");
+//print_r($_SESSION);
+?>
 <div class="widget-header widget-header-flat"><h4><?php echo $idioma['EntregasTrabajo']?></h4></div>
 <div class="widget-body widget-main">
 <form action="buscarboleta.php" method="post" class="formulario">

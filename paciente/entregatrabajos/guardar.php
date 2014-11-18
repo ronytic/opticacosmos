@@ -16,8 +16,8 @@ $opt=array_shift($opt);
 
 extract($_POST);
 
-$CodUsuario=$_SESSION['idusuario'];
-$NivelUsuario=$_SESSION['nivel'];
+$CodUsuario=$_SESSION['CodUsuarioLog'];
+$NivelUsuario=$_SESSION['Nivel'];
 $Fecha=date("Y-m-d");
 $Hora=date("H:i:s");
 

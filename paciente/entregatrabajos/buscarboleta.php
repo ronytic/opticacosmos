@@ -23,7 +23,7 @@ $pac=array_shift($pac);
 //echo "</pre>";
 include_once("../../class/usuario.php");
 $usuario=new usuario;
-$datosUsuario=$usuario->mostrarDatos($_SESSION['idusuario']);
+$datosUsuario=$usuario->mostrarDatos($_SESSION['CodUsuarioLog']);
 $datosUsuario=array_shift($datosUsuario);
 $Apodo=$datosUsuario['Nick'];
 $ApellidoPSis=$datosUsuario['Paterno'];
@@ -34,12 +34,12 @@ $FotoSis=$datosUsuario['Foto'];
 <?php if(count($cantidad)){?>
 <table class="table table-bordered table-striped">
 <thead><tr><th>Fecha de Ingreso</th><th>Orden</th><th>Ingresado Por</th><th>Datos Paciente</th><th>Fecha de Entrega</th></tr></thead>
-<tr><td><?php echo ($opt['FechaRegistro'])?></td><td><?php echo ($opt['NumeroBoleta'])?></td><td><?php echo ($opt['Recepcion'])?></td><td><?php echo $pac['Paterno']?> <?php echo $pac['Materno']?> <?php echo $pac['Nombres']?></td><td><?php echo $opt['FechaEntrega']?></td></tr>
+<tr><td><?php echo fecha2Str($opt['FechaRegistro'])?></td><td><?php echo ($opt['NumeroBoleta'])?></td><td><?php echo ($opt['Recepcion'])?></td><td><?php echo $pac['Paterno']?> <?php echo $pac['Materno']?> <?php echo $pac['Nombres']?></td><td><?php echo fecha2Str($opt['FechaEntrega'])?></td></tr>
 </table>
 
 <table class="table table-bordered table-striped">
-<thead><tr><th>Monto</th><th>A Cuenta Bs</th><th>A Cuenta $us	</th><th>Saldo</th><th>Descuento Bs</th><th>Cobrar</th></tr></thead>
-<tr class="success"><td><?php echo ($opt['TotalBs'])?></td><td><?php echo ($opt['ACuentaBs'])?></td><td><?php echo ($opt['ACuentaSus'])?></td><td><?php echo $opt['SaldoBs']?></td><td><?php echo ($opt['DescuentoBs'])?></td><td ><?php echo ($opt['CobrarBs'])?></td></tr>
+<thead><tr><th>Monto</th><th>A Cuenta Bs</th><th>A Cuenta $us	</th><th>Saldo</th></tr></thead>
+<tr class="success"><td><?php echo ($opt['TotalBs'])?></td><td><?php echo ($opt['ACuentaBs'])?></td><td><?php echo ($opt['ACuentaSus'])?></td><td><?php echo $opt['SaldoBs']?></td></tr>
 </table>
 
 
@@ -53,7 +53,7 @@ $FotoSis=$datosUsuario['Foto'];
 <tr class="info">
 	<td><input type="text" class="fecha" value="<?php echo date("d-m-Y")?>" readonly></td>
     <td><?php campo("Recepcion","text",$NombresSis." ".$ApellidoPSis." ".$ApellidoMSis,"col-sm-12",1,"",0,array("readonly"=>"readonly"))?></td>
-    <td><input type="text" name="MontoCobrar" value="<?php echo ($opt['CobrarBs'])?>" autofocus readonly class="der resaltar" ></td>
+    <td><input type="text" name="MontoCobrar" value="<?php echo ($opt['SaldoBs'])?>" autofocus readonly class="der resaltar" ></td>
     
 </tr>
 <tr>
