@@ -12,10 +12,10 @@ $esp=todolista($especialidad->mostrarTodoRegistro("",1,"Nombre"),"CodEspecialida
 
 include_once("../../class/productotipo.php");
 $productotipo=new productotipo;
-$protipoc=todolista($productotipo->mostrarTodoRegistro("CodProductoTipo=1",1,"Nombre"),"CodProductoTipo","Nombre","",1);
+$protipoc=todolista($productotipo->mostrarTodoRegistro("Categoria='Cristales'",1,"Nombre"),"CodProductoTipo","Nombre","",1);
 
 
-$protipoa=todolista($productotipo->mostrarTodoRegistro("CodProductoTipo=2",1,"Nombre"),"CodProductoTipo","Nombre","",1);
+$protipoa=todolista($productotipo->mostrarTodoRegistro("Categoria='Armazon'",1,"Nombre"),"CodProductoTipo","Nombre","",1);
 
 //print_r($protipoa);
 
