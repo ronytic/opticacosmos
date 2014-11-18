@@ -16,6 +16,7 @@ $pdf->AddPage();
 $pdf->Mostrar(array(
 		$idioma["Nombre"]=>$pt['Nombre'],
 		$idioma["Descripcion"]=>$pt['Descripcion'],
+		$idioma["Categoria"]=>$pt['Categoria'],
 	)
 );
 $pdf->Output();

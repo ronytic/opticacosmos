@@ -9,6 +9,7 @@ $pac=$productotipo->mostrarTodoRegistro($condicion,1,"Nombre");
 $titulo=array(	
 				"Nombre"=>$idioma['Nombre'],
 				"Descripcion"=>$idioma['Descripcion'],
+				"Categoria"=>$idioma['Categoria'],
 );
 listadotabla($titulo,$pac,1,"ver.php","modificar.php","eliminar.php");
 ?>

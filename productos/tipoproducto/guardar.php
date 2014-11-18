@@ -5,6 +5,7 @@ $productotipo=new productotipo;
 extract($_POST);
 $Valores=array(	"Nombre"=>"'$Nombre'",
 				"Descripcion"=>"'$Descripcion'",
+				"Categoria"=>"'$Categoria'",
 );
 $productotipo->insertarRegistro($Valores);
 

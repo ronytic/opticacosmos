@@ -214,4 +214,5 @@ $idioma['Lema']="Lema";
 $idioma['Maximo']="Máximo";
 $idioma['Minimo']="Mínimo";
 $idioma['ReporteCompleto']="Reporte Completo";
+$idioma['Categoria']="Categoría";
 ?>
