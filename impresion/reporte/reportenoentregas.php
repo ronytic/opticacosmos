@@ -9,6 +9,9 @@ include_once("../../class/producto.php");
 $producto=new producto;
 include_once("../../class/productotipo.php");
 $productotipo=new productotipo;
+include_once("../../class/usuario.php");
+$optica=new optica;
+
 
 if(!defined("Config")){
 	include_once("../../class/config.php");
@@ -36,7 +39,13 @@ $FotoSis=$datosUsuario['Foto'];
 $FechaIncio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 
-$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and EstadoEntrega=0","","FechaRegistro,NumeroBoleta");
+
+$ApellidoPSis="";
+$ApellidoMSis="";
+$NombresSis="Todos los usuarios";
+$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and EstadoEntrega=0","","FechaRegistro,NumeroBoleta",1,"Nivel ASC, CodUsuario");
+
+//$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and EstadoEntrega=0","","FechaRegistro,NumeroBoleta");
 
 $titulo="Planilla de Trabajos No Entregados";
 class PDF extends PPDF{
@@ -46,8 +55,10 @@ class PDF extends PPDF{
 		$this->CuadroCabecera(10,"T/C:",60,$TC);
 		$this->Pagina();
 		$this->Ln();
+		$this->TituloCabecera(10,"N",8);
 		$this->TituloCabecera(15,"N Orden",8);
 		$this->TituloCabecera(20,"FechaIngreso",8);
+		$this->TituloCabecera(15,"HIngreso",8);
 
 		$this->TituloCabecera(40,"Cliente",8);
 		/*$this->TituloCabecera(25,"Tipo Cristal",8);
@@ -59,9 +70,8 @@ class PDF extends PPDF{
 		$this->TituloCabecera(15,"ACta \$us",8);
 		$this->TituloCabecera(20,"Saldo a Cobrar",8);
 		$this->TituloCabecera(20,"F Entrega",8);
-		$this->TituloCabecera(20,"F Ent. Real",8);
-		$this->TituloCabecera(20,"Hora Entrega",8);
 		$this->TituloCabecera(35,"Observación",8);
+		$this->TituloCabecera(35,"Usuario",8);
 	}
 }
 $pdf=new PDF("L","mm","letter");
@@ -70,11 +80,20 @@ $pdf->AddPage();
 
 
 
-$pdf->SetWidths(array(15,20,40,15,15,15,20,20,20,20,35,30));
+$pdf->SetWidths(array(10,15,20,15,40,15,15,15,20,20,35,35));
 $pdf->Fuente("",9);
 $pdf->SetAligns(array("R","R","","R","R","R","R","R","R","R"));
 $TTotalBs=0;
+$contadorUsuario=0;
 foreach($opt as $o){
+	if($contadorUsuario!=$idusuario){
+		$i=0;
+	}
+	$i++;
+	$idusuario=$o['CodUsuario'];
+	$datosUsuario=$usuario->mostrarDatos($idusuario);
+	$datosUsuario=array_shift($datosUsuario);
+
 	$pac=$paciente->MostrarRegistro($o['CodPaciente']);
 	$pac=array_shift($pac);
 	$prod1=$producto->MostrarRegistro($o['CodProducto1']);
@@ -105,8 +124,10 @@ foreach($opt as $o){
 	$TDescuentoBs+=$DescuentoBs;
 	$TCobrarBs+=$CobrarBs;
 	
-	$datos=array($o['NumeroBoleta'],
+	$datos=array($i,
+			$o['NumeroBoleta'],
 			fecha2Str($o['FechaRegistro']),
+			$o['HoraRegistro'],
 			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
 			//$prod1['Nombre']." - ".$o['Detalle1'],
 			//$prod2['Nombre']." - ".$o['Detalle2'],
@@ -117,9 +138,10 @@ foreach($opt as $o){
 			$ACuentaSus,
 			$SaldoBs,
 			fecha2Str($o['FechaEntrega']),
-			fecha2Str($o['FechaEntregaReal']),
-			$o['HoraEntregaReal'],
-			$o['Observaciones']
+			
+			$o['Observaciones'],
+			$datosUsuario['Paterno']." ".$datosUsuario['Materno']." ".$datosUsuario['Nombres'],
+			
 	);
 	$pdf->Row($datos);	
 }
@@ -130,7 +152,7 @@ foreach($opt as $o){
 	$TDescuentoBs=number_format($TDescuentoBs,2,".","");
 	$TCobrarBs=number_format($TCobrarBs,2,".","");
 	$pdf->Fuente("B",9);
-	$pdf->CuadroCuerpo(75,"Total",0,"R",0,9,"B");
+	$pdf->CuadroCuerpo(100,"Total",0,"R",0,9,"B");
 	$pdf->CuadroCuerpo(15,$TTotalBs,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(15,$TAcuentaBs,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(15,$TACuentaSus,1,"R",1,9,"B");
