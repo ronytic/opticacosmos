@@ -80,7 +80,7 @@ $folder="../";
 		</script>
 	</head>
 
-	<body class="login-layout">
+	<body class="login-layout" style="background-image:url(../imagenes/inicio2.jpg);background-size:cover;">
 		<div class="main-container">
 			<div class="main-content">
 				<div class="row">
@@ -88,7 +88,7 @@ $folder="../";
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<i class="icon-fire green"></i>
+									<i class="icon-eyes "></i>
 									<span class="red"><?php echo $title;?></span>
 
 								</h1>
@@ -102,7 +102,7 @@ $folder="../";
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
-												<i class="icon-coffee green"></i>
+												<i class="icon-key green"></i>
 												<?php echo $idioma['AccesoSistema'] ?>
 											</h4>
 											<?php
@@ -171,7 +171,7 @@ $folder="../";
 										</div><!-- /widget-main -->
 
 										<div class="toolbar clearfix">
-											<div>
+											<div style="padding:10px">
 												
                                                 <small class="light-blue">Sistema Desarrollado por <br><a href="http://fb.com/ronaldnina/" class="light-blue" target="_blank" title="Cel: 73230568">Ronald Nina Layme</a></small>
                                             </div>
