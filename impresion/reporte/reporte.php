@@ -58,7 +58,7 @@ class PDF extends PPDF{
 		}
 		$this->TituloCabecera(20,"Total",8);
 		$this->TituloCabecera(20,"Porcentaje",8);
-		$this->TituloCabecera(20,"Total",8);
+		//$this->TituloCabecera(20,"Total",8);
 		
 	}
 }
@@ -79,7 +79,7 @@ foreach($opt as $o){$i++;
 	
 	
 	$TotalBs=number_format($o['TotalBs'],2,".","");
-	$DescuentoOptica=number_format($TotalBs*(25/100),2,".","");
+	$DescuentoOptica=number_format($TotalBs*(30/100),2,".","");
 	
 	
 	$TotalBsConOptica=number_format($TotalBs-$DescuentoOptica,2,".","");
@@ -106,7 +106,7 @@ foreach($opt as $o){$i++;
 			$TotalBsConOptica,
 			
 			$DescuentoMedico,
-			$TotalMedico
+			//$TotalMedico
 		);
 	}else{
 		$datos=array($i,
@@ -118,7 +118,7 @@ foreach($opt as $o){$i++;
 			$TotalBsConOptica,
 			
 			$DescuentoMedico,
-			$TotalMedico
+			//$TotalMedico
 		);	
 	}
 	
@@ -142,7 +142,7 @@ foreach($opt as $o){$i++;
 	}
 	$pdf->CuadroCuerpo(20,$TTotalBsConOptica,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(20,$TDescuentoMedico,1,"R",1,9,"B");
-	$pdf->CuadroCuerpo(20,$TTotalMedico,1,"R",1,9,"B");
+	//$pdf->CuadroCuerpo(20,$TTotalMedico,1,"R",1,9,"B");
 
 $pdf->Output("Reporte.pdf","I");
 ?>
