@@ -22,12 +22,17 @@ foreach($med as $m){$i++;
 	$datos[$i]['Nombres']=$m['Nombres'];
 	$datos[$i]['Ci']=$m['Ci'];
 	$datos[$i]['Especialidad']=$esp['Nombre'];
+	$datos[$i]['Telefono']=$m['Telefono'];
+	$datos[$i]['Celular']=$m['Celular'];
+	
 }
 $titulo=array(	"Paterno"=>$idioma['Paterno'],
 				"Materno"=>$idioma['Materno'],
 				"Nombres"=>$idioma['Nombres'],
 				"Ci"=>$idioma['Ci'],
 				"Especialidad"=>$idioma['Especialidad'],
+				"Telefono"=>$idioma['Telefono'],
+				"Celular"=>$idioma['Celular'],
 );
 listadotabla($titulo,$datos,1,"ver.php","modificar.php","eliminar.php");
 ?>
