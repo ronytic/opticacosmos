@@ -5,15 +5,26 @@ $optica=new optica;
 extract($_POST);
 /*echo "<pre>";
 print_r($_POST);
-echo "</pre>";*/
+echo "</pre>";
+exit();*/
 $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta'");
 if(count($opt)>0)
 {
-	
+	echo "El Numero de Boleta que desea registrar no se encuentra disponinble";	
 }else{
+	
+	$CodProductoTipo1=$CodProductoTipo1!=""?$CodProductoTipo1:'0';
+	$CodProductoTipo2=$CodProductoTipo2!=""?$CodProductoTipo2:'0';
+	$CodProductoTipo3=$CodProductoTipo3!=""?$CodProductoTipo3:'0';
+	$CodProductoTipo4=$CodProductoTipo4!=""?$CodProductoTipo4:'0';
+	$CodProducto1=$CodProducto1!=""?$CodProducto1:'0';
+	$CodProducto2=$CodProducto2!=""?$CodProducto2:'0';
+	$CodProducto3=$CodProducto3!=""?$CodProducto3:'0';
+	$CodProducto4=$CodProducto4!=""?$CodProducto4:'0';
+	
 //$opt=array_shift($opt);
-print_r($opt);
-exit();
+//print_r($opt);
+//exit();
 $Valores=array("CodPaciente"=>"'$CodPaciente'",
 				
 				//"Fecha"=>"'".fecha2Str($Fecha,0)."'",

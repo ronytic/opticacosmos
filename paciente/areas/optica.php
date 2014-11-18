@@ -236,7 +236,7 @@ function obtenerProducto4(){
                 </thead>
                 <tr>
                 	<td colspan="3"><?php echo $idioma['NumeroBoleta']?>
-                    <br><?php campo("NumeroBoleta","number","","col-sm-12 der",1,0,1,array("pattern"=>"[0-9]*","title"=>$idioma['SoloNumeros']))?>
+                    <br><?php campo("NumeroBoleta","number","","col-sm-12 der",1,0,1,array("pattern"=>"[0-9]*","title"=>$idioma['SoloNumeros'],"min"=>0))?>
                     <div class="alert alert-danger" id="mensajeboleta"></div>
                     </td>
                 </tr>
@@ -283,11 +283,11 @@ function obtenerProducto4(){
                 </tr>
                 <tr>
                 	<td colspan="2">
-						<strong><?php echo $idioma['Cristales']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo1","select",$protipoc,"col-sm-12",1,"",0,array("rel"=>1))?>
+						<strong><?php echo $idioma['Cristales']?> <?php echo $idioma['Lejos']?></strong><br>	
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo1","select",$protipoc,"col-sm-12",0,"",0,array("rel"=>1))?>
                     </td>
                     <td colspan="2"><br>
-                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto1","select","","col-sm-12",1,"",0,array("rel"=>1))?>
+                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto1","select","","col-sm-12",0,"",0,array("rel"=>1))?>
                     </td>
                     <td colspan="3"><br>
                     	<?php echo $idioma['Detalle']?><br><?php campo("Detalle1","text","","col-sm-12",0)?>
@@ -296,11 +296,11 @@ function obtenerProducto4(){
                 </tr>
                 <tr>
                 	<td colspan="2">
-						<strong><?php echo $idioma['Cristales']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo2","select",$protipoc,"col-sm-12",1,"",0,array("rel"=>2))?>
+						<strong><?php echo $idioma['Cristales']?> <?php echo $idioma['Cerca']?></strong><br>	
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo2","select",$protipoc,"col-sm-12",0,"",0,array("rel"=>2))?>
                     </td>
                     <td colspan="2"><br>
-                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto2","select","","col-sm-12",1,"",0,array("rel"=>2))?>
+                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto2","select","","col-sm-12",0,"",0,array("rel"=>2))?>
                     </td>
                     <td colspan="3"><br>
                     	<?php echo $idioma['Detalle']?><br><?php campo("Detalle2","text","","col-sm-12",0)?>
@@ -310,10 +310,10 @@ function obtenerProducto4(){
                 <tr>
                 	<td colspan="2">
 						<strong><?php echo $idioma['ArmLejos']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo3","select",$protipoa,"col-sm-12",1,"",0,array("rel"=>3))?>
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo3","select",$protipoa,"col-sm-12",0,"",0,array("rel"=>3))?>
                     </td>
                     <td colspan="2"><br>
-                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto3","select","","col-sm-12",1,"",0,array("rel"=>3))?>
+                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto3","select","","col-sm-12",0,"",0,array("rel"=>3))?>
                     </td>
                     <td colspan="2"><br>
                     	<?php echo $idioma['Detalle']?><br><?php campo("Detalle3","text","","col-sm-12",0)?>
@@ -327,10 +327,10 @@ function obtenerProducto4(){
                 <tr>
                 	<td colspan="2">
 						<strong><?php echo $idioma['ArmCerca']?></strong><br>	
-                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo4","select",$protipoa,"col-sm-12",1,"",0,array("rel"=>4))?>
+                    	<?php echo $idioma['TipoProducto']?><br><?php campo("CodProductoTipo4","select",$protipoa,"col-sm-12",0,"",0,array("rel"=>4))?>
                     </td>
                     <td colspan="2"><br>
-                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto4","select","","col-sm-12 cp4",1,"",0,array("rel"=>4))?>
+                        <?php echo $idioma['Producto']?><br><?php campo("CodProducto4","select","","col-sm-12 cp4",0,"",0,array("rel"=>4))?>
                     </td>
                     <td colspan="2"><br>
                     	<?php echo $idioma['Detalle']?><br><?php campo("Detalle4","text","","col-sm-12",0)?>
@@ -349,15 +349,15 @@ function obtenerProducto4(){
             <table class="table table-bordered table-striped">
             	<tr><td colspan="6"><strong><?php echo $idioma['Pago']?> - T/C: <?php echo $TC?></strong></td></tr>
             	<tr class="danger">
-                	<td colspan="1"><?php echo $idioma['PrecioTotal']?><br><?php campo("TotalBs","text","0","col-sm-12 der",1)?></td>
-                    <td colspan="1"><?php echo $idioma['ACuenta']?> Bs<br><?php campo("ACuentaBs","text","0","col-sm-12 der",1)?></td>
-                    <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","0","col-sm-12 der",1)?><br><?php campo("TotalAcuentaSus","text","0","col-sm-12 der",0,"",0,array("readonly"=>"readonly"))?>Bs</td>
+                	<td colspan="1"><?php echo $idioma['PrecioTotal']?><br><?php campo("TotalBs","text","0","col-sm-12 der",1,"",0,array("tabindex"=>2))?></td>
+                    <td colspan="1"><?php echo $idioma['ACuenta']?> Bs<br><?php campo("ACuentaBs","text","0","col-sm-12 der",1,"",0,array("tabindex"=>3))?></td>
+                    <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","0","col-sm-12 der",1,"",0,array("tabindex"=>4))?><br><?php campo("TotalAcuentaSus","text","0","col-sm-12 der",0,"",0,array("readonly"=>"readonly"))?>Bs</td>
                     
                     <td colspan="1"><?php echo $idioma['SaldoCobrar']?> Bs<br><?php campo("SaldoBs","text","0","col-sm-12 der",1,"",0,array("readonly"=>"readonly"))?></td>
                 </tr>
                 
                 <tr>
-                	<td colspan="6"><div class="alert alert-danger"><?php echo $idioma['NotaOpticaGuardar'] ?></div><br><?php campo("Area","submit",$idioma['Registrar'],"btn btn-success")?></td>
+                	<td colspan="6"><div class="alert alert-danger"><?php echo $idioma['NotaOpticaGuardar'] ?></div><br><?php campo("Area","submit",$idioma['Registrar'],"btn btn-success",0,"",0,array("tabindex"=>5))?></td>
                 </tr>
             </table>
 			</form>
