@@ -1,5 +1,6 @@
 <?php
 include_once("../../login/check.php");
+$NoRevisar=1;
 $folder="../../";
 $Cod=$_GET['CodOptica'];
 if($Cod==""){
@@ -22,7 +23,7 @@ configuracion={todayBtn: "", endDate: "'0d'"};
             	<a href="<?php echo $url?>" class="btn btn-danger btn-xs" target="_blank"><?php echo $idioma['AbrirOtraVentana']?></a>
                 
                 <hr>
-            	<iframe src="<?php echo $url?>" width="100%" height="700" frameborder="1"></iframe>
+            	<iframe src="<?php echo $url?>" width="100%" height="500" frameborder="1"></iframe>
 			</div>
 		</div>
 	</div>
