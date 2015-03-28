@@ -24,7 +24,7 @@ include_once("../../class/usuario.php");
 $usuario=new usuario;
 
 if($_GET['CodUsuarioAsignado']==""){
-	$idusuario=$_SESSION['idusuario'];
+	$idusuario=$_SESSION['CodUsuarioLog'];
 }else{
 	$idusuario=$_GET['CodUsuarioAsignado'];
 }
@@ -126,7 +126,7 @@ foreach($opt as $o){
 	
 	$datos=array($i,
 			$o['NumeroBoleta'],
-			fecha2Str($o['FechaRegistro']),
+			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
 			$o['HoraRegistro'],
 			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
 			//$prod1['Nombre']." - ".$o['Detalle1'],

@@ -70,7 +70,7 @@ $pdf->AddPage();
 
 $pdf->SetWidths(array(10,20,40,20,20,20,20,20));
 $pdf->Fuente("",9);
-$pdf->SetAligns(array("R","R","","R","R","R","R","R","R","R","R","R","R"));
+$pdf->SetAligns(array("R","R","","R","R","R","R","R","R","R","L","L","L"));
 $TTotalBs=0;
 foreach($opt as $o){$i++;
 	$pac=$paciente->MostrarRegistro($o['CodPaciente']);
@@ -97,7 +97,7 @@ foreach($opt as $o){$i++;
 	
 	if($ReporteCompleto==1){
 		$datos=array($i,
-			fecha2Str($o['FechaRegistro']),
+			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
 			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
 			
 			$TotalBs,

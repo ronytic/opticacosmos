@@ -106,7 +106,7 @@ foreach($opt as $o){
 	$TCobrarBs+=$CobrarBs;
 	
 	$datos=array($o['NumeroBoleta'],
-			fecha2Str($o['FechaRegistro']),
+			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
 			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
 			//$prod1['Nombre']." - ".$o['Detalle1'],
 			//$prod2['Nombre']." - ".$o['Detalle2'],

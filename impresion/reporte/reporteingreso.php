@@ -20,7 +20,8 @@ $TC=$config->mostrarConfig("TC",1);
 include_once("../../class/usuario.php");
 $usuario=new usuario;
 if($_GET['CodUsuarioAsignado']==""){
-	$idusuario=$_SESSION['idusuario'];
+
+	$idusuario=$_SESSION['CodUsuarioLog'];
 }else{
 	$idusuario=$_GET['CodUsuarioAsignado'];
 }
@@ -42,11 +43,11 @@ $titulo="Planilla por Ingresos por Ventas";
 class PDF extends PPDF{
 	function Cabecera(){
 		global $ApellidoPSis,$ApellidoMSis,$NombresSis,$TC;
-		$this->CuadroCabecera(25,"Reporte de:",70,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
+		$this->CuadroCabecera(25,"Reporte de:",80,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
 		$this->CuadroCabecera(10,"T/C:",60,$TC);
 		$this->Pagina();
 		$this->Ln();
-		$this->TituloCabecera(10,"N Orden",7);
+		$this->TituloCabecera(15,"N Orden",7);
 		$this->TituloCabecera(20,"FechaIngreso",8);
 		$this->TituloCabecera(30,"Cliente",8);
 		$this->TituloCabecera(25,"Tipo Cristal",8);
@@ -66,9 +67,9 @@ $pdf->AddPage();
 
 
 
-$pdf->SetWidths(array(10,20,30,25,25,25,25,15,15,15,15,30));
+$pdf->SetWidths(array(15,20,30,25,25,25,25,15,15,15,15,30));
 $pdf->Fuente("",9);
-$pdf->SetAligns(array("R","R","","","","","","R","R","R","R","R","R"));
+$pdf->SetAligns(array("R","R","","","","","","R","R","R","R","L","R"));
 $TTotalBs=0;
 foreach($opt as $o){
 	$pac=$paciente->MostrarRegistro($o['CodPaciente']);
@@ -103,7 +104,7 @@ foreach($opt as $o){
 	$TCobrarBs+=$CobrarBs;
 	
 	$datos=array($o['NumeroBoleta'],
-			fecha2Str($o['FechaRegistro']),
+			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
 			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
 			$prod1['Nombre']." - ".$o['Detalle1'],
 			$prod2['Nombre']." - ".$o['Detalle2'],
@@ -124,7 +125,7 @@ foreach($opt as $o){
 	$TDescuentoBs=number_format($TDescuentoBs,2,".","");
 	$TCobrarBs=number_format($TCobrarBs,2,".","");
 	$pdf->Fuente("B",9);
-	$pdf->CuadroCuerpo(160,"Total",0,"R",0,9,"B");
+	$pdf->CuadroCuerpo(165,"Total",0,"R",0,9,"B");
 	$pdf->CuadroCuerpo(15,$TTotalBs,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(15,$TACuentaBs,1,"R",1,9,"B");
 	$pdf->CuadroCuerpo(15,$TACuentaSus,1,"R",1,9,"B");
