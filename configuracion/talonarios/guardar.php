@@ -3,7 +3,7 @@ include_once("../../login/check.php");
 include_once("../../class/talonario.php");
 $talonario=new talonario;
 extract($_POST);
-$Valores=array(	"CodUsuarioAsignado"=>"'$CodUsuarioAsignado'",
+$Valores=array(	//"CodUsuarioAsignado"=>"'$CodUsuarioAsignado'",
 				"Minimo"=>"'$Minimo'",
 				"Maximo"=>"'$Maximo'",
 				"Descripcion"=>"'$Descripcion'",

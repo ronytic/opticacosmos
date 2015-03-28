@@ -22,11 +22,11 @@ include_once($folder."cabecerahtml.php");
         	<div class="widget-main">
             	<div class="main row">
                 	<form action="busqueda.php" method="post" class="formulario">
-                    <div class="col-sm-3">
+                    <!--<div class="col-sm-3">
                         <label><?php echo $idioma['NombreEspecialidad'] ?></label>
                         <br>
                         <?php campo("CodUsuarioAsignado","select",$us2,"col-xs-12")?>
-                    </div>
+                    </div>-->
                     <div class="col-sm-3">
                     	<br>
                         <?php campo("","submit",$idioma['Buscar'],"btn btn-success col-xs-12")?>

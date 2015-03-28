@@ -17,10 +17,10 @@ configuracion={todayBtn: "", endDate: "'0d'"};
 <?php include_once($folder."cabecera.php");?>
 <form action="guardar.php" method="post">
 <table class="table table-hover">
-	<tr>
+	<!--<tr>
     	<td class="der"><?php echo $idioma['Usuario'] ?></td>
         <td><?php campo("CodUsuarioAsignado","select",$us2,"",1)?></td>
-    </tr>	
+    </tr>	-->
 	<tr>
     	<td class="der"><?php echo $idioma['Minimo'] ?></td>
         <td><?php campo("Minimo","number","","",1)?></td>

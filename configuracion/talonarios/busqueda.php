@@ -3,7 +3,7 @@ include_once("../../login/check.php");
 include_once("../../class/talonario.php");
 $talonario=new talonario;
 extract($_POST);
-print_r($_POST);
+//print_r($_POST);
 $CodUsuarioAsignado=$CodUsuarioAsignado!=""?"CodUsuarioAsignado LIKE '$CodUsuarioAsignado'":"CodUsuarioAsignado LIKE '%'";
 
 $condicion="$CodUsuarioAsignado";
