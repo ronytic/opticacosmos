@@ -30,7 +30,7 @@ $(document).on("ready",function(){
 <table class="table table-hover table-bordered">
 	<tr>
     	<?php if(in_array($_SESSION['Nivel'],array(1,2,3,4))){?>
-    	<th><?php echo $idioma['Usuario'] ?></th>
+    	<th><?php echo $idioma['Empleado'] ?></th>
         <?php }?>
     	<th><?php echo $idioma['Desde'] ?></th>
         <th><?php echo $idioma['Hasta'] ?></th>
