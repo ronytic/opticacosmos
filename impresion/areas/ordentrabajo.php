@@ -81,10 +81,14 @@ $pdf->CuadroCuerpo(30,$TipoDoc,0,"L",$borde,11);
 
 
 $pdf->SetXY($x+80,5);
-$pdf->CuadroCuerpo(30,"Dr(a). ".$med['Nombres']." ".$med['Paterno']." ".$med['Materno'],0,"L",$borde,10);
+$pdf->CuadroCuerpo(60,"Dr(a). ".$med['Nombres']." ".$med['Paterno']." ".$med['Materno'],0,"L",$borde,10);
+$pdf->SetXY($x+80,10);
+$pdf->CuadroCuerpo(60,$opt['CodOptica'],0,"C",$borde,10);
 
 $pdf->SetXY($x+105,41);
 $pdf->CuadroCuerpo(30,fecha2Str($opt['FechaRegistro']),0,"C",$borde,11);
+$pdf->SetXY($x+105,44);
+$pdf->CuadroCuerpo(30,($opt['HoraRegistro']),0,"C",$borde,10);
 
 $pdf->SetXY($x+25,49);
 $pdf->CuadroCuerpo(110,mayuscula($pac['Nombres']." ".$pac['Paterno']." ".$pac['Materno']." "),0,"C",$borde,12);
@@ -222,10 +226,14 @@ $pdf->CuadroCuerpo(30,$TipoDoc,0,"L",$borde,11);
 
 
 $pdf->SetXY($x+80,5);
-$pdf->CuadroCuerpo(30,"Dr(a). ".$med['Nombres']." ".$med['Paterno']." ".$med['Materno'],0,"L",$borde,10);
+$pdf->CuadroCuerpo(60,"Dr(a). ".$med['Nombres']." ".$med['Paterno']." ".$med['Materno'],0,"L",$borde,10);
+$pdf->SetXY($x+80,10);
+$pdf->CuadroCuerpo(60,$opt['CodOptica'],0,"C",$borde,10);
 
 $pdf->SetXY($x+105,41);
 $pdf->CuadroCuerpo(30,fecha2Str($opt['FechaRegistro']),0,"C",$borde,11);
+$pdf->SetXY($x+105,44);
+$pdf->CuadroCuerpo(30,($opt['HoraRegistro']),0,"C",$borde,10);
 
 $pdf->SetXY($x+25,49);
 $pdf->CuadroCuerpo(110,mayuscula($pac['Nombres']." ".$pac['Paterno']." ".$pac['Materno']." "),0,"C",$borde,12);
