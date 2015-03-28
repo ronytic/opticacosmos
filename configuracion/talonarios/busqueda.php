@@ -8,6 +8,7 @@ $CodUsuarioAsignado=$CodUsuarioAsignado!=""?"CodUsuarioAsignado LIKE '$CodUsuari
 
 $condicion="$CodUsuarioAsignado";
 $tal=$talonario->mostrarTodoRegistro($condicion,1,"Minimo,Maximo");
+
 $titulo=array(	
 				"Minimo"=>$idioma['Minimo'],
 				"Maximo"=>$idioma['Maximo'],

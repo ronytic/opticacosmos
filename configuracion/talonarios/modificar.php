@@ -17,7 +17,7 @@ configuracion={todayBtn: "", endDate: "'0d'"};
 <?php campo("Cod","hidden",$Cod)?>
 <table class="table table-hover">
 	<tr>
-    	<td class="der"><?php echo $idioma['NombreEspecialidad'] ?></td>
+    	<td class="der"><?php echo $idioma['Empleado'] ?></td>
         <td><?php campo("Nombre","text",$esp['Nombre'],"",1)?></td>
     </tr>
     <tr>

@@ -17,25 +17,25 @@ configuracion={todayBtn: "", endDate: "'0d'"};
 <?php include_once($folder."cabecera.php");?>
 <form action="guardar.php" method="post">
 <table class="table table-hover">
-	<!--<tr>
-    	<td class="der"><?php echo $idioma['Usuario'] ?></td>
-        <td><?php campo("CodUsuarioAsignado","select",$us2,"",1)?></td>
-    </tr>	-->
 	<tr>
-    	<td class="der"><?php echo $idioma['Minimo'] ?></td>
-        <td><?php campo("Minimo","number","","",1)?></td>
+    	<td class="der"><?php echo $idioma['Empleado'] ?></td>
+        <td><?php campo("CodUsuarioAsignado","select",$us2,"",1)?></td>
+    </tr>	
+	<tr>
+    	<td class="der"><?php echo $idioma['RangoInicial'] ?></td>
+        <td><?php campo("Minimo","number","0","der",1,"","",array("min"=>0))?></td>
     </tr>
 	<tr>
-    	<td class="der"><?php echo $idioma['Maximo'] ?></td>
-        <td><?php campo("Maximo","number","","",1)?></td>
+    	<td class="der"><?php echo $idioma['RangoFinal'] ?></td>
+        <td><?php campo("Maximo","number","0","der",1,"","",array("min"=>0))?></td>
     </tr>
     <tr>
-    	<td class="der"><?php echo $idioma['Descripcion'] ?></td>
-        <td><?php campo("Descripcion","textarea")?></td>
+    	<td class="der"><?php echo $idioma['Observacion'] ?></td>
+        <td><?php campo("Descripcion","textarea","","form-control")?></td>
     </tr>
     <tr>
     	<td colspan="2">
-        	<?php campo("","submit",$idioma['Guardar'],"btn btn-info","")?>
+        	<?php campo("","submit","Guardar Talonario","btn btn-info","")?>
         </td>
     </tr>
 </table>
