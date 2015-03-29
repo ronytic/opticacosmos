@@ -94,6 +94,7 @@
 <script src="<?php echo $folder;?>js/core/plugins/jquery.form.js" language="javascript"></script>
 <script src="<?php echo $folder;?>js/core/plugins/jquery.maskedinput.min.js" language="javascript"></script>
 <script src="<?php echo $folder;?>js/core/plugins/jquery.stickytableheaders.min.js" language="javascript"></script>	
+<script src="<?php echo $folder;?>js/core/plugins/jquery.hotkeys.js" language="javascript"></script>	
 
 <link rel="stylesheet" href="<?php echo $folder;?>css/core/datepicker.css" />
 <link rel="stylesheet" href="<?php echo $folder;?>css/core/bootstrap-timepicker.css" />
