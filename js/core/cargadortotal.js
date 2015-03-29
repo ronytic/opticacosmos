@@ -61,8 +61,12 @@ function inicio(){
 	/*Fin Gestionar Tabla*/
 	
 	//Al INICIO
-	$("textarea[required],input[required][type=text],input[required][type=number],select[required],input[required][type=date],input[required][type=time]").after('<i class="ace-icon red icon-warning-sign" title="Obligatorio"></i>');
-	$("select").attr("data-placeholder","Seleccione...").chosen({keyboard:true,width: "100%",no_results_text: "Datos No encontrados"});
+	$("textarea[required],input[required][type=text],input[required][type=number],select[required],input[required][type=date],input[required][type=time]").not('.norequerido').after('<i class="ace-icon red icon-warning-sign" title="Obligatorio"></i>');
+    $("input").click(function(){
+        
+        $(this).select();
+    });
+	$("select").not(".noselect").attr("data-placeholder","Seleccione...").chosen({keyboard:true,width: "100%",no_results_text: "Datos No encontrados"});
 	$("table").stickyTableHeaders();
 	$("table.inicio").stickyTableHeaders('destroy');
 	$('ul.r-listado li a').tooltip();
@@ -246,4 +250,19 @@ function sacarIniciales(texto){
 }
 jQuery.fn.reset = function () {
   $(this).each (function() { this.reset(); });
+}
+function enter2tab(e) {
+     
+   if (e.keyCode == 13) {
+       
+       cb = parseInt($(this).attr('tabindex'));
+
+       if ($(':input[tabindex=\'' + (cb + 1) + '\']') != null) {
+           $(':input[tabindex=\'' + (cb + 1) + '\']').focus();
+           $(':input[tabindex=\'' + (cb + 1) + '\']').select();
+           e.preventDefault();
+
+           return false;
+       }
+   }
 }
