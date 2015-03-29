@@ -234,15 +234,15 @@ function mayuscula($texto){
 function minuscula($texto){
 	return mb_strtolower($texto,"utf8");
 }
-function fecha2Str($fecha="",$t=1){
+function fecha2Str($fecha="",$t=1,$a="+0 day"){
 	$fecha=$fecha==""?date("Y-m-d"):$fecha;
 	if(date("d-m-Y",strtotime($fecha))=='31-12-1969'||date("Y-m-d",strtotime($fecha))=='1969-12-31'){
 	return $fecha;}
 	if(!empty($fecha) && $fecha!="0000-00-00"){
 		if($t==1){
-			return date("d-m-Y",strtotime($fecha)."+5day");	
+			return date("d-m-Y",strtotime($fecha.$a));	
 		}else{
-			return date("Y-m-d",strtotime($fecha));	
+			return date("Y-m-d",strtotime($fecha.$a));	
 		}
 	}else{
 		if($t=1 && $fecha=="0000-00-00")
