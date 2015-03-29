@@ -242,7 +242,7 @@
 						<?php */?>
 						<li class="gray">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="<?php echo $folder?>imagenes/usuarios/<?php echo $FotoSis?>" title="<?php echo $NombresSis." ".$ApellidoPSis?>" alt="<?php echo $NombresSis." ".$ApellidoPSis?>" />
+								<!--<img class="nav-user-photo" src="<?php echo $folder?>imagenes/usuarios/<?php echo $FotoSis?>" title="<?php echo $NombresSis." ".$ApellidoPSis?>" alt="<?php echo $NombresSis." ".$ApellidoPSis?>" />-->
 								<span class="user-info">
 									<small><?php echo $idioma['Bienvenido']?>,</small>
 									<?php echo $NombresSis ?>
