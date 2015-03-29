@@ -10,7 +10,7 @@ $talonario=new talonario;
 $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta'");
 
 $CodUsuarioLog=$_SESSION['CodUsuarioLog'];
-$tal=$talonario->mostrarTodoRegistro("CodUsuarioAsignado=$CodUsuarioLog and $NumeroBoleta BETWEEN Minimo and Maximo");
+$tal=$talonario->mostrarTodoRegistro("$NumeroBoleta BETWEEN Minimo and Maximo");
 
 if(count($opt)){
 	echo "<li>El Número de Boleta ya fue registrado</li>";	
