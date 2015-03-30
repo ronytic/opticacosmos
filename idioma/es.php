@@ -224,4 +224,6 @@ $idioma['Ventas']="Ventas";
 $idioma['RegistroVenta']="Registro de Venta";
 $idioma['EmpleadoRecepcion']="Empleado Recepcionista";
 $idioma['Ci']="C.I.";
+
+$idioma['HistorialPacientes']="Historial de Pacientes";
 ?>
