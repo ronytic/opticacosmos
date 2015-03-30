@@ -43,7 +43,7 @@ $FechaFinal=$_GET['Hasta'];
 $ApellidoPSis="";
 $ApellidoMSis="";
 $NombresSis="Todos los usuarios";
-$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and EstadoEntrega=0","","FechaRegistro,NumeroBoleta",1,"Nivel ASC, CodUsuario");
+$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and EstadoEntrega=0 and Emitido=1","","FechaRegistro,NumeroBoleta",1,"Nivel ASC, CodUsuario");
 
 //$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and EstadoEntrega=0","","FechaRegistro,NumeroBoleta");
 

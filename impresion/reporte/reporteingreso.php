@@ -37,7 +37,7 @@ $FotoSis=$datosUsuario['Foto'];
 $FechaIncio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 
-$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario","","FechaRegistro,NumeroBoleta");
+$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and Emitido=1 and Anulado=0","","FechaRegistro,NumeroBoleta");
 
 $titulo="Planilla por Ingresos por Ventas";
 class PDF extends PPDF{

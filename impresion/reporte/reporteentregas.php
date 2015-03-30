@@ -36,7 +36,7 @@ $FotoSis=$datosUsuario['Foto'];
 $FechaIncio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 
-$opt=$optica->MostrarTodoRegistro("FechaEntregaReal BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuarioEntrega=$idusuario and EstadoEntrega=1","","FechaRegistro,NumeroBoleta");
+$opt=$optica->MostrarTodoRegistro("FechaEntregaReal BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuarioEntrega=$idusuario and EstadoEntrega=1 and Anulado=0","","FechaRegistro,NumeroBoleta");
 
 $titulo="Planilla de Entrega de Trabajos";
 class PDF extends PPDF{
