@@ -15,5 +15,5 @@ $titulo=array(	"Paterno"=>$idioma['Paterno'],
 				"Ci"=>$idioma['Ci'],
 				
 );
-listadotabla($titulo,$pac,1,"ver.php","modificar.php","",array("citasmedicas.php"=>$idioma['CitasMedicas']));
+listadotabla($titulo,$pac,1,"ver.php","modificar.php","",array("historial.php"=>"Historia Clinica"));
 ?>
