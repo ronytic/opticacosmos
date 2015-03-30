@@ -67,6 +67,10 @@ class PDF extends PPDF{
 		$this->SetFillColor(234,234,234);
 		$this->SetFont("Arial",$tipo,$tam);	
 	}
+    function CuadroCuerpoMulti($txtAncho,$txt,$relleno=0,$align="L",$borde=1,$tam=9,$tipo=""){
+        $this->Fuente($tipo,$tam);
+        $this->MultiCell($txtAncho,3,utf8_decode($txt),$borde,$align,$relleno);	
+    }
 }
 $borde=0;
 $pdf=new PDF("P","mm",array(298,208));
@@ -167,22 +171,27 @@ $pdf->CuadroCuerpo(19,$opt['COIDPCerca'],0,"C",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,104);
-$pdf->CuadroCuerpo(100,$prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,$prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,112);
-$pdf->CuadroCuerpo(100,$prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,$prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,120);
-$pdf->CuadroCuerpo(85,$prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,$prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",$borde,11);
 $pdf->SetXY($x+122,120);
 $pdf->CuadroCuerpo(12,($opt['Vitrina3']),0,"R",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,129);
-$pdf->CuadroCuerpo(85,$prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,$prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",$borde,11);
 
 $pdf->SetXY($x+122,129);
 $pdf->CuadroCuerpo(12,($opt['Vitrina4']),0,"R",$borde,11);
+
+
+//Observaciones
+$pdf->SetXY($x+24,142);
+$pdf->CuadroCuerpoMulti(65,($opt['Observaciones']),0,"L",$borde,11);
 
 //Monto Sus
 $pdf->SetXY($x+94,142);
@@ -312,22 +321,26 @@ $pdf->CuadroCuerpo(19,$opt['COIDPCerca'],0,"C",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,104);
-$pdf->CuadroCuerpo(100,$prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,$prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,112);
-$pdf->CuadroCuerpo(100,$prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,$prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,120);
-$pdf->CuadroCuerpo(85,$prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,$prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",$borde,11);
 $pdf->SetXY($x+122,120);
 $pdf->CuadroCuerpo(12,($opt['Vitrina3']),0,"R",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,129);
-$pdf->CuadroCuerpo(85,$prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,$prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",$borde,11);
 
 $pdf->SetXY($x+122,129);
 $pdf->CuadroCuerpo(12,($opt['Vitrina4']),0,"R",$borde,11);
+
+//Observaciones
+$pdf->SetXY($x+24,142);
+$pdf->CuadroCuerpoMulti(65,($opt['Observaciones']),0,"L",$borde,11);
 
 //Monto Sus
 $pdf->SetXY($x+94,142);
