@@ -220,6 +220,7 @@ $idioma['RangoInicial']="Rango Inicial";
 $idioma['RangoFinal']="Rango Final";
 $idioma['TalonarioYaRegistrado']="Cuidado!!! Los Talonarios que desea registrar ya Fueron Registrados";
 $idioma['Venta']="Venta";
+$idioma['Ventas']="Ventas";
 $idioma['RegistroVenta']="Registro de Venta";
 $idioma['EmpleadoRecepcion']="Empleado Recepcionista";
 $idioma['Ci']="C.I.";
