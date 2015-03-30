@@ -15,5 +15,5 @@ $titulo=array(
 				"Descripcion"=>$idioma['Descripcion'],
 				"FechaRegistro"=>$idioma['FechaRegistro'],
 );
-listadotabla($titulo,$tal,1,"","","eliminar.php");
+listadotabla($titulo,$tal,1,"","","");
 ?>
