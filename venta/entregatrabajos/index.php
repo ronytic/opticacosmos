@@ -7,7 +7,7 @@ include_once($folder."cabecerahtml.php");
 <script language="javascript">
 configuracion={todayBtn: false, endDate: "'0d'"};
 $(document).on("ready",function(){
-	$(document).on("submit",".formularioRevisar",function(e){
+	$(document).on("submit","#formularioRevisar",function(e){
 		
 		if(!confirm("¿Esta Seguro de entregar este trabajo?")){
 			e.preventDefault();	
@@ -24,8 +24,8 @@ $(document).on("ready",function(){
 <table class="table table-hover">
 	<tr>
     	<td class="der"><?php echo $idioma['NumeroBoleta'] ?></td>
-        <td><?php campo("NumeroBoleta","text","","",1,"",1)?></td>
-        <td colspan="2">
+        <td><?php campo("NumeroBoleta","text","","der norequerido",1,"",1)?></td>
+        <td colspan="1">
         	<?php campo("","submit",$idioma['Buscar'],"btn btn-info","")?>
         </td>
     </tr>
