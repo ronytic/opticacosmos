@@ -16,25 +16,26 @@ $Paterno=trim(mb_strtolower($Paterno,"utf8"));
 $Materno=trim(mb_strtolower($Materno,"utf8"));
 $Nombres=trim(mb_strtolower($Nombres,"utf8"));
 $Celular=trim(mb_strtolower($Celular,"utf8"));
-$pac=$paciente->mostrarTodoRegistro("Ci='$Ci'");
+$pac=$paciente->mostrarTodoRegistro("Paterno='$Paterno' and Materno='$Materno' and Nombres='$Nombres'");
+//echo count($pac);
 if(count($pac)){//Actualizar Datos de Paciente 
     $valorespaciente=array(
-              "Ci='$Ci'",
-              "Paterno='$Paterno'",
-              "Materno='$Materno'",
-              "Nombres='$Nombres'",
-              "Celular='$Celular'"              
+              "Ci"=>"'$Ci'",
+              "Paterno"=>"'$Paterno'",
+              "Materno"=>"'$Materno'",
+              "Nombres"=>"'$Nombres'",
+              "Celular"=>"'$Celular'"              
         );
-     $paciente->actualizarRegistro($valorespaciente,"Ci='$Ci'");   
+     $paciente->actualizarRegistro($valorespaciente,"Paterno='$Paterno' and Materno='$Materno' and Nombres='$Nombres'");   
      $pac=array_shift($pac);
      $CodPaciente=$pac['CodPaciente']; 
 }else{//Insertar Nuevo  Paciente
     $valorespaciente=array(
-              "Ci='$Ci'",
-              "Paterno='$Paterno'",
-              "Materno='$Materno'",
-              "Nombres='$Nombres'",
-              "Celular='$Celular'"              
+              "Ci"=>"'$Ci'",
+              "Paterno"=>"'$Paterno'",
+              "Materno"=>"'$Materno'",
+              "Nombres"=>"'$Nombres'",
+              "Celular"=>"'$Celular'"              
         );
      $paciente->insertarRegistro($valorespaciente);  
      $CodPaciente=$paciente->ultimo();
@@ -50,9 +51,9 @@ $CelularMedico=trim(mb_strtolower($CelularMedico,"utf8"));
 $med=$medico->mostrarTodoRegistro("Paterno='$PaternoMedico' and Paterno='$PaternoMedico' and Paterno='$PaternoMedico' ");
 if(count($med)){//Actualizar Datos de Paciente 
     $valoresmedico=array(
-              "Paterno='$PaternoMedico'",
-              "Materno='$MaternoMedico'",
-              "Nombres='$NombresMedico'",
+              "Paterno"=>"'$PaternoMedico'",
+              "Materno"=>"'$MaternoMedico'",
+              "Nombres"=>"'$NombresMedico'",
             
         );
         $med=array_shift($med);
@@ -62,11 +63,11 @@ if(count($med)){//Actualizar Datos de Paciente
      
 }else{//Insertar Nuevo  Paciente
     $valoresmedico=array(
-              "Paterno='$Paterno'",
-              "Materno='$Materno'",
-              "Nombres='$Nombres'",
-              "Celular='$Celular'",
-              "CodEspecialidad='$CodEspecialidad'"   
+              "Paterno"=>"'$PaternoMedico'",
+              "Materno"=>"'$MaternoMedico'",
+              "Nombres"=>"'$NombresMedico'",
+              "Celular"=>"'$Celular'",
+              "CodEspecialidad"=>"'1'"
                           
         );
      $medico->insertarRegistro($valoresmedico);  
@@ -180,7 +181,7 @@ $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta'");
 $opt=array_shift($opt);
 $Botones=array("boleta.php?CodOptica=".$opt['CodOptica']=>$idioma["ImprimirBoleta"]);
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
-header("Location:boleta.php?CodOptica=".$opt['CodOptica']);
+//header("Location:boleta.php?CodOptica=".$opt['CodOptica']);
 }
 
 $ArchivoNuevo="../registro/listar.php";
