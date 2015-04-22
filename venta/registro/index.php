@@ -81,30 +81,31 @@ var Habilitado=0;
                 <tr>
                     <th><?php echo $idioma['Ci'] ?>
                         <br>
-                        <input type="text" name="Ci" tabindex="2" list="Cis">
+                        <input type="text" name="Ci" tabindex="2" list="Cis" class="form-control">
                         <datalist id="Cis">
                         <?php foreach($pacientes as $p){?>
                             <option value="<?php echo $p['Ci']?>"><?php echo $p['Paterno']." ".$p['Materno']." ".$p['Nombres']?></option>
                         <?php }?>
                         </datalist>
                     </th>
+                    <th><?php echo $idioma['Nombres'] ?>
+                        <br>
+                        <input type="text" name="Nombres" tabindex="3" list="Nombres" required class="form-control">
+                    </th>
                     <th><?php echo $idioma['ApellidoPaterno'] ?>
                         <br>
-                        <input type="text" name="Paterno" tabindex="3" list="Paternos" autocomplete="off">
+                        <input type="text" name="Paterno" tabindex="4" list="Paternos" autocomplete="off" class="form-control">
                         
                     </th>
                     <th><?php echo $idioma['ApellidoMaterno'] ?>
                         <br>
-                        <input type="text" name="Materno" tabindex="4" list="Maternos">
+                        <input type="text" name="Materno" tabindex="5" list="Maternos" class="form-control">
                     </th>
-                    <th><?php echo $idioma['Nombres'] ?>
-                        <br>
-                        <input type="text" name="Nombres" tabindex="5" list="Nombres" required>
-                    </th>
+                    
                     
                     <th><?php echo $idioma['Celular'] ?>
                         <br>
-                        <input type="text" name="Celular" tabindex="6" list="Celulares">
+                        <input type="text" name="Celular" tabindex="6" list="Celulares" class="form-control">
                     </th>
                 </tr>
             </table>
@@ -119,9 +120,18 @@ var Habilitado=0;
                     	<?php echo $idioma['Medico']?><br><?php campo("CodMedico","select",array(),"col-sm-12",1,"",0,array("data-placeholder"=>"Seleccione..."))?>
                     	<a class="btn btn-xs btn-danger" href="#" rel="popupmodal"><?php echo $idioma['RegistrarNuevoMedico']?></a>
                     </td>-->
+                    <th><?php echo $idioma['Nombres'] ?>
+                        <br>
+                        <input type="text" name="NombresMedico" tabindex="7" list="NombresMedicos" required class="form-control">
+                        <datalist id="NombresMedicos">
+                        <?php foreach($medicos as $m){?>
+                            <option value="<?php echo $m['Nombres']?>"><?php echo $m['Paterno']." ".$m['Materno']." ".$m['Nombres']?></option>
+                        <?php }?>
+                        </datalist>
+                    </th>
                     <th><?php echo $idioma['ApellidoPaterno'] ?>
                         <br>
-                        <input type="text" name="PaternoMedico" tabindex="7" list="PaternosMedicos" autocomplete="off">
+                        <input type="text" name="PaternoMedico" tabindex="8" list="PaternosMedicos" autocomplete="off" class="form-control">
                         <datalist id="PaternosMedicos">
                         <?php foreach($medicos as $m){?>
                             <option value="<?php echo $m['Paterno']?>"><?php echo $m['Paterno']." ".$m['Materno']." ".$m['Nombres']?></option>
@@ -130,26 +140,18 @@ var Habilitado=0;
                     </th>
                     <th><?php echo $idioma['ApellidoMaterno'] ?>
                         <br>
-                        <input type="text" name="MaternoMedico" tabindex="8" list="MaternoMedicos">
+                        <input type="text" name="MaternoMedico" tabindex="9" list="MaternoMedicos" class="form-control">
                         <datalist id="MaternoMedicos">
                         <?php foreach($medicos as $m){?>
                             <option value="<?php echo $m['Materno']?>"><?php echo $m['Paterno']." ".$m['Materno']." ".$m['Nombres']?></option>
                         <?php }?>
                         </datalist>
                     </th>
-                    <th><?php echo $idioma['Nombres'] ?>
-                        <br>
-                        <input type="text" name="NombresMedico" tabindex="9" list="NombresMedicos" required>
-                        <datalist id="NombresMedicos">
-                        <?php foreach($medicos as $m){?>
-                            <option value="<?php echo $m['Nombres']?>"><?php echo $m['Paterno']." ".$m['Materno']." ".$m['Nombres']?></option>
-                        <?php }?>
-                        </datalist>
-                    </th>
+                    
                     
                     <th><?php echo $idioma['Celular'] ?>
                         <br>
-                        <input type="text" name="CelularMedico" tabindex="10" list="Celulares">
+                        <input type="text" name="CelularMedico" tabindex="10" list="Celulares" class="form-control">
                     </th>
                 </tr>
             </table>
@@ -267,9 +269,9 @@ var Habilitado=0;
             <table class="table table-bordered table-striped">
             	<tr><td colspan="6"><strong><?php echo $idioma['Pago']?> - T/C: <?php echo $TC?></strong></td></tr>
             	<tr class="danger">
-                	<td colspan="1"><?php echo $idioma['PrecioTotal']?><br><?php campo("TotalBs","text","0","col-sm-12 der norequerido",1,"","",array("tabindex"=>49))?></td>
-                    <td colspan="1"><?php echo $idioma['ACuenta']?> Bs<br><?php campo("ACuentaBs","text","0","col-sm-12 der norequerido",1,"",0,array("tabindex"=>50))?></td>
-                    <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","0","col-sm-12 der norequerido",1,"",0,array("tabindex"=>51))?><br>Monto en Bs <?php campo("TotalAcuentaSus","text","0","col-sm-12 der norequerido",0,"",0,array("readonly"=>"readonly"))?></td>
+                	<td colspan="1"><?php echo $idioma['PrecioTotal']?><br><?php campo("TotalBs","text","","col-sm-12 der norequerido",1,"","",array("tabindex"=>49))?></td>
+                    <td colspan="1"><?php echo $idioma['ACuenta']?> Bs<br><?php campo("ACuentaBs","text","","col-sm-12 der norequerido",1,"",0,array("tabindex"=>50))?></td>
+                    <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","","col-sm-12 der norequerido",1,"",0,array("tabindex"=>51))?><br>Monto en Bs <?php campo("TotalAcuentaSus","text","0","col-sm-12 der norequerido",0,"",0,array("readonly"=>"readonly"))?></td>
                     
                     <td colspan="1"><?php echo $idioma['SaldoCobrar']?> Bs<br><?php campo("SaldoBs","text","0","col-sm-12 der norequerido",1,"",0,array("readonly"=>"readonly"))?></td>
                 </tr>
