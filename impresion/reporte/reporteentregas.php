@@ -21,7 +21,7 @@ include_once("../../class/usuario.php");
 $usuario=new usuario;
 
 if($_GET['CodUsuarioAsignado']==""){
-	$idusuario=$_SESSION['idusuario'];
+	$idusuario=$_SESSION['CodUsuarioLog'];
 }else{
 	$idusuario=$_GET['CodUsuarioAsignado'];
 }
@@ -42,7 +42,7 @@ $titulo="Planilla de Entrega de Trabajos";
 class PDF extends PPDF{
 	function Cabecera(){
 		global $ApellidoPSis,$ApellidoMSis,$NombresSis,$TC;
-		$this->CuadroCabecera(25,"Reporte de:",70,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
+		$this->CuadroCabecera(25,"Reporte de:",80,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
 		$this->CuadroCabecera(10,"T/C:",60,$TC);
 		$this->Pagina();
 		$this->Ln();
@@ -106,8 +106,8 @@ foreach($opt as $o){
 	$TCobrarBs+=$CobrarBs;
 	
 	$datos=array($o['NumeroBoleta'],
-			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
-			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
+			fecha2Str($o['FechaEmitido'])." ".$o['HoraEmitido'],
+			utf8_decode(mb_strtoupper($pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],"utf8")),
 			//$prod1['Nombre']." - ".$o['Detalle1'],
 			//$prod2['Nombre']." - ".$o['Detalle2'],
 			//$prod3['Nombre']." - ".$o['Detalle3'],
@@ -119,7 +119,7 @@ foreach($opt as $o){
 			fecha2Str($o['FechaEntrega']),
 			fecha2Str($o['FechaEntregaReal']),
 			$o['HoraEntregaReal'],
-			$o['Observaciones']
+			utf8_decode(mb_strtoupper($o['Observaciones'],"utf8"))
 	);
 	$pdf->Row($datos);	
 }

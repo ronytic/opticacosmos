@@ -37,7 +37,7 @@ $FotoSis=$datosUsuario['Foto'];
 $FechaIncio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 
-$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and Emitido=1 and Anulado=0","","FechaRegistro,NumeroBoleta");
+$opt=$optica->MostrarTodoRegistro("FechaEmitido BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuarioEmitido=$idusuario and Emitido=1 and Anulado=0","","FechaRegistro,NumeroBoleta");
 
 $titulo="Planilla por Ingresos por Ventas";
 class PDF extends PPDF{
@@ -104,17 +104,17 @@ foreach($opt as $o){
 	$TCobrarBs+=$CobrarBs;
 	
 	$datos=array($o['NumeroBoleta'],
-			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
-			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
-			$prod1['Nombre']." - ".$o['Detalle1'],
-			$prod2['Nombre']." - ".$o['Detalle2'],
-			$prod3['Nombre']." - ".$o['Detalle3'],
-			$prod4['Nombre']." - ".$o['Detalle4'],
+			fecha2Str($o['FechaEmitido'])." ".$o['HoraEmitido'],
+			utf8_decode(mb_strtoupper($pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],"utf8")),
+			utf8_decode(mb_strtoupper($prod1['Nombre']." - ".$o['Detalle1'],"utf8")),
+			utf8_decode(mb_strtoupper($prod2['Nombre']." - ".$o['Detalle2'],"utf8")),
+			utf8_decode(mb_strtoupper($prod3['Nombre']." - ".$o['Detalle3'],"utf8")),
+			utf8_decode(mb_strtoupper($prod4['Nombre']." - ".$o['Detalle4'],"utf8")),
 			$TotalBs,
 			$ACuentaBs,
 			$ACuentaSus,
 			$SaldoBs,
-			$o['Observaciones']
+			utf8_decode(mb_strtoupper($o['Observaciones'],"utf8"))
 	);
 	$pdf->Row($datos);	
 }

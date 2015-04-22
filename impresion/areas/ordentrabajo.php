@@ -55,7 +55,7 @@ $med=array_shift($med);
 
 include_once("../../class/usuario.php");
 $usuario=new usuario;
-$datosUsuario=$usuario->mostrarDatos($opt['CodUsuario']);
+$datosUsuario=$usuario->mostrarDatos($opt['CodUsuarioEmitido']);
 $datosUsuario=array_shift($datosUsuario);
 
 class PDF extends PPDF{
@@ -69,7 +69,7 @@ class PDF extends PPDF{
 	}
     function CuadroCuerpoMulti($txtAncho,$txt,$relleno=0,$align="L",$borde=1,$tam=9,$tipo=""){
         $this->Fuente($tipo,$tam);
-        $this->MultiCell($txtAncho,3,utf8_decode($txt),$borde,$align,$relleno);	
+        $this->MultiCell($txtAncho,3.5,utf8_decode($txt),$borde,$align,$relleno);	
     }
 }
 $borde=0;
@@ -85,14 +85,14 @@ $pdf->CuadroCuerpo(30,$TipoDoc,0,"L",$borde,11);
 
 
 $pdf->SetXY($x+80,5);
-$pdf->CuadroCuerpo(60,"Dr(a). ".$med['Nombres']." ".$med['Paterno']." ".$med['Materno'],0,"L",$borde,10);
+$pdf->CuadroCuerpo(60,"Dr(a). ".mayuscula($med['Nombres']." ".$med['Paterno']." ".$med['Materno']),0,"L",$borde,10);
 $pdf->SetXY($x+80,10);
 $pdf->CuadroCuerpo(60,$opt['CodOptica'],0,"C",$borde,10);
 
 $pdf->SetXY($x+105,41);
-$pdf->CuadroCuerpo(30,fecha2Str($opt['FechaRegistro']),0,"C",$borde,11);
+$pdf->CuadroCuerpo(30,fecha2Str($opt['FechaEmitido']),0,"C",$borde,11);
 $pdf->SetXY($x+105,44);
-$pdf->CuadroCuerpo(30,($opt['HoraRegistro']),0,"C",$borde,10);
+$pdf->CuadroCuerpo(30,($opt['HoraEmitido']),0,"C",$borde,10);
 
 $pdf->SetXY($x+25,49);
 $pdf->CuadroCuerpo(110,mayuscula($pac['Nombres']." ".$pac['Paterno']." ".$pac['Materno']." "),0,"C",$borde,12);
@@ -171,27 +171,27 @@ $pdf->CuadroCuerpo(19,$opt['COIDPCerca'],0,"C",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,104);
-$pdf->CuadroCuerpoMulti(100,$prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,mayuscula($prodtip1['Nombre']." - ".$prod1['Nombre']." - ").utf8_decode(mb_strtoupper($opt['Detalle1'],"utf8")),0,"L",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,112);
-$pdf->CuadroCuerpoMulti(100,$prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,mayuscula($prodtip2['Nombre']." - ".$prod2['Nombre']." - ").utf8_decode(mb_strtoupper($opt['Detalle2'],"utf8")),0,"L",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,120);
-$pdf->CuadroCuerpoMulti(85,$prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,mayuscula($prodtip3['Nombre']." - ".$prod3['Nombre']." - ").utf8_decode(mb_strtoupper($opt['Detalle3'],"utf8")),0,"L",$borde,11);
 $pdf->SetXY($x+122,120);
 $pdf->CuadroCuerpo(12,($opt['Vitrina3']),0,"R",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,129);
-$pdf->CuadroCuerpoMulti(85,$prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,mayuscula($prodtip4['Nombre']." - ".$prod4['Nombre']." - ").utf8_decode(mb_strtoupper($opt['Detalle4'],"utf8")),0,"L",$borde,11);
 
 $pdf->SetXY($x+122,129);
 $pdf->CuadroCuerpo(12,($opt['Vitrina4']),0,"R",$borde,11);
 
 
 //Observaciones
-$pdf->SetXY($x+24,142);
-$pdf->CuadroCuerpoMulti(65,($opt['Observaciones']),0,"L",$borde,11);
+$pdf->SetXY($x+6,142);
+$pdf->CuadroCuerpoMulti(65,mb_strtoupper($opt['Observaciones'],"utf8"),0,"L",0,11);
 
 //Monto Sus
 $pdf->SetXY($x+94,142);
@@ -215,7 +215,7 @@ $pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+115,160);
 $pdf->CuadroCuerpo(23,dec($opt['DescuentoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+115,166);
-$pdf->CuadroCuerpo(23,dec($opt['CobrarBs']),0,"R",$borde,11);
+$pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 
 //Fecha, Entrega, Telefono
 $pdf->SetXY($x+35,178);
@@ -235,14 +235,14 @@ $pdf->CuadroCuerpo(30,$TipoDoc,0,"L",$borde,11);
 
 
 $pdf->SetXY($x+80,5);
-$pdf->CuadroCuerpo(60,"Dr(a). ".$med['Nombres']." ".$med['Paterno']." ".$med['Materno'],0,"L",$borde,10);
+$pdf->CuadroCuerpo(60,"Dr(a). ".mayuscula($med['Nombres']." ".$med['Paterno']." ".$med['Materno']),0,"L",$borde,10);
 $pdf->SetXY($x+80,10);
 $pdf->CuadroCuerpo(60,$opt['CodOptica'],0,"C",$borde,10);
 
 $pdf->SetXY($x+105,41);
-$pdf->CuadroCuerpo(30,fecha2Str($opt['FechaRegistro']),0,"C",$borde,11);
+$pdf->CuadroCuerpo(30,fecha2Str($opt['FechaEmitido']),0,"C",$borde,11);
 $pdf->SetXY($x+105,44);
-$pdf->CuadroCuerpo(30,($opt['HoraRegistro']),0,"C",$borde,10);
+$pdf->CuadroCuerpo(30,($opt['HoraEmitido']),0,"C",$borde,10);
 
 $pdf->SetXY($x+25,49);
 $pdf->CuadroCuerpo(110,mayuscula($pac['Nombres']." ".$pac['Paterno']." ".$pac['Materno']." "),0,"C",$borde,12);
@@ -321,26 +321,27 @@ $pdf->CuadroCuerpo(19,$opt['COIDPCerca'],0,"C",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,104);
-$pdf->CuadroCuerpoMulti(100,$prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,mayuscula($prodtip1['Nombre']." - ".$prod1['Nombre']." - ".($opt['Detalle1'])),0,"L",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,112);
-$pdf->CuadroCuerpoMulti(100,$prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(100,mayuscula($prodtip2['Nombre']." - ".$prod2['Nombre']." - ".($opt['Detalle2'])),0,"L",$borde,11);
 
 //Armazon Lejos
 $pdf->SetXY($x+35,120);
-$pdf->CuadroCuerpoMulti(85,$prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,mayuscula($prodtip3['Nombre']." - ".$prod3['Nombre']." - ".($opt['Detalle3'])),0,"L",$borde,11);
 $pdf->SetXY($x+122,120);
 $pdf->CuadroCuerpo(12,($opt['Vitrina3']),0,"R",$borde,11);
 //Armazon Cerca
 $pdf->SetXY($x+35,129);
-$pdf->CuadroCuerpoMulti(85,$prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4']),0,"L",$borde,11);
+$pdf->CuadroCuerpoMulti(85,mayuscula($prodtip4['Nombre']." - ".$prod4['Nombre']." - ".($opt['Detalle4'])),0,"L",$borde,11);
 
 $pdf->SetXY($x+122,129);
 $pdf->CuadroCuerpo(12,($opt['Vitrina4']),0,"R",$borde,11);
 
+
 //Observaciones
-$pdf->SetXY($x+24,142);
-$pdf->CuadroCuerpoMulti(65,($opt['Observaciones']),0,"L",$borde,11);
+$pdf->SetXY($x+6,142);
+$pdf->CuadroCuerpoMulti(65,mb_strtoupper($opt['Observaciones'],"utf8"),0,"L",0,11);
 
 //Monto Sus
 $pdf->SetXY($x+94,142);
@@ -364,7 +365,7 @@ $pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+115,160);
 $pdf->CuadroCuerpo(23,dec($opt['DescuentoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+115,166);
-$pdf->CuadroCuerpo(23,dec($opt['CobrarBs']),0,"R",$borde,11);
+$pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 
 //Fecha, Entrega, Telefono
 $pdf->SetXY($x+35,178);

@@ -9,8 +9,6 @@ include_once("../../class/producto.php");
 $producto=new producto;
 include_once("../../class/productotipo.php");
 $productotipo=new productotipo;
-include_once("../../class/usuario.php");
-$optica=new optica;
 
 
 if(!defined("Config")){
@@ -43,7 +41,7 @@ $FechaFinal=$_GET['Hasta'];
 $ApellidoPSis="";
 $ApellidoMSis="";
 $NombresSis="Todos los usuarios";
-$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and EstadoEntrega=0 and Emitido=1","","FechaRegistro,NumeroBoleta",1,"Nivel ASC, CodUsuario");
+$opt=$optica->MostrarTodoRegistro("FechaEntrega BETWEEN '$FechaIncio' and '$FechaFinal' and EstadoEntrega=0 and Emitido=1","1","FechaEntrega,NumeroBoleta");
 
 //$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and EstadoEntrega=0","","FechaRegistro,NumeroBoleta");
 
@@ -51,7 +49,7 @@ $titulo="Planilla de Trabajos No Entregados";
 class PDF extends PPDF{
 	function Cabecera(){
 		global $ApellidoPSis,$ApellidoMSis,$NombresSis,$TC;
-		$this->CuadroCabecera(25,"Reporte de:",70,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
+		$this->CuadroCabecera(25,"Reporte de:",80,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
 		$this->CuadroCabecera(10,"T/C:",60,$TC);
 		$this->Pagina();
 		$this->Ln();
@@ -82,15 +80,16 @@ $pdf->AddPage();
 
 $pdf->SetWidths(array(10,15,20,15,40,15,15,15,20,20,35,35));
 $pdf->Fuente("",9);
-$pdf->SetAligns(array("R","R","","R","R","R","R","R","R","R"));
+$pdf->SetAligns(array("R","C","","R","L","R","R","R","R","R"));
 $TTotalBs=0;
 $contadorUsuario=0;
 foreach($opt as $o){
 	if($contadorUsuario!=$idusuario){
 		$i=0;
+		$contadorUsuario=$idusuario;
 	}
 	$i++;
-	$idusuario=$o['CodUsuario'];
+	$idusuario=$o['CodUsuarioEmitido'];
 	$datosUsuario=$usuario->mostrarDatos($idusuario);
 	$datosUsuario=array_shift($datosUsuario);
 
@@ -126,9 +125,9 @@ foreach($opt as $o){
 	
 	$datos=array($i,
 			$o['NumeroBoleta'],
-			fecha2Str($o['FechaRegistro'])." ".$o['HoraRegistro'],
-			$o['HoraRegistro'],
-			$pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],
+			fecha2Str($o['FechaEmitido'])." ".$o['HoraEmitido'],
+			$o['HoraEmitido'],
+			utf8_decode(mb_strtoupper($pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],"utf8")),
 			//$prod1['Nombre']." - ".$o['Detalle1'],
 			//$prod2['Nombre']." - ".$o['Detalle2'],
 			//$prod3['Nombre']." - ".$o['Detalle3'],
@@ -139,8 +138,8 @@ foreach($opt as $o){
 			$SaldoBs,
 			fecha2Str($o['FechaEntrega']),
 			
-			$o['Observaciones'],
-			$datosUsuario['Paterno']." ".$datosUsuario['Materno']." ".$datosUsuario['Nombres'],
+			utf8_decode(mb_strtoupper($o['Observaciones'],"utf8")),
+			utf8_decode(mb_strtoupper($datosUsuario['Paterno']." ".$datosUsuario['Materno']." ".$datosUsuario['Nombres'],"utf8")),
 			
 	);
 	$pdf->Row($datos);	
