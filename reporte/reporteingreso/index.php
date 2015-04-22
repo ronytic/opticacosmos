@@ -13,7 +13,7 @@ $us2=todolista($usuario->mostrarUsuarios("Nivel!=1"),"CodUsuario","Paterno,Mater
 include_once($folder."cabecerahtml.php");
 ?>
 <script language="javascript">
-configuracion={todayBtn: false, endDate: "'0d'"};
+//configuracion={todayBtn: false, endDate: "'+7day'"};
 $(document).on("ready",function(){
 	$(document).on("submit",".formularioRevisar",function(e){
 		
@@ -40,11 +40,11 @@ $(document).on("ready",function(){
     	<?php if(in_array($_SESSION['Nivel'],array(1,2,3,4))){?>
         <td><?php campo("CodUsuarioAsignado","select",$us2,"",1)?></td>
         <?php }?>
-        <td><?php campo("Desde","text",fecha2Str(),"fecha",1,"",1)?></td>
-        <td><?php campo("Hasta","text",fecha2Str(),"fecha",1,"",1)?></td>
-        <td><?php campo("TipoReporte","select",$tiporeporte,"",1,"",1)?></td>
+        <td><?php campo("Desde","text",fecha2Str(),"fecha",1,"",0)?></td>
+        <td><?php campo("Hasta","text",fecha2Str(""),"fecha",1,"",0)?></td>
+        <td><?php campo("TipoReporte","select",$tiporeporte,"",1,"",0)?></td>
         <td colspan="2">
-        	<?php campo("","submit",$idioma['Buscar'],"btn btn-info","")?>
+        	<?php campo("","submit",$idioma['Buscar'],"btn btn-info",1,"",1)?>
         </td>
     </tr>
 </table>
