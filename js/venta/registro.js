@@ -9,6 +9,8 @@ $(document).on("ready",function(){
 		if($("#ACuentaSus").val()==""){
 			$("#ACuentaSus").val('0')	
 		}
+		TotalBs=0;
+		
        var TotalBs=parseFloat($("#TotalBs").val()); 
 	   var ACuentaBs=parseFloat($("#ACuentaBs").val()); 
 	   var ACuentaSus=parseFloat($("#ACuentaSus").val()); 
