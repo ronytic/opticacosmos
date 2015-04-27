@@ -6,8 +6,9 @@ $Cod=$_GET['CodOptica'];
 if($Cod==""){
 	$Cod=$_GET['Cod'];	
 }
+
 $titulo="NVerBoletaOrdenTrabajo";
-$url="../../impresion/areas/ordentrabajo.php?Cod=".$Cod;
+$url="../../impresion/optica/ordentrabajo".$UbicacionReporte.".php?Cod=".$Cod;
 include_once($folder."cabecerahtml.php");
 ?>
 <script language="javascript">

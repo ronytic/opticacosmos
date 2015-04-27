@@ -15,5 +15,12 @@ $titulo=array(	"Paterno"=>$idioma['Paterno'],
 				"Ci"=>$idioma['Ci'],
 				
 );
-listadotabla($titulo,$pac,1,"ver.php","modificar.php","",array("historial.php"=>"Historia Clinica"));
+foreach($pac as $p){$i++;
+    $datos[$i]['Cod']=$p['CodPaciente'];
+    $datos[$i]['Paterno']=capitalizar($p['Paterno']);
+    $datos[$i]['Materno']=capitalizar($p['Materno']);
+    $datos[$i]['Nombres']=capitalizar($p['Nombres']);
+    $datos[$i]['Ci']=$p['Ci'];
+}
+listadotabla($titulo,$datos,1,"ver.php","modificar.php","",array("historial.php"=>"Historia Clinica"));
 ?>

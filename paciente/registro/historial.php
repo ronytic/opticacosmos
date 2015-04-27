@@ -13,7 +13,9 @@ $folder="../../";
 <script language="javascript">
 $(document).on("ready",function(){
 	
-	
+	$(".formulario").on("keyup"," input",function(){
+        $(".formulario").submit();   
+    }); 
 	
 });
 </script>
@@ -36,9 +38,9 @@ $(document).on("ready",function(){
                         </tr>
                     </thead>
                     <tr>
-                    	<td><?php echo $pac['Paterno']?></td>
-                        <td><?php echo $pac['Materno']?></td>
-                        <td><?php echo $pac['Nombres']?></td>
+                    	<td><?php echo capitalizar($pac['Paterno'])?></td>
+                        <td><?php echo capitalizar($pac['Materno'])?></td>
+                        <td><?php echo capitalizar($pac['Nombres'])?></td>
                         <td><?php echo $pac['Ci']?></td>
                         <td><?php echo $pac['Telefono']?></td>
                         <td><?php echo $pac['Celular']?></td>
@@ -54,36 +56,28 @@ $(document).on("ready",function(){
                 <form action="historialpaciente.php" method="post" class="formulario">
                 	<?php campo("CodPaciente","hidden",$Cod,"",0)?>
                         <table class="table table-bordered">
-                            <thead>
                                 <tr>
-                                    <th>
+                                    <td>
                                     <label><?php echo $idioma['Desde']?></label>
-                                    <input type="date" class="input-sm form-control" name="Desde" value="<?php echo fecha2Str("",0,"-7 day"); ?>" />
-                                    </th>
-                                    <th>
+                                    <input type="date" class="input-sm form-control" name="Desde" value="<?php echo fecha2Str("",0,"-7 day"); ?>"/>
+                                    </td>
+                                    <td>
                                     <label><?php echo $idioma['Hasta']?></label>
                                     <input type="date" class="input-sm form-control" name="Hasta" value="<?php echo fecha2Str("",0,"0day"); ?>"/>
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                     <label><?php echo $idioma['NumeroBoleta']?></label>
                                     <input type="text" class="input-sm form-control" name="NumeroBoleta" value=""/>        
-                                    </th>
+                                    </td>
                                     <th>
                                     <?php campo("","submit",$idioma['Buscar'],"btn btn-success")?>
-                                    </th>
+                                    </td>
                                 </tr>
-                            </thead>
                         </table>
                             
-                            <span class="input-group-addon"></span>
+
                             
 
-                    <div class="col-sm-2">
-                    
-                    </div>  
-                    <div class="col-sm-4"><br>	
-                    	
-                    </div>
                     <div class="clearfix"></div>
                     
                 </form>

@@ -4,6 +4,13 @@ $folder="../../";
 $titulo="NBusquedaPacientes";
 include_once($folder."cabecerahtml.php");
 ?>
+<script language="javascript">
+$(document).on("ready",function(){
+    $(".formulario").on("keyup"," input",function(){
+        $(".formulario").submit();   
+    });    
+});
+</script>
 <?php include_once($folder."cabecera.php");?>
 
 <div class="col-sm-12">
@@ -48,7 +55,7 @@ include_once($folder."cabecerahtml.php");
         	<div class="widget-main">
             	<div class="main" id="respuestaformulario">
                 </div>
-                <a href="index.php?redirigirlistado=1" class="btn btn-xs btn-info"><?php echo $idioma['RegistrarNuevoPaciente']?></a>
+                <!--<a href="index.php?redirigirlistado=1" class="btn btn-xs btn-info"><?php echo $idioma['RegistrarNuevoPaciente']?></a>-->
             </div>
         </div>
     </div>

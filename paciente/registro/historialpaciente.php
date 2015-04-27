@@ -21,9 +21,25 @@ $optica=new optica;
 			//echo "Hola";
 			$NumeroBoleta="%";
 		}
+        /*echo $Desde;
+        echo $Hasta;*/
 		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta' and FechaEmitido BETWEEN '".($Desde)."' and '".($Hasta)."' ",1,"FechaRegistro,NumeroBoleta");
 		//print_r($opt);
-		listadoTabla($titulos,$opt,1,"boleta.php","","","",array("CodOptica"=>"asd"));
+        
+        foreach($opt as $o){$i++;
+            $datos[$i]['CodOptica']=$o['CodOptica'];
+            $datos[$i]['NumeroBoleta']=$o['NumeroBoleta'];
+            $datos[$i]['FechaEmitido']=$o['FechaEmitido'];
+            $datos[$i]['FechaEntrega']=$o['FechaEntrega'];
+            $datos[$i]['HoraEntrega']=$o['HoraEntrega'];
+            $datos[$i]['Recepcion']=$o['Recepcion'];
+            $datos[$i]['TotalBs']=$o['TotalBs'];
+            $datos[$i]['ACuentaBs']=$o['ACuentaBs'];
+            $datos[$i]['ACuentaSus']=$o['ACuentaSus'];
+            $datos[$i]['SaldoBs']=$o['SaldoBs'];
+            $datos[$i]['CodOptica']=$o['CodOptica'];
+        }
+		listadoTabla($titulos,$datos,1,"boleta.php","","","",array("CodOptica"=>"asd"));
 
 		
 
