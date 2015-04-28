@@ -19,5 +19,7 @@
 tr.centrar th,.centrar{
 	text-align:center;	
 }
-
+tr.resaltar td{
+    font-weight:bold;
+}
 /*Fin de Cargador*/
