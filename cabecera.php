@@ -22,8 +22,10 @@
 				<div class="navbar-header pull-left">
 					<a href="<?php echo $folder?>" class="navbar-brand">
 						<small>
-							<i class="icon-fire"></i>
-							<?php echo $Titulo?>
+							<i class="icon-eye"></i>
+							<?php echo $Titulo?> -
+                            <?php echo capitalizar($UbicacionReporte)?>
+                            
 						</small>
 					</a><!-- /.brand -->
 				</div><!-- /.navbar-header -->
