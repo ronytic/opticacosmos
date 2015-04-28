@@ -39,8 +39,9 @@ $(document).on("click",".aumentar",aumentarregistro)
 		var Linea=$(this).attr("rel");
 		$.post("unidad.php",{"CodProducto":CodProducto},function(data){
 			//alert(data);
-			$(".Unidad[rel="+Linea+"]").html(data);	
-		});
+			$(".Unidad[rel="+Linea+"]").html(data.Unidad);	
+            $(".Stock[rel="+Linea+"]").html(data.CantidadStock);	
+		},"json");
 	})
 	
 });

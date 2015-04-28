@@ -22,26 +22,22 @@ include_once($folder."cabecerahtml.php");
                 	<form action="busqueda.php" method="post" class="formulario">
                     
                     
-                    <!--<div class="col-sm-3">
+                    <div class="col-sm-3">
                         <label><?php echo $idioma['TipoProducto'] ?></label>
                         <br>
                         <?php campo("CodProductoTipo","select",$tp,"")?>
-                    </div>-->
+                    </div>
                     <div class="col-sm-3">
                         <label><?php echo $idioma['Producto'] ?></label>
                         <br>
-                        <?php campo("CodProducto","select",$pro,"")?>
+                        <?php campo("CodProducto","select","","")?>
                     </div>
                     <div class="col-sm-3">
                         <label><?php echo $idioma['EnExistencia'] ?></label>
                         <br>
                         <?php campo("EnExistencia","select",$sino,"col-xs-12",1)?>
                     </div>
-                    <div class="col-sm-3">
-                        <label><?php echo $idioma['Observacion'] ?></label>
-                        <br>
-                        <?php campo("Observacion","text","","col-xs-12")?>
-                    </div>
+
                     <div class="col-sm-3">
                     	<br>
                         <?php campo("","submit",$idioma['Buscar'],"btn btn-success col-xs-12")?>
