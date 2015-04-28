@@ -33,7 +33,7 @@ $idioma['ListadoTipoProductos']="Listado de Tipos de Productos";
 $idioma['NuevoProducto']="Nuevo Producto";
 $idioma['ListadoProductos']="Listado de Productos";
 $idioma['RecargarInventario']="Recargar Inventario";
-$idioma['ListadoInventario']="Listado de Inventario";
+$idioma['ListadoInventario']="Revisar Inventario";
 $idioma['EntregaTrabajos']="Entrega de Trabajos";
 $idioma['ReporteIngreso']="Reporte del Día";
 $idioma['NuevoUsuario']="Nuevo Usuario";
@@ -79,6 +79,9 @@ $idioma['NRegistroNuevoTalonario']="Registro de Nuevo Talonario";
 $idioma['NRegistroNuevoTalonario']="Registro de Nuevo Talonario";
 $idioma['NBusquedaTalonarios']="Búsqueda de Talonarios";
 $idioma['NReporteMedico']="Reporte Médico";
+$idioma['NModificarInventario']="Modificar Inventario";
+$idioma['NDetalleInventario']="Detalle de  Inventario";
+
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
