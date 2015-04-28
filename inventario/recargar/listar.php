@@ -11,6 +11,16 @@ $pro=todolista($producto->mostrarTodoRegistro("",1,"Nombre"),"CodProducto","Nomb
 $sino=array("1"=>$idioma["Si"],"0"=>$idioma['No']);
 include_once($folder."cabecerahtml.php");
 ?>
+<script language="javascript">
+$(document).on("change","#CodProductoTipo",function(){
+		var CodProductoTipo=$(this).val()
+		var Linea=$(this).attr("rel");
+		$.post("productos.php",{"CodProductoTipo":CodProductoTipo},function(data){
+			$("#CodProducto").html(data);	
+			$(document).on("change","#CodProducto");
+		});
+	})
+</script>
 <?php include_once($folder."cabecera.php");?>
 
 <div class="col-sm-12">

@@ -10,18 +10,21 @@ extract($_POST);
 
 /*$Nombre=$Nombre!=""?"Nombre LIKE '$Nombre%'":"Nombre LIKE '%'";
 $Unidad=$Unidad!=""?"Unidad LIKE '$Unidad%'":"Unidad LIKE '%'";*/
-
 $CodProductoTipo=$CodProductoTipo!=""?"CodProductoTipo LIKE '$CodProductoTipo%'":"CodProductoTipo LIKE '%'";
-$condicion=" $Nombre and $Unidad and $CodProductoTipo";
+$CodProducto=$CodProducto!=""?"CodProducto LIKE '$CodProducto%'":"CodProducto LIKE '%'";
+$condicion="$CodProducto and $CodProductoTipo";
 $pro=$producto->mostrarTodoRegistro($condicion,1,"Nombre");
 foreach($pro as $p){$i++;
 
     $reg=$inventario->cantidadStock($p['CodProducto']);
     $reg=array_shift($reg);
     $CantidadStock=$reg['CantidadStock'];
-    
-    if($CantidadStock<=0){
-        continue;    
+    if($EnExistencia==1){
+        if($CantidadStock<=0){
+            continue;    
+        }else{
+            
+        }
     }
     
 	$pt=$productotipo->mostrarRegistro($p['CodProductoTipo']);
@@ -44,5 +47,9 @@ $titulo=array(
 				
 				
 );
-listadotabla($titulo,$datos,1,"","modificar.php","");
+
+
+$modificar="detalle.php";
+
+listadotabla($titulo,$datos,1,$modificar,"","");
 ?>
