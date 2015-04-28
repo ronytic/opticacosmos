@@ -31,9 +31,21 @@ $ApellidoMSis=$datosUsuario['Materno'];
 $NombresSis=$datosUsuario['Nombres'];
 $FotoSis=$datosUsuario['Foto'];
 ?>
+
+<?php if(count($cantidad)){?>
+<table class="table table-bordered table-striped">
+<thead ><tr class="centrar"><th>Fecha de Ingreso</th><th>Número de Boleta</th><th>Ingresado Por</th><th>Datos Paciente</th><th>Fecha de Entrega</th></tr></thead>
+<tr class="centrar"><td><?php echo fecha2Str($opt['FechaEmitido'])." ".$opt['HoraEmitido']?></td><td class="centrar"><?php echo ($opt['NumeroBoleta'])?></td><td><?php echo ($opt['Recepcion'])?></td><td><?php echo capitalizar($pac['Paterno'])?> <?php echo capitalizar($pac['Materno'])?> <?php echo capitalizar($pac['Nombres'])?></td><td><?php echo fecha2Str($opt['FechaEntrega'])." ".$opt['HoraEntrega']?></td></tr>
+</table>
+
+<table class="table table-bordered table-striped">
+<thead><tr class="centrar"><th>Monto Total</th><th>A Cuenta Bs</th><th>A Cuenta $us	 - T.C. <?php echo ($opt['TC'])?></th><th>Saldo a Cobrar</th></tr></thead>
+<tr class=" centrar"><td><?php echo ($opt['TotalBs'])?></td><td><?php echo ($opt['ACuentaBs'])?></td><td>$ <?php echo ($opt['ACuentaSus'])?> = Bs <?php echo ($opt['TotalAcuentaSus'])?></td><td><?php echo $opt['SaldoBs']?></td></tr>
+</table>
+
 <?php if($opt['EstadoEntrega']==1){
     ?>
-    <div class="alert alert-danger">Este Número de Boleta ya Fue Entregado
+    <div class="alert alert-danger"><center><h4>ESTA BOLETA YA FUE ENTREGADO</h4></center>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="centrar">
@@ -50,17 +62,7 @@ $FotoSis=$datosUsuario['Foto'];
     </table>
     </div>
     <?php
-}?>
-<?php if(count($cantidad)){?>
-<table class="table table-bordered table-striped">
-<thead ><tr class="centrar"><th>Fecha de Ingreso</th><th>Número de Boleta</th><th>Ingresado Por</th><th>Datos Paciente</th><th>Fecha de Entrega</th></tr></thead>
-<tr class="centrar"><td><?php echo fecha2Str($opt['FechaEmitido'])." ".$opt['HoraEmitido']?></td><td class="centrar"><?php echo ($opt['NumeroBoleta'])?></td><td><?php echo ($opt['Recepcion'])?></td><td><?php echo $pac['Paterno']?> <?php echo $pac['Materno']?> <?php echo $pac['Nombres']?></td><td><?php echo fecha2Str($opt['FechaEntrega'])." ".$opt['HoraEntrega']?></td></tr>
-</table>
-
-<table class="table table-bordered table-striped">
-<thead><tr class="centrar"><th>Monto Total</th><th>A Cuenta Bs</th><th>A Cuenta $us	 - T.C. <?php echo ($opt['TC'])?></th><th>Saldo a Cobrar</th></tr></thead>
-<tr class=" centrar"><td><?php echo ($opt['TotalBs'])?></td><td><?php echo ($opt['ACuentaBs'])?></td><td>$ <?php echo ($opt['ACuentaSus'])?> = Bs <?php echo ($opt['TotalAcuentaSus'])?></td><td><?php echo $opt['SaldoBs']?></td></tr>
-</table>
+}else{?>
 
 
 <div class="widget-header widget-header-flat"><h4><?php echo $idioma['DatosEntregaTrabajo']?></h4></div>
@@ -69,12 +71,16 @@ $FotoSis=$datosUsuario['Foto'];
 <form action="guardar.php" method="post" onSubmit="" id="formularioRevisar">
 <input type="hidden" name="CodOptica" value="<?php echo $opt['CodOptica']?>">
 <table class="table ">
-<thead><tr class="centrar"><th>Fecha de Entrega</th><th>Entregado Por</th><th>Saldo a Cancelar</th></tr></thead>
+<thead><tr class="centrar"><th>Fecha de Entrega</th><th>Entregado Por</th><th>Saldo a Cancelar</th><th>Confirmar Contraseña</th></tr></thead>
 <tr class="info centrar">
-	<td><input type="text" class="fecha" value="<?php echo date("d-m-Y")?>" readonly></td>
-    <td><?php campo("Recepcion","text",$NombresSis." ".$ApellidoPSis." ".$ApellidoMSis,"col-sm-12",1,"",0,array("readonly"=>"readonly"))?></td>
-    <td><input type="text" name="MontoCobrar" value="<?php echo ($opt['SaldoBs'])?>" autofocus readonly class="der resaltar" ></td>
+	<td><input type="text" class="fecha form-control" value="<?php echo date("d-m-Y")?>" readonly></td>
+    <td>
+    <?php campo("Recepcion","text",$NombresSis." ".$ApellidoPSis." ".$ApellidoMSis,"col-sm-12 form-control",1,"",0,array("readonly"=>"readonly"))?>
     
+    </td>
+    <td><input type="text" name="MontoCobrar" value="" autofocus  class="der resaltar form-control" id="MontoCobrar">
+    </td>
+    <td><input type="password" name="contrasena" id="contrasena" class="form-control"></td>
 </tr>
 </table>
 <div class="alert alert-danger">Por Revise si usted es el usuario que esta Registrando la Entrega del Trabajo, Posteriormente no se podrá Modificar.</div>
@@ -82,6 +88,9 @@ $FotoSis=$datosUsuario['Foto'];
 </form>
 
 </div>
+<?php }?>
+
+
 <?php }else{
 	if($opt['Anulado']==1){
         echo "El Número de la Boleta fue Anulada";   
@@ -90,10 +99,13 @@ $FotoSis=$datosUsuario['Foto'];
     }
 }?>
 <script language="javascript">
-$("#guardar").focus();
+var SaldoBs=<?php echo $opt['SaldoBs'];?>;
+var Pass="<?php echo $_SESSION['Pass'];?>";
+$("#MontoCobrar").focus();
 $("*").on('keydown', null, 'ctrl+0', enviarformulario);
 
 function enviarformulario(){
+    //alert("asd");
     $("#formularioRevisar").submit()
 }
 </script>
