@@ -23,7 +23,8 @@ $optica=new optica;
 		}
         /*echo $Desde;
         echo $Hasta;*/
-		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta' and FechaEmitido BETWEEN '".($Desde)."' and '".($Hasta)."' ",1,"FechaRegistro,NumeroBoleta");
+		//$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta' and FechaEmitido BETWEEN '".($Desde)."' and '".($Hasta)."' ",1,"FechaRegistro,NumeroBoleta");
+		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta'",1,"FechaRegistro,NumeroBoleta");
 		//print_r($opt);
         
         foreach($opt as $o){$i++;

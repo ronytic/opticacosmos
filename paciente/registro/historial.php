@@ -57,14 +57,14 @@ $(document).on("ready",function(){
                 	<?php campo("CodPaciente","hidden",$Cod,"",0)?>
                         <table class="table table-bordered">
                                 <tr>
-                                    <td>
+                                    <!--<td>
                                     <label><?php echo $idioma['Desde']?></label>
                                     <input type="date" class="input-sm form-control" name="Desde" value="<?php echo fecha2Str("",0,"-7 day"); ?>"/>
                                     </td>
                                     <td>
                                     <label><?php echo $idioma['Hasta']?></label>
                                     <input type="date" class="input-sm form-control" name="Hasta" value="<?php echo fecha2Str("",0,"0day"); ?>"/>
-                                    </td>
+                                    </td>-->
                                     <td>
                                     <label><?php echo $idioma['NumeroBoleta']?></label>
                                     <input type="text" class="input-sm form-control" name="NumeroBoleta" value=""/>        
