@@ -87,7 +87,7 @@ $pdf->CuadroCuerpo(30,$TipoDoc,0,"L",$borde,11);
 $pdf->SetXY($x+70,5);
 $pdf->CuadroCuerpo(60,"Dr(a). ".mayuscula($med['Nombres']." ".$med['Paterno']." ".$med['Materno']),0,"L",$borde,10);
 $pdf->SetXY($x+80,10);
-$pdf->CuadroCuerpo(60,$opt['CodOptica'],0,"C",$borde,10);
+$pdf->CuadroCuerpo(60,$opt['CodOptica']." - ".$opt['NumeroBoleta'],0,"C",$borde,10);
 
 $pdf->SetXY($x+108,40);
 $pdf->CuadroCuerpo(30,fecha2Str($opt['FechaEmitido']),0,"C",$borde,11);
@@ -203,7 +203,7 @@ $pdf->CuadroCuerpo(20,dec($opt['SaldoSus']),0,"R",$borde,11);
 $pdf->SetXY($x+89,159);
 $pdf->CuadroCuerpo(20,dec($opt['DescuentoSus']),0,"R",$borde,11);
 $pdf->SetXY($x+89,165);
-$pdf->CuadroCuerpo(20,dec($opt['CobrarSus']),0,"R",$borde,11);
+$pdf->CuadroCuerpo(20,dec($opt['SaldoSus']),0,"R",$borde,11);
 
 //Monto Bs
 $pdf->SetXY($x+110,141);
@@ -215,7 +215,7 @@ $pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+110,159);
 $pdf->CuadroCuerpo(23,dec($opt['DescuentoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+110,165);
-$pdf->CuadroCuerpo(23,dec($opt['CobrarBs']),0,"R",$borde,11);
+$pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 
 //Fecha, Entrega, Telefono
 $pdf->SetXY($x+35,174);
@@ -237,7 +237,7 @@ $pdf->CuadroCuerpo(30,$TipoDoc,0,"L",$borde,11);
 $pdf->SetXY($x+70,5);
 $pdf->CuadroCuerpo(60,"Dr(a). ".mayuscula($med['Nombres']." ".$med['Paterno']." ".$med['Materno']),0,"L",$borde,10);
 $pdf->SetXY($x+80,10);
-$pdf->CuadroCuerpo(60,$opt['CodOptica'],0,"C",$borde,10);
+$pdf->CuadroCuerpo(60,$opt['CodOptica']." - ".$opt['NumeroBoleta'],0,"C",$borde,10);
 
 $pdf->SetXY($x+108,40);
 $pdf->CuadroCuerpo(30,fecha2Str($opt['FechaEmitido']),0,"C",$borde,11);
@@ -353,7 +353,7 @@ $pdf->CuadroCuerpo(20,dec($opt['SaldoSus']),0,"R",$borde,11);
 $pdf->SetXY($x+89,159);
 $pdf->CuadroCuerpo(20,dec($opt['DescuentoSus']),0,"R",$borde,11);
 $pdf->SetXY($x+89,165);
-$pdf->CuadroCuerpo(20,dec($opt['CobrarSus']),0,"R",$borde,11);
+$pdf->CuadroCuerpo(20,dec($opt['SaldoSus']),0,"R",$borde,11);
 
 //Monto Bs
 $pdf->SetXY($x+110,141);
@@ -365,7 +365,7 @@ $pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+110,159);
 $pdf->CuadroCuerpo(23,dec($opt['DescuentoBs']),0,"R",$borde,11);
 $pdf->SetXY($x+110,165);
-$pdf->CuadroCuerpo(23,dec($opt['CobrarBs']),0,"R",$borde,11);
+$pdf->CuadroCuerpo(23,dec($opt['SaldoBs']),0,"R",$borde,11);
 
 //Fecha, Entrega, Telefono
 $pdf->SetXY($x+35,174);
