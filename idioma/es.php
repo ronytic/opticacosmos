@@ -229,4 +229,14 @@ $idioma['EmpleadoRecepcion']="Empleado Recepcionista";
 $idioma['Ci']="C.I.";
 
 $idioma['HistorialPacientes']="Historial de Pacientes";
+$idioma['Banco']="Banco";
+$idioma['RegistrarBoletaDeposito']="Registrar Boleta de Deposito";
+$idioma['ListarBoletasDeposito']="Listar Boletas de Deposito";
+$idioma['ListarBancos']="Listar Bancos";
+$idioma['RegistrarBanco']="Registrar Banco";
+$idioma['RegistroBanco']="Registro de Banco";
+$idioma['NBusquedaCuentasBancos']="Búsqueda de Cuentas de Bancos";
+$idioma['TipoCuenta']="Tipo de Cuenta";
+$idioma['NumeroCuenta']="Número de Cuenta";
+$idioma['NModificarDatosBanco']="Modificar Datos del Banco";
 ?>
