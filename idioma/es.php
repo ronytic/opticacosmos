@@ -239,4 +239,5 @@ $idioma['NBusquedaCuentasBancos']="Búsqueda de Cuentas de Bancos";
 $idioma['TipoCuenta']="Tipo de Cuenta";
 $idioma['NumeroCuenta']="Número de Cuenta";
 $idioma['NModificarDatosBanco']="Modificar Datos del Banco";
+$idioma['NRegistroDeposito']="Registro de Deposito";
 ?>
