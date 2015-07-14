@@ -20,6 +20,10 @@ include_once("../../class/usuario.php");
 $usuario=new usuario;
 
 
+include_once("../../class/optica.php");
+$optica=new optica;
+
+
 if(in_array( $_SESSION['Nivel'],array(1,2,3))){
     $sw=1;
 }else{
@@ -47,13 +51,13 @@ configuracion={todayBtn: false, endDate: "'0d'"};
         <td><?php echo $pro['Unidad']?></td>
     </tr>
 </table>
-
+<h3>Recargas</h3>
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
             <th width="50">N</th>
             <th width="50">Cantidad Recargada</th>
-            <th width="50">Cantidad Stock</th>
+            <!--<th width="50">Cantidad Stock</th>-->
             <th width="90">Fecha de Recarga</th>
             <th width="150">Empleado de Recarga</th>
             <th width="150">Observación de Recarga</th>
@@ -76,7 +80,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
         <tr>
             <td class="der"><?php echo $i?></td>
             <td class="der"><?php echo $in['Cantidad']?></td>
-            <td class="der"><?php echo $in['CantidadStock']?></td>
+            <!--<td class="der"><?php echo $in['CantidadStock']?></td>-->
             <td class=""><?php echo fecha2Str($in['FechaRegistro'])?>
                             <br>
                             <?php echo ($in['HoraRegistro'])?></td>
@@ -102,10 +106,11 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     <tr class="resaltar">
         <td class="der">Total</td>
         <td class="der"><?php echo $CantidadTotal?></td>
-        <td class="der"><?php echo $CantidadStockTotal?></td>
+        <!--<td class="der"><?php echo $CantidadStockTotal?></td>-->
         <td colspan="4"></td>
     </tr>
 </table>
+<h3>Ventas</h3>
 <form action="actualizar.php" method="post">
 <?php campo("Cod","hidden",$Cod)?>
 
