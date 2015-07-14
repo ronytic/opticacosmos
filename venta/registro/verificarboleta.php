@@ -12,19 +12,31 @@ $CodUsuarioLog=$_SESSION['CodUsuarioLog'];
 $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta' and Emitido=1 ");
 
 if(count($opt)){
-	echo "<li>El Número de Boleta ya fue Emitido</li>";	
+	$val['datos']="<li>El Número de Boleta ya fue Emitido</li>";	
 }
 $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta' and CodUsuarioBoleta!=$CodUsuarioLog");
 
 if(count($opt)){
-	echo "<li>El Número de Boleta Esta Asignado para otro Usuario</li>";	
+	$val['datos'].="<li>El Número de Boleta Esta Asignado para otro Usuario</li>";	
 }
 
 $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta'");
 
 if(count($opt)==0){
-	echo "<li>El Talonario que desea registrar... no esta asignado para su uso</li>";
+	$val['datos'].="<li>El Talonario que desea registrar... no esta asignado para su uso</li>";
 }
+if($val['datos']!=""){
+    $val['datos'].="<li> Nº $NumeroBoleta</li>";
+    $val['alerta']="danger";
+    $val['habilitado']=0;
+    $val['BotonEnviar']="Revice los Datos antes de Guardar";
+}else{
+    $val['datos']="<li>Número de Boleta Valida - Nº $NumeroBoleta</li>";
+    $val['alerta']="success";
+    $val['habilitado']=1;
+    $val['BotonEnviar']="Registrar";
+}
+echo json_encode($val);
 //$opt=array_shift($opt);
 //print_r($opt);
 ?>

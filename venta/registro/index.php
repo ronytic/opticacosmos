@@ -37,6 +37,7 @@ $NoRevisar=1;
 <script language="javascript">
 var TC=parseFloat(<?php echo $TC?>);
 var Habilitado=0;
+
 </script>
 <script language="javascript" src="../../js/venta/registro.js"></script>
 <?php include_once($folder."cabecera.php");?>
@@ -51,7 +52,10 @@ var Habilitado=0;
             <?php campo("TC","hidden",$TC,"",1)?>
             <table class="table table-bordered table-striped">
                 <tr>
-                	<td colspan="1" width="500"><?php echo $idioma['NumeroBoleta']?>
+                	<td colspan="1" width="500">
+                    <div class="alert alert-danger" id="mensajeboleta"></div>
+
+                    <?php echo $idioma['NumeroBoleta']?>
                     <br><?php campo("NumeroBoleta","number","","col-sm-12 der",1,0,1,array("pattern"=>"[0-9]*","title"=>$idioma['SoloNumeros'],"min"=>0,"tabindex"=>1,"list"=>"talonarios"))?>
                     <datalist id="talonarios">
                         <?php foreach($listaBoletas as $lb){
@@ -61,7 +65,7 @@ var Habilitado=0;
                         }?>
                         
                     </datalist>
-                    <div class="alert alert-danger" id="mensajeboleta"></div>
+                    
                     </td>
                     <td class="centrar">Tasa de Cambio
                         <br>
@@ -140,7 +144,7 @@ var Habilitado=0;
                     </th>
                     <th><?php echo $idioma['ApellidoMaterno'] ?>
                         <br>
-                        <input type="text" name="MaternoMedico" tabindex="9" list="MaternoMedicos" class="form-control">
+                        <input type="text" name="MaternoMedico" tabindex="9" list="MaternoMedicos" class="form-control" autocomplete="off">
                         <datalist id="MaternoMedicos">
                         <?php foreach($medicos as $m){?>
                             <option value="<?php echo $m['Materno']?>"><?php echo $m['Paterno']." ".$m['Materno']." ".$m['Nombres']?></option>
@@ -280,7 +284,7 @@ var Habilitado=0;
                 	<td colspan="6"></td>
                 </tr>
             </table>
-            <div class="alert alert-danger"><?php echo $idioma['NotaOpticaGuardar'] ?></div><br><?php campo("Area","submit",$idioma['Registrar'],"btn btn-success",0,"",0)?>
+            <div class="alert alert-danger"><?php echo $idioma['NotaOpticaGuardar'] ?></div><br><?php campo("BotonEnviar","submit","Registrar","btn btn-success",0,"",0)?>
 			</form>
         </div>
     </div>

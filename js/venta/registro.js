@@ -78,11 +78,14 @@ $(document).on("ready",function(){
 			e.preventDefault();		
 		}
 	});
-	$("#NumeroBoleta").keyup(function(e){
+    $("#NumeroBoleta").change(cambioBoleta);
+	$("#NumeroBoleta").keyup(cambioBoleta);
+    
+    function cambioBoleta(e){
 		e.preventDefault();
 		var NumeroBoleta=$("#NumeroBoleta").val();
-		$.post("verificarboleta.php",{'NumeroBoleta':NumeroBoleta},procesaNumeroBoleta);
-	});
+		$.post("verificarboleta.php",{'NumeroBoleta':NumeroBoleta},procesaNumeroBoleta,"json");
+	}
     $("input[name=Ci]").change(function(e) {
         var  Ci=$(this).val();
         $.post("obtenerdatospaciente.php",{"Ci":Ci},function(data){
@@ -91,6 +94,13 @@ $(document).on("ready",function(){
             $("input[name=Nombres]").val(data.Nombres);
             $("input[name=Celular]").val(data.Celular);
         },"json");
+    });
+    
+    $("input[name=NombresMedico]").change(function(e) {
+        var Valor=$(this).val();
+        $.post("obtenerdatosmedicos.php",{'Dato':"Nombres","Valor":Valor,"DatoO":"Paterno"},function(data){
+            $("#PaternosMedicos").html(data);
+        });
     });
     
     $("input[name=PaternoMedico]").change(function(e) {
@@ -102,7 +112,7 @@ $(document).on("ready",function(){
     $("input[name=MaternoMedico]").change(function(e) {
         var Valor=$(this).val();
         $.post("obtenerdatosmedicos.php",{'Dato':"Materno","Valor":Valor,"DatoO":"Nombres"},function(data){
-            $("#NombresMedicos").html(data);
+            //$("#NombresMedicos").html(data);
         });
     });
     
@@ -114,15 +124,20 @@ function enviarformulario(){
     $("#formularioguardar").submit()
 }
 function procesaNumeroBoleta(data){
-	if(data!=""){
-		$("#mensajeboleta").html("<ul>"+data+"</ul>");
-		$("#NumeroBoleta").focus();	
-		Habilitado=0;
-	}else{
-		$("#mensajeboleta").html("");
-		Habilitado=1;
-	}
+	$("#mensajeboleta").html("<ul>"+data.datos+"</ul>");
+    $("#mensajeboleta").removeClass("alert-sucess alert-danger").addClass("alert-"+data.alerta);
+    Habilitado=data.habilitado;
+    $("#BotonEnviar").val(data.BotonEnviar).removeClass("btn-success btn-danger").addClass("btn-"+data.alerta);
 	
+    if(Habilitado){
+        window.onbeforeunload = function exitAlert() 
+        { 
+            var textillo = "Los datos que no se han guardado se perderan."; 
+            return textillo; 
+        } 
+    }else{
+        
+    }
 }
 function procesaRespuesta(data){
 	obtenerMedico(data)
