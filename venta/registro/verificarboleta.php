@@ -29,7 +29,7 @@ if($val['datos']!=""){
     $val['datos'].="<li> Nº $NumeroBoleta</li>";
     $val['alerta']="danger";
     $val['habilitado']=0;
-    $val['BotonEnviar']="Revice los Datos antes de Guardar";
+    $val['BotonEnviar']="Revise los Datos antes de Guardar";
 }else{
     $val['datos']="<li>Número de Boleta Valida - Nº $NumeroBoleta</li>";
     $val['alerta']="success";

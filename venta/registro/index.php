@@ -39,7 +39,7 @@ var TC=parseFloat(<?php echo $TC?>);
 var Habilitado=0;
 
 </script>
-<script language="javascript" src="../../js/venta/registro.js"></script>
+<script language="javascript" src="../../js/venta/registro.js?<?php echo rand()?>"></script>
 <?php include_once($folder."cabecera.php");?>
 <div class="col-sm-12">
 	<div class="widget-box">
@@ -277,7 +277,19 @@ var Habilitado=0;
                     <td colspan="1"><?php echo $idioma['ACuenta']?> Bs<br><?php campo("ACuentaBs","text","","col-sm-12 der norequerido",1,"",0,array("tabindex"=>50))?></td>
                     <td colspan="1"><?php echo $idioma['ACuenta']?> $us<br><?php campo("ACuentaSus","text","","col-sm-12 der norequerido",1,"",0,array("tabindex"=>51))?><br>Monto en Bs <?php campo("TotalAcuentaSus","text","0","col-sm-12 der norequerido",0,"",0,array("readonly"=>"readonly"))?></td>
                     
-                    <td colspan="1"><?php echo $idioma['SaldoCobrar']?> Bs<br><?php campo("SaldoBs","text","0","col-sm-12 der norequerido",1,"",0,array("readonly"=>"readonly"))?></td>
+                    <td colspan="1"><?php echo $idioma['SaldoCobrar']?> Bs<br><?php campo("SaldoBs","text","0","col-sm-12 der norequerido",1,"",0,array("readonly"=>"readonly"))?>
+                    	<hr class="separador">
+                    	Tipo de pago:<br>
+                        <label>Contado <input type="radio" name="TipoPago" value="Contado" checked></label>
+                        <label>Credito <input type="radio" name="TipoPago" value="Credito"></label>
+                    	<div class="cajacredito ocultar" >
+                        Número de Cuotas:
+                        <input type="number"  min="0" step="1" value="0" size="2" style="width:100px" class="der" name="NC">
+                        <br>
+                        Cuotas X Mes Bs:
+                        <input type="number"  min="0" step="1" value="0" size="2" style="width:100px" class="der" name="CuotaMes" readonly>
+                        </div>
+                    </td>
                 </tr>
                 
                 <tr>

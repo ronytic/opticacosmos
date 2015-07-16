@@ -71,9 +71,17 @@ $(document).on("ready",function(){
     });
 	$("#formularioguardar").on("submit",function(e){
 		if(Habilitado==1){
+			
 			if(!confirm("¿Esta Seguro de Guardar esta Boleta?")){
 				e.preventDefault();	
+			}else{
+				window.onbeforeunload = function () 
+				{ 
+					
+				}	
+				
 			}
+			 
 		}else{
 			e.preventDefault();		
 		}
@@ -100,6 +108,8 @@ $(document).on("ready",function(){
         var Valor=$(this).val();
         $.post("obtenerdatosmedicos.php",{'Dato':"Nombres","Valor":Valor,"DatoO":"Paterno"},function(data){
             $("#PaternosMedicos").html(data);
+			$("input[name=PaternoMedico]").val($("#PaternosMedicos>option:eq(0)").val()).selected().focus();
+			$("input[name=PaternoMedico]").change();
         });
     });
     
@@ -107,6 +117,7 @@ $(document).on("ready",function(){
         var Valor=$(this).val();
         $.post("obtenerdatosmedicos.php",{'Dato':"Paterno","Valor":Valor,"DatoO":"Materno"},function(data){
             $("#MaternoMedicos").html(data);
+			$("input[name=MaternoMedico]").val($("#MaternoMedicos>option:eq(0)").val());
         });
     });
     $("input[name=MaternoMedico]").change(function(e) {
@@ -119,6 +130,22 @@ $(document).on("ready",function(){
     $("input,select,div.chosen-container").keydown(enter2tab);
     
     $("*").on('keydown', null, 'ctrl+0', enviarformulario);
+	
+	$("input[name=TipoPago]").change(function(e) {
+        var v=$(this).val();
+		if(v=="Credito"){
+			$(".cajacredito").slideDown();	
+		}else{
+			$(".cajacredito").slideUp();	
+		}
+    });
+	$("input[name=NC]").change(function(e) {
+		
+        var TotalBs=$("#TotalBs").val();
+		var NC=$("input[name=NC]").val();
+		CuotaMes=Math.ceil(TotalBs/NC);
+		$("input[name=CuotaMes]").val(CuotaMes)
+    });
 });
 function enviarformulario(){
     $("#formularioguardar").submit()
