@@ -12,6 +12,7 @@ $optica=new optica;
 						//"Armazon"=>$idioma['Armazon'],
 						"Recepcion"=>$idioma['Recepcion'],
 						//"Doctor"=>$idioma['Doctor'],
+						"Entregado"=>"Entregado",
 						"TotalBs"=>$idioma['Total'],
 						"ACuentaBs"=>$idioma['ACuenta'],
 						"ACuentaSus"=>$idioma['ACuenta']." $",
@@ -24,7 +25,7 @@ $optica=new optica;
         /*echo $Desde;
         echo $Hasta;*/
 		//$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta' and FechaEmitido BETWEEN '".($Desde)."' and '".($Hasta)."' ",1,"FechaRegistro,NumeroBoleta");
-		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta'",1,"FechaRegistro,NumeroBoleta");
+		$opt=$optica->mostrarTodoRegistro("CodPaciente=".$CodPaciente." and NumeroBoleta LIKE '$NumeroBoleta%'",1,"FechaRegistro,NumeroBoleta");
 		//print_r($opt);
         
         foreach($opt as $o){$i++;
@@ -34,7 +35,8 @@ $optica=new optica;
             $datos[$i]['FechaEntrega']=$o['FechaEntrega'];
             $datos[$i]['HoraEntrega']=$o['HoraEntrega'];
             $datos[$i]['Recepcion']=$o['Recepcion'];
-            $datos[$i]['TotalBs']=$o['TotalBs'];
+            $datos[$i]['Entregado']=$o['EstadoEntrega']?'Si':'No';
+			$datos[$i]['TotalBs']=$o['TotalBs'];
             $datos[$i]['ACuentaBs']=$o['ACuentaBs'];
             $datos[$i]['ACuentaSus']=$o['ACuentaSus'];
             $datos[$i]['SaldoBs']=$o['SaldoBs'];

@@ -17,6 +17,7 @@ $(document).on("ready",function(){
         $(".formulario").submit();   
     }); 
 	
+	
 });
 </script>
 <?php include_once($folder."cabecera.php");?>
@@ -81,7 +82,7 @@ $(document).on("ready",function(){
                     <div class="clearfix"></div>
                     
                 </form>
-
+				
                 
            
             <hr>
