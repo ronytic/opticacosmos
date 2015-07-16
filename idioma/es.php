@@ -240,4 +240,9 @@ $idioma['TipoCuenta']="Tipo de Cuenta";
 $idioma['NumeroCuenta']="Número de Cuenta";
 $idioma['NModificarDatosBanco']="Modificar Datos del Banco";
 $idioma['NRegistroDeposito']="Registro de Deposito";
+$idioma['RegistrarDepositarios']="Registrar Depositarios";
+$idioma['ListarDepositarios']="Listar Depositarios";
+$idioma['NRegistroDepositario']="Registro de Datos del Depositario";
+$idioma['NModificarDepositario']="Modifcar Datos del Depositario";
+$idioma['NBusquedaDepositarios']="Búsqueda de Depositarios";
 ?>
