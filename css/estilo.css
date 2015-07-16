@@ -22,4 +22,7 @@ tr.centrar th,.centrar{
 tr.resaltar td{
     font-weight:bold;
 }
+.ocultar{
+	display:none;	
+}
 /*Fin de Cargador*/
