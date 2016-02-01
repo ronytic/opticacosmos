@@ -8,8 +8,9 @@ $ban=todolista($banco->mostrarTodoRegistro("",1,"Nombre"),"CodBanco","Nombre,Num
 
 include_once("../../class/depositario.php");
 $depositario=new depositario;
-$dep=todolista($depositario->mostrarTodoRegistro("",1,"Paterno,Materno,Nombres"),"CodDepositario","Paterno,Materno,Nombres"," ");
+$dep=todolista($depositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodDepositario","Nombres,Paterno,Materno"," ");
 
+$turno=array("M"=>"Mañana","T"=>"Tarde");
 include_once($folder."cabecerahtml.php");
 ?>
 <script language="javascript">
@@ -19,16 +20,24 @@ configuracion={todayBtn: false, endDate: "'0d'"};
 <form action="guardar.php" method="post">
 <table class="table table-hover">
     <tr>
+    	<td class="der">Fecha del Deposito</td>
+        <td colspan="2"><?php campo("FechaDeposito","date",fecha2Str("",0),"",1,"","",array("max"=>0))?></td>
+    </tr>
+    <tr>
     	<td class="der">Banco</td>
-        <td colspan="2"><?php campo("CodBanco","select",$ban,"",1)?></td>
+        <td colspan="2"><?php campo("CodBanco","select",$ban,"col-sm-10",1,"","")?></td>
     </tr>
 	<tr>
     	<td class="der">Depositario</td>
         <td colspan="2"><?php campo("CodDepositario","select",$dep,"",1)?></td>
     </tr>
     <tr>
+    	<td class="der">Turno</td>
+        <td colspan="2"><?php campo("Turno","select",$turno,"",1)?></td>
+    </tr>
+    <tr>
     	<td class="der">Número de Boleta</td>
-        <td colspan="2"><?php campo("Nombres","text","","",1)?></td>
+        <td colspan="2"><?php campo("NBoleta","text","","",1)?></td>
     </tr>
     <tr>
     	<td class="der">Glosa</td>
@@ -37,7 +46,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     
     <tr>
         <td class="der">Monto Depositado</td>
-        <td class=""><?php campo("Monto","number","","",0)?></td>
+        <td class=""><?php campo("Monto","number","0","der",1,"","",array("min"=>0))?></td>
 
 
     </tr>
