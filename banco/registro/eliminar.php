@@ -5,6 +5,6 @@ if (!empty($_GET)) {
 	include_once '../../class/'.$nombre.'.php';
 	${$nombre}=new $nombre;
 	$Cod=$_GET['Cod'];
-	${$nombre}->eliminarRegistro("CodEspecialidad=".$Cod);
+	${$nombre}->eliminarRegistro("CodBanco=".$Cod);
 }
 ?>
