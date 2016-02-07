@@ -12,12 +12,12 @@ $folder="../../";
 <?php include_once($folder."cabecerahtml.php");?>
 <script language="javascript">
 $(document).on("ready",function(){
-	
+	 
 	$(".formulario").on("keyup"," input",function(){
         $(".formulario").submit();   
     }); 
 	
-	
+	//$("#BotonBuscar").click();
 });
 </script>
 <?php include_once($folder."cabecera.php");?>
@@ -71,7 +71,7 @@ $(document).on("ready",function(){
                                     <input type="text" class="input-sm form-control" name="NumeroBoleta" value=""/>        
                                     </td>
                                     <th>
-                                    <?php campo("","submit",$idioma['Buscar'],"btn btn-success")?>
+                                    <?php campo("BotonBuscar","submit",$idioma['Buscar'],"btn btn-success")?>
                                     </td>
                                 </tr>
                         </table>
