@@ -23,11 +23,11 @@ configuracion={todayBtn: "", endDate: "'0d'"};
     </tr>	
 	<tr>
     	<td class="der">Nº de Talonario Inicio</td>
-        <td><?php campo("Minimo","number","0","der",1,"","",array("min"=>0))?></td>
+        <td><?php campo("Minimo","number","","der",1,"","",array("min"=>0))?></td>
     </tr>
 	<tr>
     	<td class="der">Nº de Talonario Final</td>
-        <td><?php campo("Maximo","number","0","der",1,"","",array("min"=>0))?></td>
+        <td><?php campo("Maximo","number","","der",1,"","",array("min"=>0))?></td>
     </tr>
     <tr>
     	<td class="der"><?php echo $idioma['Observacion'] ?></td>
