@@ -22,7 +22,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     
     <tr>
         <td class="der">Monto del Gasto</td>
-        <td class=""><?php campo("Monto","number","0","der",1,"","",array("min"=>0,"step"=>"0.1"))?></td>
+        <td class=""><?php campo("Monto","text","0","der",1,"","",array("min"=>0,"step"=>"0.1"))?></td>
 
 
     </tr>
