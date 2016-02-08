@@ -47,6 +47,8 @@ $idioma['RegistrarBoletaDeposito']="Registrar Boleta de Deposito";
 $idioma['ListarBoletasDeposito']="Listar Boletas de Deposito";
 $idioma['ListarBancos']="Listar Bancos";
 $idioma['RegistrarBanco']="Registrar Banco";
+$idioma['RegistrarDepositarios']="Registrar Depositarios";
+$idioma['ListarDepositarios']="Listar Depositarios";
 
 //Titulo
 $idioma['NPaginaPrincipal']="Página Principal";
@@ -87,8 +89,16 @@ $idioma['NReporteMedico']="Reporte Médico";
 $idioma['NModificarInventario']="Modificar Inventario";
 $idioma['NDetalleInventario']="Detalle de  Inventario";
 $idioma['NBusquedaBoletasMedicas']="Búsqueda de Boletas Médicas";
-$idioma['NModificarDeposito']="Modificar Datos de Deposito";
+$idioma['NModificarDeposito']="Modificar Boleta de Deposito";
 $idioma['NBusquedaBoletasDeposito']="Búsqueda de Boletas de Deposito";
+$idioma['NModificarDatosBanco']="Modificar Datos del Banco";
+$idioma['NRegistroDeposito']="Registro de Boleta de Deposito";
+$idioma['NRegistroDepositario']="Registro de Datos del Depositario";
+$idioma['NModificarDepositario']="Modificar Datos del Depositario";
+$idioma['NBusquedaDepositarios']="Búsqueda de Depositarios";
+$idioma['NRegistroRetiro']="Registro de Boleta de Retiro";
+$idioma['NBusquedaBoletasRetiro']="Búsqueda de Boletas de Retiro";
+$idioma['NModificarRetiro']="Modificar Boleta de Retiro";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
@@ -242,11 +252,5 @@ $idioma['RegistroBanco']="Registro de Banco";
 $idioma['NBusquedaCuentasBancos']="Búsqueda de Cuentas de Bancos";
 $idioma['TipoCuenta']="Tipo de Cuenta";
 $idioma['NumeroCuenta']="Número de Cuenta";
-$idioma['NModificarDatosBanco']="Modificar Datos del Banco";
-$idioma['NRegistroDeposito']="Registro de Deposito";
-$idioma['RegistrarDepositarios']="Registrar Depositarios";
-$idioma['ListarDepositarios']="Listar Depositarios";
-$idioma['NRegistroDepositario']="Registro de Datos del Depositario";
-$idioma['NModificarDepositario']="Modifcar Datos del Depositario";
-$idioma['NBusquedaDepositarios']="Búsqueda de Depositarios";
+
 ?>
