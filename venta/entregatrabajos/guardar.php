@@ -26,8 +26,44 @@ $optica->actualizarRegistro($valores,"CodOptica=$CodOptica");
 
 $Nuevo=0;
 $Listar=0;
-$Botones=array("index.php"=>"Entregar de Trabajos");
+$Botones=array("index.php"=>"Entregar Otro Trabajo");
 $folder="../../";
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
-include_once("../../resultado.php");
+//include_once("../../resultado.php");
 ?>
+<?php
+//include_once("../../login/check.php");
+$NoRevisar=1;
+$folder="../../";
+$Cod=$opt['CodOptica'];
+if($Cod==""){
+	$Cod=$_GET['Cod'];	
+}
+$titulo="NMensajeRespuesta";
+
+include_once($folder."cabecerahtml.php");
+?>
+<script language="javascript">
+configuracion={todayBtn: "", endDate: "'0d'"};
+</script>
+<?php include_once($folder."cabecera.php");?>
+<div class="col-sm-12">
+	<div class="widget-box">
+    	<div class="widget-header widget-header-flat"><h4><?php echo $idioma['Mensaje'] ?></h4></div>
+        <div class="widget-body">
+        	<div class="widget-main">
+                <ul class="list-unstyled">
+                	<?php foreach($Mensajes as $m){?>
+                	<li><i class="icon-angle-right bigger-110"></i><?php echo $m ?></li>
+                    <?php }?>
+                </ul>
+                <hr class="separador">
+            	<a href="./" class="btn btn-success " target="">Entregar Otro Trabajo</a>
+                <a href="<?php echo $folder?>factura/entrega/?Cod=<?php echo $Cod?>" class="btn btn-danger">Facturar</a>
+                <hr>
+            	
+			</div>
+		</div>
+	</div>
+</div>
+<?php include_once($folder."pie.php");?>
