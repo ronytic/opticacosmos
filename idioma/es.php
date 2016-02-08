@@ -41,7 +41,12 @@ $idioma['ListarUsuarios']="Listar Usuarios";
 $idioma['RegistrarTalonarios']="Registrar Talonarios";
 $idioma['ListarTalonarios']="Listar Talonarios";
 $idioma['ReporteMedicos']="Reporte de Médicos";
-
+$idioma['RegistrarRetiros']="Registrar Retiros";
+$idioma['ListarRetiros']="Listar Retiros";
+$idioma['RegistrarBoletaDeposito']="Registrar Boleta de Deposito";
+$idioma['ListarBoletasDeposito']="Listar Boletas de Deposito";
+$idioma['ListarBancos']="Listar Bancos";
+$idioma['RegistrarBanco']="Registrar Banco";
 
 //Titulo
 $idioma['NPaginaPrincipal']="Página Principal";
@@ -82,7 +87,7 @@ $idioma['NReporteMedico']="Reporte Médico";
 $idioma['NModificarInventario']="Modificar Inventario";
 $idioma['NDetalleInventario']="Detalle de  Inventario";
 $idioma['NBusquedaBoletasMedicas']="Búsqueda de Boletas Médicas";
-
+$idioma['NModificarDeposito']="Modificar Datos de Deposito";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
@@ -231,10 +236,7 @@ $idioma['Ci']="C.I.";
 
 $idioma['HistorialPacientes']="Historial de Pacientes";
 $idioma['Banco']="Banco";
-$idioma['RegistrarBoletaDeposito']="Registrar Boleta de Deposito";
-$idioma['ListarBoletasDeposito']="Listar Boletas de Deposito";
-$idioma['ListarBancos']="Listar Bancos";
-$idioma['RegistrarBanco']="Registrar Banco";
+
 $idioma['RegistroBanco']="Registro de Banco";
 $idioma['NBusquedaCuentasBancos']="Búsqueda de Cuentas de Bancos";
 $idioma['TipoCuenta']="Tipo de Cuenta";
