@@ -22,7 +22,7 @@ configuracion={todayBtn: "", endDate: "'0d'"};
             	<a href="<?php echo $url?>" class="btn btn-danger btn-xs" target="_blank"><?php echo "Abrir la Boleta en Otra Ventana"?></a>
                 
                 <hr>
-            	<iframe src="<?php echo $url?>" width="100%" height="700" frameborder="1"></iframe>
+            	<iframe src="<?php echo $url?>" width="100%" height="735" frameborder="1"></iframe>
 			</div>
 		</div>
 	</div>
