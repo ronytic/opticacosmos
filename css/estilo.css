@@ -19,7 +19,7 @@
 tr.centrar th,.centrar{
 	text-align:center;	
 }
-tr.resaltar td{
+tr.resaltar td,td.resaltar,.resaltar{
     font-weight:bold;
 }
 .ocultar{
