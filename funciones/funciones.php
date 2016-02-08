@@ -141,7 +141,7 @@ function listadotabla($titulo,$datos,$enlaces=0,$ver="",$modifica="",$elimina=""
 	<table class="table table-striped table-bordered table-hover">
 	<thead>
 	<tr>
-	<th>Nº</th>
+	<th width="50">Nº</th>
 	<?php foreach($titulo as $k=>$v){
 	?>
 	<th><?php echo $v?></th>
