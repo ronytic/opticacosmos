@@ -8,7 +8,7 @@ $banco=new banco;
 extract($_POST);
 
 $condicion="(FechaRetiro BETWEEN '$FechaRetiroDesde' and '$FechaRetiroHasta') and CodBanco LIKE '$CodBanco'";
-$dep=$bancoretiro->mostrarTodoRegistro($condicion,1,"FechaRegistro,HoraRegistro");
+$dep=$bancoretiro->mostrarTodoRegistro($condicion,1,"FechaRetiro,FechaRegistro,HoraRegistro");
 $total=0;
 foreach($dep as $d){$i++;
 	$ban=$banco->mostrarRegistro($d['CodBanco']);
