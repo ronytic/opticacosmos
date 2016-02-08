@@ -3,9 +3,9 @@ include_once("../../login/check.php");
 $folder="../../";
 $Cod=$_GET['Cod'];
 $titulo="NModificarDepositario";
-include_once("../../class/depositario.php");
-$depositario=new depositario;
-$dep=$depositario->mostrarRegistro($Cod);
+include_once("../../class/bancodepositario.php");
+$bancodepositario=new bancodepositario;
+$dep=$bancodepositario->mostrarRegistro($Cod);
 $dep=array_shift($dep);
 
 include_once($folder."cabecerahtml.php");
