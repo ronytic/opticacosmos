@@ -11,6 +11,7 @@ extract($_POST);
 
 $condicion="(FechaDeposito BETWEEN '$FechaDepositoDesde' and '$FechaDepositoHasta') and CodBanco LIKE '$CodBanco' and CodBancoDepositario LIKE '$CodBancoDepositario'";
 $dep=$bancodeposito->mostrarTodoRegistro($condicion,1,"FechaRegistro,HoraRegistro");
+$total=0;
 foreach($dep as $d){$i++;
 	$ban=$banco->mostrarRegistro($d['CodBanco']);
 	$ban=array_shift($ban);
@@ -24,13 +25,13 @@ foreach($dep as $d){$i++;
 	$datos[$i]['NBoleta']=$d['NBoleta'];
 	$datos[$i]['Monto']=array('Valor'=>$d['Monto'],'class'=>"der resaltar");
 	$datos[$i]['Glosa']=$d['Glosa'];
-	
+	$total+=$d['Monto'];
 }
 $i++;
 $datos[$i]['CodDeposito']="";
 $datos[$i]['EstiloFila']="resaltar success";
 $datos[$i]['NBoleta']=array('Valor'=>"Total",'class'=>"der","colspan"=>1);
-$datos[$i]['Monto']=array('Valor'=>$d['Monto'],'class'=>"der");
+$datos[$i]['Monto']=array('Valor'=>$total,'class'=>"der");
 
     
 $titulo=array(	"FechaDeposito"=>"Fecha del Deposito",
