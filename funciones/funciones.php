@@ -162,7 +162,7 @@ function listadotabla($titulo,$datos,$enlaces=0,$ver="",$modifica="",$elimina=""
 		<td class="der"><?php if($id!=""){echo $i;}?></td>
 		<?php foreach($titulo as $k=>$v){
 			?>
-			<td colspan="<?php echo ($d[$k]['colspan']);?>" rowspan="<?php echo ($d[$k]['rowspan']);?>" class="<?php echo ($d[$k]['class']);?>" ><?php archivo(is_array($d[$k])?$d[$k]['Valor']:$d[$k]);?></td>
+			<td colspan="<?php echo (is_array($d[$k])?$d[$k]['colspan']:'');?>" rowspan="<?php echo (is_array($d[$k])?$d[$k]['rowspan']:'');?>" class="<?php echo ($d[$k]['class']);?>" ><?php archivo(is_array($d[$k])?$d[$k]['Valor']:$d[$k]);?></td>
 			<?php
 		}
 		//$ver=0;
