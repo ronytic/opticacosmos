@@ -81,6 +81,7 @@ $idioma['NBusquedaTalonarios']="Búsqueda de Talonarios";
 $idioma['NReporteMedico']="Reporte Médico";
 $idioma['NModificarInventario']="Modificar Inventario";
 $idioma['NDetalleInventario']="Detalle de  Inventario";
+$idioma['NBusquedaBoletasMedicas']="Búsqueda de Boletas Médicas";
 
 //General
 $idioma['Pagina']="Página";
