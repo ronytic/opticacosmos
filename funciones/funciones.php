@@ -153,18 +153,23 @@ function listadotabla($titulo,$datos,$enlaces=0,$ver="",$modifica="",$elimina=""
 	<?php
 	$i=0;
 	foreach($datos as $d){$i++;
+    /*echo "<pre>";
+    print_r($d);
+    echo "</pre>";*/
+    $id=array_shift($d);
 	?>
-	<tr class="contenido">
-		<td class="der"><?php echo $i;?></td>
+	<tr class="contenido <?php echo $d['EstiloFila']?>">
+		<td class="der"><?php if($id!=""){echo $i;}?></td>
 		<?php foreach($titulo as $k=>$v){
 			?>
-			<td><?php archivo($d[$k]);?></td>
+			<td colspan="<?php echo ($d[$k]['colspan']);?>" rowspan="<?php echo ($d[$k]['rowspan']);?>" class="<?php echo ($d[$k]['class']);?>" ><?php archivo(is_array($d[$k])?$d[$k]['Valor']:$d[$k]);?></td>
 			<?php
 		}
 		//$ver=0;
-		if($enlaces==1){
+        
+		if($enlaces==1 &&$id!=""){
 			
-			$id=array_shift($d);
+			
 			?><td>
             <?php
 			if(!empty($ver)){
