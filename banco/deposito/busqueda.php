@@ -1,6 +1,6 @@
 <?php
 include_once("../../login/check.php");
-include_once("../../class/deposito.php");
+include_once("../../class/bancodeposito.php");
 $deposito=new deposito;
 include_once("../../class/banco.php");
 $banco=new banco;
