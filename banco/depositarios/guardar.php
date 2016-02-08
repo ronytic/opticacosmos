@@ -1,7 +1,7 @@
 <?php
 include_once("../../login/check.php");
-include_once("../../class/depositario.php");
-$depositario=new depositario;
+include_once("../../class/bancodepositario.php");
+$bancodepositario=new bancodepositario;
 extract($_POST);
 //print_r($_POST);
 $Valores=array(	"Nombres"=>"'$Nombres'",
@@ -9,7 +9,7 @@ $Valores=array(	"Nombres"=>"'$Nombres'",
                 "Materno"=>"'$Materno'",
 				"Celular"=>"'$Celular'",
 );
-$depositario->insertarRegistro($Valores);
+$bancodepositario->insertarRegistro($Valores);
 
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
 $folder="../../";
