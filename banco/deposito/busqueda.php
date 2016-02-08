@@ -1,38 +1,45 @@
 <?php
 include_once("../../login/check.php");
-include_once("../../class/medico.php");
-include_once("../../class/especialidad.php");
-$medico=new medico;
-$especialidad=new especialidad;
-extract($_POST);
-$Paterno=$Paterno!=""?"Paterno LIKE '$Paterno%'":"Paterno LIKE '%'";
-$Materno=$Materno!=""?"Materno LIKE '$Materno%'":"Materno LIKE '%'";
-$Nombres=$Nombres!=""?"Nombres LIKE '$Nombres%'":"Nombres LIKE '%'";
-$Ci=$Ci!=""?"Ci LIKE '$Ci%'":"Ci LIKE '%'";
-$CodEspecialidad=$CodEspecialidad!=""?"CodEspecialidad LIKE '$CodEspecialidad'":"CodEspecialidad LIKE '%'";
+include_once("../../class/deposito.php");
+$deposito=new deposito;
+include_once("../../class/banco.php");
+$banco=new banco;
+include_once("../../class/depositario.php");
+$depositario=new depositario;
 
-$condicion="$Paterno and $Materno and $Nombres and $Ci and $CodEspecialidad";
-$med=$medico->mostrarTodoRegistro($condicion,1,"Paterno,Materno,Nombres,Ci");
-foreach($med as $m){$i++;
-	$esp=$especialidad->mostrarRegistro($m['CodEspecialidad']);
-	$esp=array_shift($esp);
-	$datos[$i]['CodMedico']=$m['CodMedico'];
-	$datos[$i]['Paterno']=$m['Paterno'];
-	$datos[$i]['Materno']=$m['Materno'];
-	$datos[$i]['Nombres']=$m['Nombres'];
-	$datos[$i]['Ci']=$m['Ci'];
-	$datos[$i]['Especialidad']=$esp['Nombre'];
-	$datos[$i]['Telefono']=$m['Telefono'];
-	$datos[$i]['Celular']=$m['Celular'];
+extract($_POST);
+
+$condicion="(FechaDeposito BETWEEN '$FechaDepositoDesde' and '$FechaDepositoHasta') and CodBanco LIKE '$CodBanco' and CodDepositario LIKE '$CodDepositario'";
+$dep=$deposito->mostrarTodoRegistro($condicion,1,"FechaRegistro,HoraRegistro");
+foreach($dep as $d){$i++;
+	$ban=$banco->mostrarRegistro($d['CodBanco']);
+	$ban=array_shift($ban);
+    $dep=$depositario->mostrarRegistro($d['CodDepositario']);
+	$dep=array_shift($dep);
+	$datos[$i]['CodDeposito']=$d['CodDeposito'];
+	$datos[$i]['FechaDeposito']=fecha2Str($d['FechaDeposito']);
+	$datos[$i]['Banco']=$ban['Nombre']." N.C.: ".$ban['NumeroCuenta'];
+	$datos[$i]['Depositario']=$dep['Nombres']." ".$dep['Paterno'];
+	$datos[$i]['Turno']=$d['Turno'];
+	$datos[$i]['NBoleta']=$d['NBoleta'];
+	$datos[$i]['Monto']=array('Valor'=>$d['Monto'],'class'=>"der resaltar");
+	$datos[$i]['Glosa']=$d['Glosa'];
 	
 }
-$titulo=array(	"Paterno"=>$idioma['Paterno'],
-				"Materno"=>$idioma['Materno'],
-				"Nombres"=>$idioma['Nombres'],
-				"Ci"=>$idioma['Ci'],
-				"Especialidad"=>$idioma['Especialidad'],
-				"Telefono"=>$idioma['Telefono'],
-				"Celular"=>$idioma['Celular'],
+$i++;
+$datos[$i]['CodDeposito']="";
+$datos[$i]['EstiloFila']="resaltar success";
+$datos[$i]['NBoleta']=array('Valor'=>"Total",'class'=>"der","colspan"=>1);
+$datos[$i]['Monto']=array('Valor'=>$d['Monto'],'class'=>"der");
+
+    
+$titulo=array(	"FechaDeposito"=>"Fecha del Deposito",
+				"Banco"=>"Banco",
+				"Depositario"=>"Depositario",
+				"Turno"=>"Turno",
+				"NBoleta"=>"NBoleta",
+				"Monto"=>"Monto",
+				"Glosa"=>"Glosa",
 );
-listadotabla($titulo,$datos,1,"ver.php","modificar.php","eliminar.php");
+listadotabla($titulo,$datos,1,"","modificar.php","eliminar.php");
 ?>
