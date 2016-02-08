@@ -1,10 +1,15 @@
 <?php
 include_once("../../login/check.php");
 $folder="../../";
-$titulo="NBusquedaMedicos";
-include_once("../../class/especialidad.php");
-$especialidad=new especialidad;
-$esp=todolista($especialidad->mostrarTodoRegistro("",1,"Nombre"),"CodEspecialidad","Nombre","",1);
+$titulo="NBusquedaBoletasMedicas";
+include_once("../../class/depositario.php");
+$depositario=new depositario;
+$depo=todolista($depositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodDepositario","Nombres","",1);
+$depo['%']="Todos";
+include_once("../../class/banco.php");
+$banco=new banco;
+$bancos=todolista($banco->mostrarTodoRegistro("",1,"Nombre"),"CodBanco","Nombre","",1);
+$bancos['%']="Todos";
 include_once($folder."cabecerahtml.php");
 ?>
 <?php include_once($folder."cabecera.php");?>
@@ -17,29 +22,20 @@ include_once($folder."cabecerahtml.php");
             	<div class="main row">
                 	<form action="busqueda.php" method="post" class="formulario">
                     <div class="col-sm-3">
-                        <label><?php echo $idioma['ApellidoPaterno'] ?></label>
+                        <label>Fecha del Deposito</label>
                         <br>
-                        <?php campo("Paterno","text","","col-xs-12")?>
+                        Desde:<?php campo("FechaDepositoDesde","date",fecha2Str("",0),"",1,"","",array("max"=>0))?>
+                        Hasta: <?php campo("FechaDepositoHasta","date",fecha2Str("",0),"",1,"","",array("max"=>0))?>
                     </div>
                     <div class="col-sm-3">
-                        <label><?php echo $idioma['ApellidoMaterno'] ?></label>
+                        <label>Banco</label>
                         <br>
-                        <?php campo("Materno","text","","col-xs-12")?>
+                        <?php campo("CodBanco","select",$bancos,"","","","","","%")?>
                     </div>
                     <div class="col-sm-3">
-                        <label><?php echo $idioma['Nombres'] ?></label>
+                        <label>Depositario</label>
                         <br>
-                        <?php campo("Nombres","text","","col-xs-12")?>
-                    </div>
-                    <div class="col-sm-3">
-                        <label><?php echo $idioma['Ci'] ?></label>
-                        <br>
-                        <?php campo("Ci","text","","col-xs-12")?>
-                    </div>
-                    <div class="col-sm-3">
-                        <label><?php echo $idioma['Especialidad'] ?></label>
-                        <br>
-                        <?php campo("CodEspecialidad","select",$esp,"")?>
+                        <?php campo("CodDepositario","select",$depo,"","","","","","%")?>
                     </div>
                     <div class="col-sm-3">
                     	<br>
