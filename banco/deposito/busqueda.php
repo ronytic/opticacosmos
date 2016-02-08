@@ -9,12 +9,12 @@ $bancodepositario=new bancodepositario;
 
 extract($_POST);
 
-$condicion="(FechaDeposito BETWEEN '$FechaDepositoDesde' and '$FechaDepositoHasta') and CodBanco LIKE '$CodBanco' and CodDepositario LIKE '$CodDepositario'";
+$condicion="(FechaDeposito BETWEEN '$FechaDepositoDesde' and '$FechaDepositoHasta') and CodBanco LIKE '$CodBanco' and CodBancoDepositario LIKE '$CodBancoDepositario'";
 $dep=$bancodeposito->mostrarTodoRegistro($condicion,1,"FechaRegistro,HoraRegistro");
 foreach($dep as $d){$i++;
 	$ban=$banco->mostrarRegistro($d['CodBanco']);
 	$ban=array_shift($ban);
-    $dep=$bancodepositario->mostrarRegistro($d['CodDepositario']);
+    $dep=$bancodepositario->mostrarRegistro($d['CodBancoDepositario']);
 	$dep=array_shift($dep);
 	$datos[$i]['CodDeposito']=$d['CodBancoDeposito'];
 	$datos[$i]['FechaDeposito']=fecha2Str($d['FechaDeposito']);

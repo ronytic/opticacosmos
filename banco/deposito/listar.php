@@ -4,7 +4,7 @@ $folder="../../";
 $titulo="NBusquedaBoletasDeposito";
 include_once("../../class/bancodepositario.php");
 $bancodepositario=new bancodepositario;
-$depo=todolista($bancodepositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodBancoDepositario","Nombres","",1);
+$depo=todolista($bancodepositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodBancoDepositario","Nombres,Paterno,Materno","",1);
 $depo['%']="Todos";
 include_once("../../class/banco.php");
 $banco=new banco;
@@ -35,7 +35,7 @@ include_once($folder."cabecerahtml.php");
                     <div class="col-sm-3">
                         <label>Depositario</label>
                         <br>
-                        <?php campo("CodDepositario","select",$depo,"","","","","","%")?>
+                        <?php campo("CodBancoDepositario","select",$depo,"","","","","","%")?>
                     </div>
                     <div class="col-sm-3">
                     	<br>
