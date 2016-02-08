@@ -12,7 +12,7 @@ $Valores=array("FechaRetiro"=>"'$FechaRetiro'",
 );
 $bancoretiro->insertarRegistro($Valores);
 
-$Mensajes[]="Deposito Guardado Correctamente";
+$Mensajes[]="Retiro Guardado Correctamente";
 $folder="../../";
 include_once("../../resultado.php");
 ?>
