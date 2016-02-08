@@ -10,7 +10,7 @@ $us2=$usuario->mostrarUsuarios("Nivel!=1");
 //print_r($us2);
 
 $us2=todolista($usuario->mostrarUsuarios("Nivel!=1"),"CodUsuario","Paterno,Materno,Nombres"," ");
-
+$us2['%']="Todos";
 include_once($folder."cabecerahtml.php");
 ?>
 <?php include_once($folder."cabecera.php");?>
@@ -23,9 +23,9 @@ include_once($folder."cabecerahtml.php");
             	<div class="main row">
                 	<form action="busqueda.php" method="post" class="formulario">
                     <div class="col-sm-3">
-                        <label><?php echo $idioma['NombreEspecialidad'] ?></label>
+                        <label>Empleado</label>
                         <br>
-                        <?php campo("CodUsuarioAsignado","select",$us2,"col-xs-12")?>
+                        <?php campo("CodUsuarioAsignado","select",$us2,"col-xs-12","","","","","%")?>
                     </div>
                     <div class="col-sm-3">
                     	<br>

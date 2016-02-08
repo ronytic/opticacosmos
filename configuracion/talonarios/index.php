@@ -22,11 +22,11 @@ configuracion={todayBtn: "", endDate: "'0d'"};
         <td><?php campo("CodUsuarioAsignado","select",$us2,"",1)?></td>
     </tr>	
 	<tr>
-    	<td class="der"><?php echo $idioma['RangoInicial'] ?></td>
+    	<td class="der">Nº de Talonario Inicio</td>
         <td><?php campo("Minimo","number","0","der",1,"","",array("min"=>0))?></td>
     </tr>
 	<tr>
-    	<td class="der"><?php echo $idioma['RangoFinal'] ?></td>
+    	<td class="der">Nº de Talonario Final</td>
         <td><?php campo("Maximo","number","0","der",1,"","",array("min"=>0))?></td>
     </tr>
     <tr>
