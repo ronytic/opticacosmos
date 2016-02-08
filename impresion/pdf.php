@@ -18,10 +18,10 @@ include_once("fpdf_protection.php");
 		var $ancho=176;
 		function Header(){
 			global $idioma;
-			$this->SetTitle(utf8_decode("Sistema de Administración de Clinica"),true);
-			$this->SetAuthor(utf8_decode("Sistema de Administración de Clinica Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
-			$this->SetSubject(utf8_decode("Sistema de Administración de Clinica por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
-			$this->SetCreator(utf8_decode("Sistema de Administración de Clinica por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
+			$this->SetTitle(utf8_decode("Sistema de Administración - Óptica COSMOS"),true);
+			$this->SetAuthor(utf8_decode("Sistema de Administración - Óptica COSMOS Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
+			$this->SetSubject(utf8_decode("Sistema de Administración - Óptica COSMOS Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
+			$this->SetCreator(utf8_decode("Sistema de Administración - Óptica COSMOS Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
 			$this->SetProtection(array('print'));
 			if($this->CurOrientation=="P"){$this->ancho=$this->w-34;}else{$this->ancho=$this->w-40;}	
 			/*
