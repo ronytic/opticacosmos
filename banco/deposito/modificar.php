@@ -4,17 +4,17 @@ $folder="../../";
 $Cod=$_GET['Cod'];
 $titulo="NModificarDeposito";
 include_once("../../class/bancodeposito.php");
-$deposito=new deposito;
-$depo=$deposito->mostrarRegistro($Cod);
+$bancodeposito=new bancodeposito;
+$depo=$bancodeposito->mostrarRegistro($Cod);
 $depo=array_shift($depo);
 
 include_once("../../class/banco.php");
 $banco=new banco;
 $ban=todolista($banco->mostrarTodoRegistro("",1,"Nombre"),"CodBanco","Nombre,NumeroCuenta,TipoCuenta"," - ");
 
-include_once("../../class/depositario.php");
-$depositario=new depositario;
-$dep=todolista($depositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodDepositario","Nombres,Paterno,Materno"," ");
+include_once("../../class/bancodepositario.php");
+$bancodepositario=new bancodepositario;
+$dep=todolista($bancodepositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodBancoDepositario","Nombres,Paterno,Materno"," ");
 
 $turno=array("M"=>"Mañana","T"=>"Tarde");
 

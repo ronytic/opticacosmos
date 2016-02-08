@@ -1,7 +1,7 @@
 <?php
 include_once("../../login/check.php");
 include_once("../../class/bancodeposito.php");
-$deposito=new deposito;
+$bancodeposito=new bancodeposito;
 extract($_POST);
 $Valores=array("FechaDeposito"=>"'$FechaDeposito'",
 				"CodBanco"=>"'$CodBanco'",
@@ -12,8 +12,8 @@ $Valores=array("FechaDeposito"=>"'$FechaDeposito'",
 				"Monto"=>"'$Monto'",
 );
 
-$deposito->actualizarRegistro($Valores,"CodDeposito=".$Cod);
-$Listar=0;
+$bancodeposito->actualizarRegistro($Valores,"CodBancoDeposito=".$Cod);
+
 $Mensajes[]=$idioma["GuardadoCorrectamente"];
 $folder="../../";
 include_once("../../resultado.php");
