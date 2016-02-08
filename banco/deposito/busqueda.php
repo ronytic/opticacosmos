@@ -38,8 +38,14 @@ $titulo=array(	"FechaDeposito"=>"Fecha del Deposito",
 				"Depositario"=>"Depositario",
 				"Turno"=>"Turno",
 				"NBoleta"=>"NBoleta",
-				"Monto"=>"Monto",
+				"Monto"=>"Monto Depositado",
 				"Glosa"=>"Glosa",
 );
-listadotabla($titulo,$datos,1,"","modificar.php","eliminar.php");
+if(in_array($_SESSION['Nivel'],array(1,2,3,4,5))){
+    $modificar="modificar.php";
+}
+if(in_array($_SESSION['Nivel'],array(1,2,3,4))){
+    $eliminar="eliminar.php";
+}
+listadotabla($titulo,$datos,1,"",$modificar,$eliminar);
 ?>
