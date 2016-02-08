@@ -15,7 +15,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
 <form action="guardar.php" method="post">
 <table class="table table-hover">
     <tr>
-    	<td class="der">Fecha del Deposito</td>
+    	<td class="der">Fecha del Retiro</td>
         <td colspan="2"><?php campo("FechaRetiro","date",fecha2Str("",0),"",1,"","",array("max"=>0))?></td>
     </tr>
     <tr>
