@@ -17,10 +17,10 @@ include_once("fpdf_protection.php");
 	class PPDF extends FPDF_Protection{
 		function Header(){
 			global $idioma;
-			$this->SetTitle(utf8_decode("Sistema Académico Administrativo para Colegios"),true);
-			$this->SetAuthor(utf8_decode("Sistema Académico Administrativo para Colegios Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
-			$this->SetSubject(utf8_decode("Sistema Académico Administrativo para Colegios Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
-			$this->SetCreator(utf8_decode("Sistema Académico Administrativo para Colegios Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
+			$this->SetTitle(utf8_decode(" Sistema de Administración - Óptica COSMOS"),true);
+			$this->SetAuthor(utf8_decode("Sistema de Administración - Óptica COSMOS Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
+			$this->SetSubject(utf8_decode("Sistema de Administración - Óptica COSMOS Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
+			$this->SetCreator(utf8_decode("Sistema de Administración - Óptica COSMOS Desarrollado por Ronald Nina Layme. Cel: 73230568 - www.facebook.com/ronaldnina"),true);
 			$this->SetProtection(array('print'));
 			
 		}
