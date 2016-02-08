@@ -163,7 +163,9 @@ var Habilitado=0;
 			<table class="table table-bordered table-striped">
             	<thead>
                 </thead>
-                
+                <tr>
+                	<td colspan="7"><strong><?php echo $idioma['Lejos'] ?></strong></td>
+                </tr>
                 <tr>
                 	<td><strong>O.D.</strong></td>
                 	<td><?php echo 'Esférico'?><br><?php campo("LODEsferico","text","","col-sm-12",0,"","",array("tabindex"=>11))?></td>
