@@ -1,10 +1,10 @@
 <?php
 include_once("../../login/check.php");
 $folder="../../";
-$titulo="NBusquedaBoletasMedicas";
-include_once("../../class/depositario.php");
-$depositario=new depositario;
-$depo=todolista($depositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodDepositario","Nombres","",1);
+$titulo="NBusquedaBoletasDeposito";
+include_once("../../class/bancodepositario.php");
+$bancodepositario=new bancodepositario;
+$depo=todolista($bancodepositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodBancoDepositario","Nombres","",1);
 $depo['%']="Todos";
 include_once("../../class/banco.php");
 $banco=new banco;

@@ -1,22 +1,22 @@
 <?php
 include_once("../../login/check.php");
 include_once("../../class/bancodeposito.php");
-$deposito=new deposito;
+$bancodeposito=new bancodeposito;
 include_once("../../class/banco.php");
 $banco=new banco;
-include_once("../../class/depositario.php");
-$depositario=new depositario;
+include_once("../../class/bancodepositario.php");
+$bancodepositario=new bancodepositario;
 
 extract($_POST);
 
 $condicion="(FechaDeposito BETWEEN '$FechaDepositoDesde' and '$FechaDepositoHasta') and CodBanco LIKE '$CodBanco' and CodDepositario LIKE '$CodDepositario'";
-$dep=$deposito->mostrarTodoRegistro($condicion,1,"FechaRegistro,HoraRegistro");
+$dep=$bancodeposito->mostrarTodoRegistro($condicion,1,"FechaRegistro,HoraRegistro");
 foreach($dep as $d){$i++;
 	$ban=$banco->mostrarRegistro($d['CodBanco']);
 	$ban=array_shift($ban);
-    $dep=$depositario->mostrarRegistro($d['CodDepositario']);
+    $dep=$bancodepositario->mostrarRegistro($d['CodDepositario']);
 	$dep=array_shift($dep);
-	$datos[$i]['CodDeposito']=$d['CodDeposito'];
+	$datos[$i]['CodDeposito']=$d['CodBancoDeposito'];
 	$datos[$i]['FechaDeposito']=fecha2Str($d['FechaDeposito']);
 	$datos[$i]['Banco']=$ban['Nombre']." N.C.: ".$ban['NumeroCuenta'];
 	$datos[$i]['Depositario']=$dep['Nombres']." ".$dep['Paterno'];
