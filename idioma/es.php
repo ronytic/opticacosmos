@@ -88,6 +88,7 @@ $idioma['NModificarInventario']="Modificar Inventario";
 $idioma['NDetalleInventario']="Detalle de  Inventario";
 $idioma['NBusquedaBoletasMedicas']="Búsqueda de Boletas Médicas";
 $idioma['NModificarDeposito']="Modificar Datos de Deposito";
+$idioma['NBusquedaBoletasDeposito']="Búsqueda de Boletas de Deposito";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
