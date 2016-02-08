@@ -6,9 +6,9 @@ include_once("../../class/banco.php");
 $banco=new banco;
 $ban=todolista($banco->mostrarTodoRegistro("",1,"Nombre"),"CodBanco","Nombre,NumeroCuenta,TipoCuenta"," - ");
 
-include_once("../../class/depositario.php");
-$depositario=new depositario;
-$dep=todolista($depositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodDepositario","Nombres,Paterno,Materno"," ");
+include_once("../../class/bancodepositario.php");
+$bancodepositario=new bancodepositario;
+$dep=todolista($bancodepositario->mostrarTodoRegistro("",1,"Nombres,Paterno,Materno"),"CodBancoDepositario","Nombres,Paterno,Materno"," ");
 
 $turno=array("M"=>"Mañana","T"=>"Tarde");
 include_once($folder."cabecerahtml.php");
@@ -29,7 +29,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     </tr>
 	<tr>
     	<td class="der">Depositario</td>
-        <td colspan="2"><?php campo("CodDepositario","select",$dep,"",1)?></td>
+        <td colspan="2"><?php campo("CodBancoDepositario","select",$dep,"",1)?></td>
     </tr>
     <tr>
     	<td class="der">Turno</td>
