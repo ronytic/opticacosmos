@@ -9,6 +9,13 @@
 		$NombresSis=$datosUsuario['Nombres'];
 		$FotoSis=$datosUsuario['Foto'];
 ?>
+<script language="javascript">
+$(document).on("ready",function(){
+    $(".formulario *").change(function(e){
+        $(".formulario").submit();
+    });
+});
+</script>
 </head>
 
 <body>
