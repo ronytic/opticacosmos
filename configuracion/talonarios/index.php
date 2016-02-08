@@ -33,6 +33,9 @@ configuracion={todayBtn: "", endDate: "'0d'"};
     	<td class="der"><?php echo $idioma['Observacion'] ?></td>
         <td><?php campo("Descripcion","textarea","","form-control")?></td>
     </tr>
+    <tr><td></td>
+        <td><div class="alert alert-danger">TENGA MUCHO CUIDADO AL ASIGNAR LOS TALONARIOS, <br><strong>VERIFIQUE NUEVAMENTE</strong>, POSTERIORMENTE NO PODRA MODIFICARSE</div></td>
+    </tr>
     <tr>
     	<td colspan="2">
         	<?php campo("","submit","Guardar Talonario","btn btn-info","")?>
