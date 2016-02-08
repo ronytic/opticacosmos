@@ -52,6 +52,7 @@ $idioma['RegistrarDepositarios']="Registrar Depositarios";
 $idioma['ListarDepositarios']="Listar Depositarios";
 $idioma['RegistrarGasto']="Registrar Gasto";
 $idioma['ListarGastos']="Listar Gastos";
+$idioma['ReporteGeneral']="Reporte General";
 //Titulo
 $idioma['NPaginaPrincipal']="Página Principal";
 $idioma['NRegistroNuevoPaciente']="Registro de Nuevo Paciente";
@@ -243,7 +244,7 @@ $idioma['Categoria']="Categoría";
 $idioma['Empleado']="Empleado";
 $idioma['RangoInicial']="Rango Inicial";
 $idioma['RangoFinal']="Rango Final";
-$idioma['TalonarioYaRegistrado']="Cuidado!!! Los Talonarios que desea registrar ya Fueron Registrados";
+$idioma['TalonarioYaRegistrado']="ERROR, Cuidado!!! Los Talonarios que desea registrar ya Fueron Registrados";
 $idioma['Venta']="Venta";
 $idioma['Ventas']="Ventas";
 $idioma['RegistroVenta']="Registro de Venta";
