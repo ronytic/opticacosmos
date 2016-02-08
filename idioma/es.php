@@ -21,6 +21,7 @@ $idioma['Medico']="Médico";
 $idioma['Productos']="Productos";
 $idioma['Inventario']="Inventario";
 $idioma['Usuarios']="Usuarios";
+$idioma['Gastos']="Gastos";
 //Submenu
 $idioma['RegistrarNuevoPaciente']="Registrar Nuevo Paciente";
 $idioma['ListadoPacientes']="Listado de Pacientes";
@@ -49,7 +50,8 @@ $idioma['ListarBancos']="Listar Bancos";
 $idioma['RegistrarBanco']="Registrar Banco";
 $idioma['RegistrarDepositarios']="Registrar Depositarios";
 $idioma['ListarDepositarios']="Listar Depositarios";
-
+$idioma['RegistrarGasto']="Registrar Gasto";
+$idioma['ListarGastos']="Listar Gastos";
 //Titulo
 $idioma['NPaginaPrincipal']="Página Principal";
 $idioma['NRegistroNuevoPaciente']="Registro de Nuevo Paciente";
@@ -99,6 +101,9 @@ $idioma['NBusquedaDepositarios']="Búsqueda de Depositarios";
 $idioma['NRegistroRetiro']="Registro de Boleta de Retiro";
 $idioma['NBusquedaBoletasRetiro']="Búsqueda de Boletas de Retiro";
 $idioma['NModificarRetiro']="Modificar Boleta de Retiro";
+$idioma['NRegistroGasto']="Registro de Gasto";
+$idioma['NBusquedaGastos']="Búsqueda de Gastos";
+$idioma['NModificarGasto']="Modificar Gasto";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
