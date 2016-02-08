@@ -5,7 +5,7 @@ $bancodeposito=new bancodeposito;
 extract($_POST);
 $Valores=array("FechaDeposito"=>"'$FechaDeposito'",
 				"CodBanco"=>"'$CodBanco'",
-				"CodDepositario"=>"'$CodDepositario'",
+				"CodBancoDepositario"=>"'$CodBancoDepositario'",
 				"Turno"=>"'$Turno'",
 				"NBoleta"=>"'$NBoleta'",
 				"Glosa"=>"'$Glosa'",

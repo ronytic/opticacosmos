@@ -37,7 +37,7 @@ configuracion={todayBtn: false, endDate: "'0d'"};
     </tr>
 	<tr>
     	<td class="der">Depositario</td>
-        <td colspan="2"><?php campo("CodDepositario","select",$dep,"",1,"","","",$depo['CodDepositario'])?></td>
+        <td colspan="2"><?php campo("CodBancoDepositario","select",$dep,"",1,"","","",$depo['CodBancoDepositario'])?></td>
     </tr>
     <tr>
     	<td class="der">Turno</td>
