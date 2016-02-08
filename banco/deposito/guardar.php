@@ -1,28 +1,19 @@
 <?php
 include_once("../../login/check.php");
-include_once("../../class/medico.php");
-$medico=new medico;
+include_once("../../class/deposito.php");
+$deposito=new deposito;
 extract($_POST);
-$Valores=array("Paterno"=>"'$Paterno'",
-				"Materno"=>"'$Materno'",
-				"Nombres"=>"'$Nombres'",
-				"Ci"=>"'$Ci'",
-				"Telefono"=>"'$Telefono'",
-				"Celular"=>"'$Celular'",
-				"Direccion"=>"'$Direccion'",
-				"CodEspecialidad"=>"'$CodEspecialidad'",
-				"Observaciones"=>"'$Observaciones'",
+$Valores=array("FechaDeposito"=>"'$FechaDeposito'",
+				"CodBanco"=>"'$CodBanco'",
+				"CodDepositario"=>"'$CodDepositario'",
+				"Turno"=>"'$Turno'",
+				"NBoleta"=>"'$NBoleta'",
+				"Glosa"=>"'$Glosa'",
+				"Monto"=>"'$Monto'",
 );
-if(in_array($_SESSION['Nivel'],array(1,2,3,4))){
-	$Valores["Porcentaje"]="'$Porcentaje'";
-}
-$medico->insertarRegistro($Valores);
-if($modal==1){
-echo $medico->ultimo();
-//echo "5";
-exit();
-}
-$Mensajes[]=$idioma["GuardadoCorrectamente"];
+$deposito->insertarRegistro($Valores);
+$Listar=0;
+$Mensajes[]="Deposito Guardado Correctamente";
 $folder="../../";
 include_once("../../resultado.php");
 ?>
