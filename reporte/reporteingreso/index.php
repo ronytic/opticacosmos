@@ -24,7 +24,7 @@ $(document).on("ready",function(){
 });
 </script>
 <?php include_once($folder."cabecera.php");?>
-<div class="widget-header widget-header-flat"><h4><?php echo $idioma['EntregasTrabajo']?></h4></div>
+<div class="widget-header widget-header-flat"><h4><?php echo $idioma['CriterioBusqueda']?></h4></div>
 <div class="widget-body widget-main">
 <form action="verarchivo.php" method="post" class="formulario">
 <table class="table table-hover table-bordered">
@@ -50,7 +50,7 @@ $(document).on("ready",function(){
 </table>
 </form>
 </div>
-<div class="widget-header widget-header-flat"><h4><?php echo $idioma['DetallesBoleta']?></h4></div>
+<div class="widget-header widget-header-flat"><h4><i class="icon-print"></i><?php echo $idioma['Reporte']?></h4></div>
 <div class="widget-body widget-main" id="respuestaformulario">
 </div>
 <?php include_once($folder."pie.php");?>
