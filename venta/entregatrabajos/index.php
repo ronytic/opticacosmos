@@ -32,7 +32,7 @@ $(document).on("ready",function(){
 <?php include_once($folder."cabecera.php");
 //print_r($_SESSION);
 ?>
-<div class="widget-header widget-header-flat"><h4><?php echo $idioma['EntregasTrabajo']?></h4></div>
+<div class="widget-header widget-header-flat"><h4>Búsqueda de Boleta</h4></div>
 <div class="widget-body widget-main">
 <form action="buscarboleta.php" method="post" class="formulario">
 <table class="table table-hover">
@@ -46,7 +46,7 @@ $(document).on("ready",function(){
 </table>
 </form>
 </div>
-<div class="widget-header widget-header-flat"><h4><?php echo $idioma['DetallesBoleta']?></h4></div>
+<div class="widget-header widget-header-flat"><h4>Detalles de la Boleta</h4></div>
 <div class="widget-body widget-main" id="respuestaformulario">
 </div>
 <?php include_once($folder."pie.php");?>
