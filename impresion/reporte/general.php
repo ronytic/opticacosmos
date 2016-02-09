@@ -29,13 +29,13 @@ $usuario=new usuario;
 $FechaInicio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 $optica->campos=array("CodUsuarioEmitido");
-$opt=$optica->MostrarTodoRegistro("(FechaEmitido BETWEEN '2016-02-01' and '2016-02-06')  and `Anulado`= 0 GROUP BY CodUsuarioEmitido","","");
+$opt=$optica->MostrarTodoRegistro("(FechaEmitido BETWEEN '$FechaInicio' and '$FechaFinal')  and `Anulado`= 0 GROUP BY CodUsuarioEmitido","","");
 $CodUsuarios=array();
 foreach($opt as $o){
     array_push($CodUsuarios,$o['CodUsuarioEmitido']);
 }
 $optica->campos=array("CodUsuarioEntrega");
-$opt=$optica->MostrarTodoRegistro("(FechaEntregaReal BETWEEN '2016-02-01' and '2016-02-06')  and `Anulado`= 0 GROUP BY CodUsuarioEntrega","","");
+$opt=$optica->MostrarTodoRegistro("(FechaEntregaReal BETWEEN '$FechaInicio' and '$FechaFinal')  and `Anulado`= 0 GROUP BY CodUsuarioEntrega","","");
 foreach($opt as $o){
     array_push($CodUsuarios,$o['CodUsuarioEntrega']);
 }
@@ -68,18 +68,18 @@ foreach($CodUsuarios as $CU){
     $ApellidoMSis=$datosUsuario['Materno'];
     $NombresSis=$datosUsuario['Nombres'];
     $FotoSis=$datosUsuario['Foto'];
-    $pdf->CuadroCuerpoPersonalizado(45,$ApellidoPSis." ".$NombresSis,1,"C",1,"B","9");
+    $pdf->CuadroCuerpoPersonalizado(48,ucwords(mb_strtolower($ApellidoPSis." ".$NombresSis,"utf8")),1,"C",1,"B","9");
 }
 $pdf->ln();
 $pdf->CuadroCuerpoPersonalizado(20,"Fecha",1,"C",1,"B","9");
 foreach($CodUsuarios as $CU){
-    $pdf->CuadroCuerpoPersonalizado(15,"Ventas",1,"C",1,"B","9");
-    $pdf->CuadroCuerpoPersonalizado(15,"Entregas",1,"C",1,"B","9");
-    $pdf->CuadroCuerpoPersonalizado(15,"V+E",1,"C",1,"B","9");
+    $pdf->CuadroCuerpoPersonalizado(16,"Ventas",1,"C",1,"B","9");
+    $pdf->CuadroCuerpoPersonalizado(16,"Entregas",1,"C",1,"B","9");
+    $pdf->CuadroCuerpoPersonalizado(16,"V+E",1,"C",1,"B","9");
 }
-$pdf->CuadroCuerpoPersonalizado(15,"SubTotal",1,"C",1,"B","9");
-$pdf->CuadroCuerpoPersonalizado(15,"Gastos",1,"C",1,"B","9");
-$pdf->CuadroCuerpoPersonalizado(15,"Total",1,"C",1,"B","9");
+$pdf->CuadroCuerpoPersonalizado(16,"SubTotal",1,"C",1,"B","9");
+$pdf->CuadroCuerpoPersonalizado(16,"Gastos",1,"C",1,"B","9");
+$pdf->CuadroCuerpoPersonalizado(16,"Total",1,"C",1,"B","9");
 $pdf->ln();
 $TotalMaximo=array();
 for($fi=strtotime($FechaInicio);$fi<=strtotime($FechaFinal);$fi=$fi+86400){
@@ -96,9 +96,9 @@ for($fi=strtotime($FechaInicio);$fi<=strtotime($FechaFinal);$fi=$fi+86400){
         $opte=array_shift($opte);
         $entregas=$opte['Total'];
         
-        $pdf->CuadroCuerpoPersonalizado(15,number_format($ventas,2,",",""),0,"R",1,"","9"); 
-        $pdf->CuadroCuerpoPersonalizado(15,number_format($entregas,2,",",""),0,"R",1,"","9"); 
-        $pdf->CuadroCuerpoPersonalizado(15,number_format($ventas+$entregas,2,",",""),1,"R",1,"B","9");
+        $pdf->CuadroCuerpoPersonalizado(16,number_format($ventas,2,",",""),0,"R",1,"","9"); 
+        $pdf->CuadroCuerpoPersonalizado(16,number_format($entregas,2,",",""),0,"R",1,"","9"); 
+        $pdf->CuadroCuerpoPersonalizado(16,number_format($ventas+$entregas,2,",",""),1,"R",1,"B","9");
         $subtotal+=$ventas+$entregas;
         $TotalMaximo['V'.$CU]+=$ventas;
         $TotalMaximo['E'.$CU]+=$entregas;
@@ -109,9 +109,9 @@ for($fi=strtotime($FechaInicio);$fi<=strtotime($FechaFinal);$fi=$fi+86400){
     $g=array_shift($g);
     $gas=$g['Total'];
     $total=$subtotal-$gas;
-    $pdf->CuadroCuerpoPersonalizado(15,number_format($subtotal,2,",",""),1,"R",1,"B","9"); 
-    $pdf->CuadroCuerpoPersonalizado(15,number_format($gas,2,",",""),0,"R",1,"","9"); 
-    $pdf->CuadroCuerpoPersonalizado(15,number_format($total,2,",",""),1,"R",1,"B","9"); 
+    $pdf->CuadroCuerpoPersonalizado(16,number_format($subtotal,2,",",""),1,"R",1,"B","9"); 
+    $pdf->CuadroCuerpoPersonalizado(16,number_format($gas,2,",",""),0,"R",1,"","9"); 
+    $pdf->CuadroCuerpoPersonalizado(16,number_format($total,2,",",""),1,"R",1,"B","9"); 
     $pdf->ln();
     $TotalMaximo['subtotal']+=$subtotal;
     $TotalMaximo['gasto']+=$gas;
@@ -119,7 +119,7 @@ for($fi=strtotime($FechaInicio);$fi<=strtotime($FechaFinal);$fi=$fi+86400){
 }
 $pdf->CuadroCuerpoPersonalizado(20,"Total",1,"C",1,"B","9");
 foreach($TotalMaximo as $TM){
-     $pdf->CuadroCuerpoPersonalizado(15,number_format($TM,2,",",""),1,"R",1,"B","9");  
+     $pdf->CuadroCuerpoPersonalizado(16,number_format($TM,2,",",""),1,"R",1,"B","9");  
 }
 $pdf->ln();
 $pdf->ln();
