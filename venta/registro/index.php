@@ -28,8 +28,6 @@ $protipoc=todolista($productotipo->mostrarTodoRegistro("Categoria='Cristales'",1
 
 $protipoa=todolista($productotipo->mostrarTodoRegistro("Categoria='Armazon'",1,"Nombre"),"CodProductoTipo","Nombre","",1);
 
-include_once("../../class/optica.php");
-$optica=new optica;
 $listaBoletas=$optica->mostrarTodoRegistro("CodUsuarioBoleta=$CodUsuarioLog and Anulado=0 and EstadoEntrega=0 and Emitido=0 and Anulado=0",1,"NumeroBoleta");
 
 include_once("../../class/config.php");
