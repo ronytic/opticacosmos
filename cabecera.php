@@ -26,14 +26,15 @@ $(document).on("ready",function(){
 			</script>
 
 			<div class="navbar-container" id="navbar-container">
-				<div class="navbar-header pull-left">
+				<div class="navbar-header pull-left" >
 					<a href="<?php echo $folder?>" class="navbar-brand">
-						<small>
-							<i class="icon-eye"></i>
-							<?php echo $Titulo?> -
-                            <?php echo capitalizar($UbicacionReporte)?>
+						<div style="margin-left:50px">
+							<i class="icon- "></i>
+                            <span class="cabecera2"><?php echo $TituloSistema?></span>
+							<span class="cabecera1"><?php echo $Titulo?></span> -
+                            <span class="cabecera2"><?php echo capitalizar($UbicacionReporte)?></span>
                             
-						</small>
+						</div>
 					</a><!-- /.brand -->
 				</div><!-- /.navbar-header -->
 
