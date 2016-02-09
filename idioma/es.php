@@ -57,6 +57,7 @@ $idioma['ReporteGeneral']="Reporte General";
 $idioma['ReporteNoEntregados']="Reporte Trabajos No Entregados";
 $idioma['RegistrarFactura']="Registrar Factura";
 $idioma['ListadoFacturas']="Listado de Facturas";
+$idioma['AnularTrabajo']="Anular Orden de Trabajo";
 //Titulo
 $idioma['NPaginaPrincipal']="Página Principal";
 $idioma['NRegistroNuevoPaciente']="Registro de Nuevo Paciente";
@@ -111,6 +112,7 @@ $idioma['NBusquedaGastos']="Búsqueda de Gastos";
 $idioma['NModificarGasto']="Modificar Gasto";
 $idioma['NReporteGeneral']="Reporte General";
 $idioma['NReporteNoEntregados']="Reporte de Trabajos No Entregados";
+$idioma['NAnularTrabajo']="Anular Orden de Trabajo";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
