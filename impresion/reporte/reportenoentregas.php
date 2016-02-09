@@ -85,7 +85,7 @@ $TTotalBs=0;
 $contadorUsuario=0;
 foreach($opt as $o){
 	if($contadorUsuario!=$idusuario){
-		$i=0;
+		//$i=0;
 		$contadorUsuario=$idusuario;
 	}
 	$i++;
@@ -127,7 +127,7 @@ foreach($opt as $o){
 			$o['NumeroBoleta'],
 			fecha2Str($o['FechaEmitido'])." ".$o['HoraEmitido'],
 			$o['HoraEmitido'],
-			utf8_decode(mb_strtoupper($pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],"utf8")),
+			utf8_decode(mb_strtoupper($pac['Paterno']." ".$pac['Materno']." ".$pac['Nombres'],"utf8"))." Cel: ".$pac['Celular'],
 			//$prod1['Nombre']." - ".$o['Detalle1'],
 			//$prod2['Nombre']." - ".$o['Detalle2'],
 			//$prod3['Nombre']." - ".$o['Detalle3'],
