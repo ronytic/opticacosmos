@@ -42,7 +42,7 @@ $optica=new optica;
             $datos[$i]['SaldoBs']=$o['SaldoBs'];
             $datos[$i]['CodOptica']=$o['CodOptica'];
         }
-		listadoTabla($titulos,$datos,1,"boleta.php","","","",array("CodOptica"=>"asd"));
+		listadoTabla($titulos,$datos,1,"boleta.php","","",array("../../venta/registro/"=>"Registrar Nueva Orden"));
 
 		
 
