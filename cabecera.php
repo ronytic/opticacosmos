@@ -28,7 +28,7 @@ $(document).on("ready",function(){
 			<div class="navbar-container" id="navbar-container">
 				<div class="navbar-header pull-left" >
 					<a href="<?php echo $folder?>" class="navbar-brand">
-						<div style="margin-left:50px">
+						<div style="margin-left:10px">
 							<img src="<?php echo $folder?>imagenes/logos/logo.png" height="30">
                             <span class="cabecera2"><?php echo $TituloSistema?></span>
 							<span class="cabecera1"><?php echo $Titulo?></span> -
