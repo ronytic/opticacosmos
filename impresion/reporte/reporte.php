@@ -36,7 +36,7 @@ $Porcentaje=$datosUsuario['Porcentaje'];
 $FechaIncio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 $ReporteCompleto=$_GET['ReporteCompleto'];
-$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodMedico=$CodMedico","","FechaRegistro,NumeroBoleta");
+$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodMedico=$CodMedico and Anulado=0","","FechaRegistro,NumeroBoleta");
 
 $titulo="Planilla de Ingreso Médico";
 class PDF extends PPDF{
