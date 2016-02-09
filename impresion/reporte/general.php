@@ -41,12 +41,12 @@ foreach($opt as $o){
 }
 
 $CodUsuarios=(array_unique($CodUsuarios));
-$titulo="Reporte General";
+$titulo="Reporte General de Ventas y Bancos";
 class PDF extends PPDF{
 	function Cabecera(){
 		global $FechaInicio,$FechaFinal,$NombresSis,$TC;
-		$this->CuadroCabecera(25,"Fecha Desde:",30,fecha2Str($FechaInicio));
-        $this->CuadroCabecera(25,"Fecha Hasta:",30,fecha2Str($FechaFinal));
+		$this->CuadroCabecera(20,"Desde:",30,fecha2Str($FechaInicio));
+        $this->CuadroCabecera(20,"Hasta:",30,fecha2Str($FechaFinal));
 		$this->CuadroCabecera(10,"T/C:",20,$TC);
 		$this->Pagina();
 	}
