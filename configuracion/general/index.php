@@ -15,7 +15,13 @@ configuracion={todayBtn: "", endDate: "'0d'"};
 </script>
 <?php include_once($folder."cabecera.php");?>
 <form action="guardar.php" method="post">
-<table class="table tablestriped table-hover">
+<table class="table tablestriped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
 	<tr class="warning">
     	<td class="der"><?php echo $idioma['TasaCambio'] ?></td>
         <td><?php campo("TC","text",$TC,"",1)?></td>
