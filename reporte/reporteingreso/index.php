@@ -4,7 +4,7 @@ $folder="../../";
 $titulo="NReporteIngreso";
 $tiporeporte=array("Ventas"=>"Ventas","EntregaTrabajos"=>"Entrega de Trabajos");
 if(in_array($_SESSION['Nivel'],array(1,2,3,4))){
-	$tiporeporte['NoEntregados']="No Entregados";
+	//$tiporeporte['NoEntregados']="No Entregados";
 }
 include_once("../../class/usuario.php");
 $usuario=new usuario;
