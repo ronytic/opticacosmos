@@ -10,6 +10,7 @@ include_once("fpdf_protection.php");
 	$title=$cnf['Valor'];
 	$cnf=$config->mostrarConfig("Gestion");
 	$gestion=$cnf['Valor'];
+    $gestion=date("Y");
 	$cnf=$config->mostrarConfig("Lema");
 	$lema=$cnf['Valor'];
 	$cnf=$config->mostrarConfig("Logo");
