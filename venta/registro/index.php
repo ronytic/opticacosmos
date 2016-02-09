@@ -2,10 +2,17 @@
 $titulo="NPedidoOptica";
 $CodPaciente=$_GET['CodPaciente'];
 $CodUsuarioLog=$_SESSION['CodUsuarioLog'];
+
+include_once("../../class/optica.php");
+$optica=new optica;
+$opt=$optica->mostrarTodoRegistro("CodOptica=".$_GET['Cod'],1,"");
+$opt=array_shift($opt);
 include_once("../../class/paciente.php");
 $paciente=new paciente;
 $pacientes=$paciente->mostrarTodoRegistro("",1,"Paterno,Materno,Nombres");
 
+$pac=$paciente->mostrarTodoRegistro("CodPaciente=".$opt['CodPaciente'],1,"Paterno,Materno,Nombres");
+$pac=array_shift($pac);
 include_once("../../class/medico.php");
 $medico=new medico;
 $medicos=$medico->mostrarTodoRegistro("",1,"Paterno,Materno,Nombres");
@@ -85,7 +92,7 @@ var Habilitado=0;
                 <tr>
                     <th><?php echo $idioma['Ci'] ?>
                         <br>
-                        <input type="text" name="Ci" tabindex="2" list="Cis" class="form-control">
+                        <input type="text" name="Ci" tabindex="2" list="Cis" class="form-control" value="<?php echo $pac['Ci']?>">
                         <datalist id="Cis">
                         <?php foreach($pacientes as $p){?>
                             <option value="<?php echo $p['Ci']?>"><?php echo $p['Paterno']." ".$p['Materno']." ".$p['Nombres']?></option>
@@ -94,22 +101,22 @@ var Habilitado=0;
                     </th>
                     <th><?php echo $idioma['Nombres'] ?>
                         <br>
-                        <input type="text" name="Nombres" tabindex="3" list="Nombres" required class="form-control">
+                        <input type="text" name="Nombres" tabindex="3" list="Nombres" required class="form-control" value="<?php echo $pac['Nombres']?>">
                     </th>
                     <th><?php echo $idioma['ApellidoPaterno'] ?>
                         <br>
-                        <input type="text" name="Paterno" tabindex="4" list="Paternos" autocomplete="off" class="form-control">
+                        <input type="text" name="Paterno" tabindex="4" list="Paternos" autocomplete="off" class="form-control" value="<?php echo $pac['Paterno']?>">
                         
                     </th>
                     <th><?php echo $idioma['ApellidoMaterno'] ?>
                         <br>
-                        <input type="text" name="Materno" tabindex="5" list="Maternos" class="form-control">
+                        <input type="text" name="Materno" tabindex="5" list="Maternos" class="form-control" value="<?php echo $pac['Materno']?>">
                     </th>
                     
                     
                     <th><?php echo $idioma['Celular'] ?>
                         <br>
-                        <input type="text" name="Celular" tabindex="6" list="Celulares" class="form-control">
+                        <input type="text" name="Celular" tabindex="6" list="Celulares" class="form-control" value="<?php echo $pac['Celular']?>">
                     </th>
                 </tr>
             </table>
@@ -126,7 +133,7 @@ var Habilitado=0;
                     </td>-->
                     <th><?php echo $idioma['Nombres'] ?>
                         <br>
-                        <input type="text" name="NombresMedico" tabindex="7" list="NombresMedicos" required class="form-control">
+                        <input type="text" name="NombresMedico" tabindex="7" list="NombresMedicos" required class="form-control" value="<?php echo $_GET['Cod']!=""?"copia":"";?>">
                         <datalist id="NombresMedicos">
                         <?php foreach($medicos as $m){?>
                             <option value="<?php echo $m['Nombres']?>"><?php echo $m['Paterno']." ".$m['Materno']." ".$m['Nombres']?></option>
@@ -168,40 +175,40 @@ var Habilitado=0;
                 </tr>
                 <tr>
                 	<td><strong>O.D.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("LODEsferico","text","","col-sm-12",0,"","",array("tabindex"=>11))?></td>
-                    <td><?php echo 'Cilíndrico'?><br><?php campo("LODCilindrico","text","","col-sm-12",0,"","",array("tabindex"=>12))?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("LODEje","text","","col-sm-12",0,"","",array("tabindex"=>13))?></td>
-                    <td><?php echo 'Prisma'?><br><?php campo("LODPrisma","text","","col-sm-12",0,"","",array("tabindex"=>14))?></td>
-                    <td><?php echo 'Base'?><br><?php campo("LODBase","text","","col-sm-12",0,"","",array("tabindex"=>15))?></td>
-                    <td><?php echo 'ADD'?><br><?php campo("LODAdd","text","","col-sm-12",0,"","",array("tabindex"=>16))?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("LODEsferico","text",$opt['LODEsferico'],"col-sm-12",0,"","",array("tabindex"=>11))?></td>
+                    <td><?php echo 'Cilíndrico'?><br><?php campo("LODCilindrico","text",$opt['LODCilindrico'],"col-sm-12",0,"","",array("tabindex"=>12))?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("LODEje","text",$opt['LODEje'],"col-sm-12",0,"","",array("tabindex"=>13))?></td>
+                    <td><?php echo 'Prisma'?><br><?php campo("LODPrisma","text",$opt['LODPrisma'],"col-sm-12",0,"","",array("tabindex"=>14))?></td>
+                    <td><?php echo 'Base'?><br><?php campo("LODBase","text",$opt['LODBase'],"col-sm-12",0,"","",array("tabindex"=>15))?></td>
+                    <td><?php echo 'ADD'?><br><?php campo("LODAdd","text",$opt['LODAdd'],"col-sm-12",0,"","",array("tabindex"=>16))?></td>
                 </tr>
                 <tr>
                 	<td><strong>O.I.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("LOIEsferico","text","","col-sm-12",0,"","",array("tabindex"=>17))?></td>
-                    <td><?php echo 'Cilíndrico'?><br><?php campo("LOICilindrico","text","","col-sm-12",0,"","",array("tabindex"=>18))?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("LOIEje","text","","col-sm-12",0,"","",array("tabindex"=>19))?></td>
-                    <td><?php echo 'Prisma'?><br><?php campo("LOIPrisma","text","","col-sm-12",0,"","",array("tabindex"=>20))?></td>
-                    <td><?php echo 'Base'?><br><?php campo("LOIBase","text","","col-sm-12",0,"","",array("tabindex"=>21))?></td>
-                    <td><?php echo 'ADD'?><br><?php campo("LOIAdd","text","","col-sm-12",0,"","",array("tabindex"=>22))?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("LOIEsferico","text",$opt['LOIEsferico'],"col-sm-12",0,"","",array("tabindex"=>17))?></td>
+                    <td><?php echo 'Cilíndrico'?><br><?php campo("LOICilindrico","text",$opt['LOICilindrico'],"col-sm-12",0,"","",array("tabindex"=>18))?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("LOIEje","text",$opt['LOIEje'],"col-sm-12",0,"","",array("tabindex"=>19))?></td>
+                    <td><?php echo 'Prisma'?><br><?php campo("LOIPrisma","text",$opt['LOIPrisma'],"col-sm-12",0,"","",array("tabindex"=>20))?></td>
+                    <td><?php echo 'Base'?><br><?php campo("LOIBase","text",$opt['LOIBase'],"col-sm-12",0,"","",array("tabindex"=>21))?></td>
+                    <td><?php echo 'ADD'?><br><?php campo("LOIAdd","text",$opt['LOIAdd'],"col-sm-12",0,"","",array("tabindex"=>22))?></td>
                 </tr>
                 <tr>
                 	<td colspan="7"><strong><?php echo $idioma['Cerca'] ?></strong></td>
                 </tr>
                 <tr>
                 	<td><strong>O.D.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("CODEsferico","text","","col-sm-12",0,"","",array("tabindex"=>23))?></td>
-                    <td><?php echo 'Cilíndrico'?><br><?php campo("CODCilindrico","text","","col-sm-12",0,"","",array("tabindex"=>24))?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("CODEje","text","","col-sm-12",0,"","",array("tabindex"=>25))?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("CODEsferico","text",$opt['CODEsferico'],"col-sm-12",0,"","",array("tabindex"=>23))?></td>
+                    <td><?php echo 'Cilíndrico'?><br><?php campo("CODCilindrico","text",$opt['CODCilindrico'],"col-sm-12",0,"","",array("tabindex"=>24))?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("CODEje","text",$opt['CODEje'],"col-sm-12",0,"","",array("tabindex"=>25))?></td>
                     
                 </tr>
                 <tr>
                 	<td><strong>O.I.</strong></td>
-                	<td><?php echo 'Esférico'?><br><?php campo("COIEsferico","text","","col-sm-12",0,"","",array("tabindex"=>26))?></td>
-                    <td><?php echo 'Cilíndrico.'?><br><?php campo("COICilindrico","text","","col-sm-12",0,"","",array("tabindex"=>27))?></td>
-                    <td><?php echo 'Eje'?><br><?php campo("COIEje","text","","col-sm-12",0,"","",array("tabindex"=>28))?></td>
-                    <td><?php echo 'Altura'?><br><?php campo("COIAltura","text","","col-sm-12",0,"","",array("tabindex"=>29))?></td>
-                    <td><?php echo 'DP Lejos'?><br><?php campo("COIDPLejos","text","","col-sm-12",0,"","",array("tabindex"=>30))?></td>
-                    <td><?php echo 'DP Cerca'?><br><?php campo("COIDPCerca","text","","col-sm-12",0,"","",array("tabindex"=>31))?></td>
+                	<td><?php echo 'Esférico'?><br><?php campo("COIEsferico","text",$opt['COIEsferico'],"col-sm-12",0,"","",array("tabindex"=>26))?></td>
+                    <td><?php echo 'Cilíndrico.'?><br><?php campo("COICilindrico","text",$opt['COICilindrico'],"col-sm-12",0,"","",array("tabindex"=>27))?></td>
+                    <td><?php echo 'Eje'?><br><?php campo("COIEje","text",$opt['COIEje'],"col-sm-12",0,"","",array("tabindex"=>28))?></td>
+                    <td><?php echo 'Altura'?><br><?php campo("COIAltura","text",$opt['COIAltura'],"col-sm-12",0,"","",array("tabindex"=>29))?></td>
+                    <td><?php echo 'DP Lejos'?><br><?php campo("COIDPLejos","text",$opt['COIDPLejos'],"col-sm-12",0,"","",array("tabindex"=>30))?></td>
+                    <td><?php echo 'DP Cerca'?><br><?php campo("COIDPCerca","text",$opt['COIDPCerca'],"col-sm-12",0,"","",array("tabindex"=>31))?></td>
                 </tr>
                 <tr>
                 	<td colspan="2">
