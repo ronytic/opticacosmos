@@ -105,6 +105,7 @@ $idioma['NModificarRetiro']="Modificar Boleta de Retiro";
 $idioma['NRegistroGasto']="Registro de Gasto";
 $idioma['NBusquedaGastos']="Búsqueda de Gastos";
 $idioma['NModificarGasto']="Modificar Gasto";
+$idioma['NReporteGeneral']="Reporte General";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
@@ -258,5 +259,6 @@ $idioma['RegistroBanco']="Registro de Banco";
 $idioma['NBusquedaCuentasBancos']="Búsqueda de Cuentas de Bancos";
 $idioma['TipoCuenta']="Tipo de Cuenta";
 $idioma['NumeroCuenta']="Número de Cuenta";
+$idioma['Mensaje']="Mensaje";
 
 ?>
