@@ -1,0 +1,66 @@
+#header h1 {
+    font-weight: bold;
+    font-size: 68px;
+    font-family: "Arial";
+    text-shadow: 0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+    color: #FFF;
+    color:#EC3134;
+    margin:10px 10px 10px 40px;
+}
+#header h3 {
+  font-weight: bold;
+  font-size: 48px;
+  font-family: "Arial";
+  text-shadow: 0 1px 0 #ccc, 
+   0 2px 0 #c9c9c9,
+   0 3px 0 #bbb,
+   0 4px 0 #b9b9b9,
+   0 5px 0 #aaa,
+   0 6px 1px rgba(0,0,0,.1),
+   0 0 5px rgba(0,0,0,.1),
+   0 1px 3px rgba(0,0,0,.3),
+   0 3px 5px rgba(0,0,0,.2),
+   0 5px 10px rgba(0,0,0,.25),
+   0 10px 10px rgba(0,0,0,.2),
+   0 20px 20px rgba(0,0,0,.15);
+  color: #FFF;
+    margin:10px;
+}
+.login{
+    padding:10px;
+  background-color:rgba(241,241,241,0.60);
+  width:250px;      
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+.login .titulo{
+    font-family: "Arial";
+    color:#EC3134;
+
+    text-align:center;
+}
+.login hr{
+    color:#EC3134 !important;
+    margin:0px;
+    margin-bottom:10px;
+    border-bottom:#EC3134 1px solid;
+}
+.creditos{
+     background-color:rgba(241,241,241,0.60);
+     padding:5px 10px 5px 10px;
+    position:absolute;
+    right:10px;
+    bottom:10px;    
+}
