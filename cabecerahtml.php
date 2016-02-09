@@ -67,7 +67,7 @@ $config=new config;
 if(!isset($usuario)){
 	$usuario=new usuario;
 }
-
+$TituloSistema=$config->mostrarConfig("TituloSistema",1);
 $Titulo=$config->mostrarConfig("Titulo",1);
 $LogoInicio=$config->mostrarConfig("LogoInicio",1);
 $LogoIcono=$config->mostrarConfig("LogoIcono",1);
