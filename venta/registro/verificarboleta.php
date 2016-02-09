@@ -9,6 +9,12 @@ $talonario=new talonario;
 
 $CodUsuarioLog=$_SESSION['CodUsuarioLog'];
 
+$opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta' and Anulado=1 ");
+
+if(count($opt)){
+	$val['datos']="<li>El Número de Boleta fue ANULADO</li>";	
+}
+
 $opt=$optica->mostrarTodoRegistro("NumeroBoleta='$NumeroBoleta' and Emitido=1 ");
 
 if(count($opt)){
