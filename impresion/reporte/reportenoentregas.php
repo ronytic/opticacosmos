@@ -34,24 +34,26 @@ $ApellidoPSis=$datosUsuario['Paterno'];
 $ApellidoMSis=$datosUsuario['Materno'];
 $NombresSis=$datosUsuario['Nombres'];
 $FotoSis=$datosUsuario['Foto'];
-$FechaIncio=$_GET['Desde'];
+$FechaInicio=$_GET['Desde'];
 $FechaFinal=$_GET['Hasta'];
 
 
 $ApellidoPSis="";
 $ApellidoMSis="";
 $NombresSis="Todos los usuarios";
-$opt=$optica->MostrarTodoRegistro("FechaEntrega BETWEEN '$FechaIncio' and '$FechaFinal' and EstadoEntrega=0 and Emitido=1 and Anulado=0","1","FechaEntrega,NumeroBoleta");
+$opt=$optica->MostrarTodoRegistro("FechaEntrega BETWEEN '$FechaInicio' and '$FechaFinal' and EstadoEntrega=0 and Emitido=1 and Anulado=0","1","FechaEntrega,NumeroBoleta");
 
 //$opt=$optica->MostrarTodoRegistro("FechaRegistro BETWEEN '$FechaIncio' and '$FechaFinal' and CodUsuario=$idusuario and EstadoEntrega=0","","FechaRegistro,NumeroBoleta");
 
 $titulo="Planilla de Trabajos No Entregados";
 class PDF extends PPDF{
 	function Cabecera(){
-		global $ApellidoPSis,$ApellidoMSis,$NombresSis,$TC;
-		$this->CuadroCabecera(25,"Reporte de:",80,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
-		$this->CuadroCabecera(10,"T/C:",60,$TC);
-		$this->Pagina();
+		global $ApellidoPSis,$ApellidoMSis,$NombresSis,$TC,$FechaInicio,$FechaFinal;
+		$this->CuadroCabecera(20,"Reporte de:",40,$ApellidoPSis." ".$ApellidoMSis." ".$NombresSis);
+		$this->CuadroCabecera(15,"Desde:",20,fecha2str($FechaInicio));
+		$this->CuadroCabecera(15,"Hasta:",40,fecha2str($FechaFinal));
+        $this->CuadroCabecera(10,"T/C:",20,$TC);
+        $this->Pagina();
 		$this->Ln();
 		$this->TituloCabecera(10,"N",8);
 		$this->TituloCabecera(15,"N Orden",8);
