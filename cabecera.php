@@ -29,7 +29,7 @@ $(document).on("ready",function(){
 				<div class="navbar-header pull-left" >
 					<a href="<?php echo $folder?>" class="navbar-brand">
 						<div style="margin-left:50px">
-							<i class="icon- "></i>
+							<i class="icon-eye-open"></i>
                             <span class="cabecera2"><?php echo $TituloSistema?></span>
 							<span class="cabecera1"><?php echo $Titulo?></span> -
                             <span class="cabecera2"><?php echo capitalizar($UbicacionReporte)?></span>
@@ -375,8 +375,9 @@ $(document).on("ready",function(){
                                         	<a href="<?php echo $folder;?><?php echo $m['Url'];?><?php echo $sm['Url'];?><?php echo $UrlInternet?>">
                                             
                                             <i class="icon-double-angle-right"></i>
+                                            <?php if($sm['Nuevo']=="1"){?><i class="icon-eye-open"></i><?php }?>
                                             <?php echo $idioma[$sm['Nombre']];?>
-
+                                            
                                             </a>
                                         </li>
                                         <?php		
