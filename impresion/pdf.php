@@ -6,15 +6,13 @@ include_once("fpdf_protection.php");
 	if(!isset($config)){
 		$config=new config;
 	}
-	$cnf=$config->mostrarConfig("Titulo");
-	$title=$cnf['Valor'];
-	$cnf=$config->mostrarConfig("Gestion");
-	$gestion=$cnf['Valor'];
+	$TituloS=$config->mostrarConfig("Titulo",1);
+    $TituloSistema=$config->mostrarConfig("TituloSistema",1);
+	$gestion=$config->mostrarConfig("Gestion",1);
     $gestion=date("Y");
-	$cnf=$config->mostrarConfig("Lema");
-	$lema=$cnf['Valor'];
-	$cnf=$config->mostrarConfig("Logo");
-	$logo=$cnf['Valor'];
+	$lema=$config->mostrarConfig("Lema",1);
+	$logo=$config->mostrarConfig("Logo",1);
+    $Version=$config->mostrarConfig("Version",1);
 	class PPDF extends FPDF_Protection{
 		var $ancho=176;
 		function Header(){
@@ -34,16 +32,16 @@ include_once("fpdf_protection.php");
 			
 			$this->SetLeftMargin(18);
 			$this->SetAutoPageBreak(true,15);
-			global $title,$gestion,$titulo,$logo,$idioma;
+			global $TituloS,$gestion,$titulo,$logo,$idioma,$TituloSistema,$UbicacionReporte,$Version;
 			$fecha=capitalizar(strftime("%A, %d ")).$idioma['De'].capitalizar(strftime(" %B ")).$idioma['De'].strftime(" %Y");
 			
 			$this->Image("../../imagenes/logos/".$logo,10,10,20,20);
 			$this->Fuente("",10);
 			$this->SetXY(34,12);
-			$this->Cell(70,4,utf8_decode($title),0,0,"L");
-			$this->Fuente("B",8);
+			$this->Cell(70,4,utf8_decode($TituloSistema." ".$TituloS),0,0,"L");
+			$this->Fuente("",8);
 			$this->SetXY(34,16);
-			$this->Cell(70,4,utf8_decode($gestion),0,0,"L");
+			$this->Cell(70,4,utf8_decode(" Ver: ".$Version.""." - ".ucwords($UbicacionReporte)." - ".$gestion),0,0,"L");
 			$this->ln(10);	
 			$this->Fuente("B",18);
 			$this->Cell($this->ancho,4,utf8_decode($titulo.$this->orientation),0,5,"C");
@@ -131,7 +129,7 @@ include_once("fpdf_protection.php");
 			}
 		}
 		function Footer()
-		{	global $lema,$idioma;
+		{	global $lema,$idioma,$TituloSistema,$TituloS;
 			//$this->Cell($this->ancho,0,"",1,1);
 			
 			// Posición: a 1,5 cm del final
@@ -148,12 +146,12 @@ include_once("fpdf_protection.php");
 			
 			
 			if($this->CurOrientation=="P"){
-				$this->Cell((round(($this->ancho-50)/2)+10),3,utf8_decode($idioma['TituloSistema'].""),0,0,"R");
+				$this->Cell((round(($this->ancho-50)/2)+10),3,utf8_decode($TituloSistema." ".$TituloS.""),0,0,"R");
 				$this->ln();
 				$this->Cell((round(($this->ancho-50)/2)+40),3,"",0,0,"R");
 				$this->Cell((round(($this->ancho-50)/2)+10),3,"Desarrollado por Ronald Nina",0,0,"R");
 			}else{
-				$this->Cell((round(($this->ancho-50)/2)+10),4,utf8_decode($idioma['TituloSistema']." - Desarrollado por Ronald Nina"),0,0,"R");	
+				$this->Cell((round(($this->ancho-50)/2)+10),4,utf8_decode($TituloSistema." ".$TituloS." - Desarrollado por Ronald Nina"),0,0,"R");	
 			}
 			
 			//$this->Cell(60,4,utf8_decode($idioma['ReporteGenerado']).": ".date('d-m-Y H:i:s'),0,0,"R");
