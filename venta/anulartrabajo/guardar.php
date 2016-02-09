@@ -28,7 +28,7 @@ $Nuevo=0;
 $Listar=0;
 $Botones=array("../../venta/registro/"=>"Realizar una Venta");
 $folder="../../";
-$Mensajes[]=$idioma["GuardadoCorrectamente"];
+$Mensajes[]="Boleta Anuladad Correctamente";
 include_once("../../resultado.php");
 exit();
 ?>
