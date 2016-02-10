@@ -113,6 +113,7 @@ $idioma['NModificarGasto']="Modificar Gasto";
 $idioma['NReporteGeneral']="Reporte General";
 $idioma['NReporteNoEntregados']="Reporte de Trabajos No Entregados";
 $idioma['NAnularTrabajo']="Anular Orden de Trabajo";
+$idioma['NRegistroFactura']="Registro de Factura";
 //General
 $idioma['Pagina']="Página";
 $idioma['De']="de";
